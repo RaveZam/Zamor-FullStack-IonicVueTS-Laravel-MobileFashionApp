@@ -1,0 +1,7 @@
+{
+  "name": "Zamor ",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue-vite"
+}
