@@ -1,2 +1,51 @@
 /* For information on how to create your own theme, please see:
 http://ionicframework.com/docs/theming/ */
+
+@import "tailwindcss";
+
+@font-face {
+  font-family: Bermirs;
+  font-style: normal;
+  src: url("/fonts/Bermirs.ttf") format("truetype");
+}
+@font-face {
+  font-family: RobotoLight;
+  font-style: normal;
+  src: url("/fonts/Roboto-Light.ttf") format("truetype");
+}
+@font-face {
+  font-family: RobotoBold;
+  font-style: normal;
+  src: url("/fonts/Roboto-Bold.ttf") format("truetype");
+}
+@font-face {
+  font-family: RobotoMed;
+  font-style: normal;
+  src: url("/fonts/Roboto-Medium.ttf") format("truetype");
+}
+
+.font-bermirs {
+  font-family: "Bermirs", sans-serif;
+  letter-spacing: -1px;
+}
+
+.font-robotoTitle {
+  font-family: "RobotoLight", sans-serif;
+  font-size: 2.3rem;
+  letter-spacing: -2px;
+}
+.font-roboto {
+  font-family: "RobotoLight", sans-serif;
+}
+.font-robotoBold {
+  font-family: "RobotoBold", sans-serif;
+  font-size: 1.8rem;
+  letter-spacing: -2px;
+}
+.font-robotoMed {
+  font-family: "RobotoMed", sans-serif;
+}
+
+ion-header {
+  --border-width: 0;
+}
