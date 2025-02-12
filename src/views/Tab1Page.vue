@@ -29,7 +29,12 @@
           v-for="(productCard, index) in mockUpDBProducts"
           :key="index"
         >
-          <div class="p-2">
+          <div class="p-2 relative">
+            <div
+              class="absolute right-1 mr-4 mt-4 bg-white px-4 py-2 rounded-md opacity-70"
+            >
+              +
+            </div>
             <ion-img class="py-2" :src="productCard.productThumbnail">
             </ion-img>
 
