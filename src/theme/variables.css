@@ -24,6 +24,19 @@ http://ionicframework.com/docs/theming/ */
   src: url("/fonts/Roboto-Medium.ttf") format("truetype");
 }
 
+@keyframes scrollAnimation {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scrollAnimation 8s linear infinite;
+}
+
 .font-bermirs {
   font-family: "Bermirs", sans-serif;
   letter-spacing: -1px;

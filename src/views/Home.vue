@@ -52,17 +52,30 @@
         </div>
       </div>
       <div>
+        <div class="flex whitespace-nowrap animate-scroll mt-4">
+          <h1 class="font-bermirs mx-8">Featured</h1>
+          <h1 class="font-bermirs mx-8">Featured</h1>
+          <h1 class="font-bermirs mx-8">Featured</h1>
+          <h1 class="font-bermirs mx-8">Featured</h1>
+          <h1 class="font-bermirs mx-8">Featured</h1>
+        </div>
+
         <div class="w-screen overflow-x-auto">
           <div class="flex min-w-max flex-row">
-            <div v-for="(ForYou, index) in mockUpDBProducts" :key="index">
+            <div
+              class="p-8"
+              v-for="(ForYou, index) in mockUpDBProducts"
+              :key="index"
+            >
               <div class="py-4">
-                <div class="rounded-full overflow-hidden">
+                <div>
                   <ion-img
                     :src="ForYou.productThumbnail"
                     class="max-w-screen"
                   ></ion-img>
                 </div>
               </div>
+
               <h1 class="font-bermirs">Explore Brands</h1>
             </div>
           </div>
