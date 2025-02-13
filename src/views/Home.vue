@@ -23,7 +23,8 @@
       </div>
 
       <!-- Products Container -->
-      <div class="grid grid-cols-2 overflow-y-hidden overflow-x-auto">
+
+      <div class="grid grid-cols-2">
         <div
           class="font-roboto"
           v-for="(productCard, index) in mockUpDBProducts"
@@ -31,9 +32,9 @@
         >
           <div class="p-2 relative">
             <div
-              class="absolute right-1 mr-4 mt-4 bg-white px-4 py-2 rounded-md opacity-70"
+              class="absolute right-1 mr-4 mt-4 bg-white px-4 pt-4 pb-2 rounded-md opacity-70"
             >
-              +
+              <ion-icon name="heart-outline" class="text-2xl"></ion-icon>
             </div>
             <ion-img class="py-2" :src="productCard.productThumbnail">
             </ion-img>
@@ -46,6 +47,23 @@
                 >
               </div>
               <span class="font-robotoMed">{{ productCard.productName }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="w-screen overflow-x-auto">
+          <div class="flex min-w-max flex-row">
+            <div v-for="(ForYou, index) in mockUpDBProducts" :key="index">
+              <div class="py-4">
+                <div class="rounded-full overflow-hidden">
+                  <ion-img
+                    :src="ForYou.productThumbnail"
+                    class="max-w-screen"
+                  ></ion-img>
+                </div>
+              </div>
+              <h1 class="font-bermirs">Explore Brands</h1>
             </div>
           </div>
         </div>
@@ -102,5 +120,17 @@ const mockUpDBProducts = ref<productCardTypes[]>([
     productPrice: 24000,
     productName: "Light Blue Slim Jacket",
   },
+  // {
+  //   productThumbnail: "./images/Clothings/LongCoat.webp",
+  //   brandName: "Kalvin Klein",
+  //   productPrice: 2000,
+  //   productName: "Long Coat",
+  // },
+  // {
+  //   productThumbnail: "./images/Clothings/SlimLeggings.webp",
+  //   brandName: "Kalvin Klein",
+  //   productPrice: 24000,
+  //   productName: "SlimLeggings",
+  // },
 ]);
 </script>

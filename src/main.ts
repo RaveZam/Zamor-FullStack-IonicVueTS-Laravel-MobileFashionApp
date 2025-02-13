@@ -34,12 +34,17 @@ import "@ionic/vue/css/display.css";
 /* Theme variables */
 import "./theme/variables.css";
 
-import { settingsOutline, notificationsOutline } from "ionicons/icons";
+import {
+  settingsOutline,
+  notificationsOutline,
+  heartOutline,
+} from "ionicons/icons";
 import { addIcons } from "ionicons";
 
 addIcons({
   settingsOutline,
   notificationsOutline,
+  heartOutline,
 });
 
 const app = createApp(App).use(IonicVue).use(router);
