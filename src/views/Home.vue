@@ -2,7 +2,7 @@
   <ion-page>
     <ion-content>
       <div>
-        <ion-toolbar class="border-0">
+        <ion-toolbar class="border-0 my-4">
           <div class="flex justify-between items-center">
             <ion-icon
               @click="logMsg()"
@@ -36,7 +36,11 @@
             >
               <ion-icon name="heart-outline" class="text-2xl"></ion-icon>
             </div>
-            <ion-img class="py-2" :src="productCard.productThumbnail">
+            <ion-img
+              @click="console.log(productCard.productName)"
+              class="py-2"
+              :src="productCard.productThumbnail"
+            >
             </ion-img>
 
             <div>
@@ -52,7 +56,7 @@
         </div>
       </div>
       <div>
-        <div class="flex whitespace-nowrap animate-scroll">
+        <div class="flex whitespace-nowrap animate-scroll mt-2">
           <h1 class="font-bermirs mx-8">Featured</h1>
           <h1 class="font-bermirs mx-8">Featured</h1>
           <h1 class="font-bermirs mx-8">Featured</h1>
@@ -236,6 +240,30 @@ const mockUpDBProducts = ref<productCardTypes[]>([
     brandName: "Kalvin Klein",
     productPrice: 24000,
     productName: "SlimLeggings",
+  },
+  {
+    productThumbnail: "./images/Clothings/BrownCoat.webp",
+    brandName: "Kalvin Klein",
+    productPrice: 12000,
+    productName: "90's Brown Coat",
+  },
+  {
+    productThumbnail: "./images/Clothings/90sTruckerJacket.webp",
+    brandName: "Kalvin Klein",
+    productPrice: 18000,
+    productName: "90's TruckerJacket",
+  },
+  {
+    productThumbnail: "./images/Clothings/Denim90sOverShirt.webp",
+    brandName: "Kalvin Klein",
+    productPrice: 12000,
+    productName: "90's Denim Over Shirt",
+  },
+  {
+    productThumbnail: "./images/Clothings/LightBlueSlimJacket.webp",
+    brandName: "Kalvin Klein",
+    productPrice: 24000,
+    productName: "Light Blue Slim Jacket",
   },
 ]);
 
