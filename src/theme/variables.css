@@ -34,7 +34,7 @@ http://ionicframework.com/docs/theming/ */
 }
 
 .animate-scroll {
-  animation: scrollAnimation 8s linear infinite;
+  animation: scrollAnimation 14s linear infinite;
 }
 
 .font-bermirs {
