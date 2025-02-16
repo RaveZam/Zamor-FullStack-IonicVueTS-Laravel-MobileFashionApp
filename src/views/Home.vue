@@ -22,7 +22,51 @@
         <span class="font-roboto opacity-80">Explore Brands To your taste</span>
       </div>
 
+      <!-- <Swiper
+        ref="swiperRef"
+        :modules="[Autoplay, Pagination]"
+        :slides-per-view="1"
+        :space-between="10"
+        :loop="true"
+        :autoplay="{ delay: 5000, disableOnInteraction: false }"
+        class="w-full max-w-[500px]"
+      >
+        <SwiperSlide
+          v-for="(item, index) in duplicatedPosters"
+          :key="index"
+          class="flex flex-row items-center pb-4 p-4 bg-gray-50"
+        >
+          <img
+            :src="item.bannerImage"
+            :alt="item.bannerImage"
+            class="mb-2 rounded-md object-center object-cover"
+          />
+        </SwiperSlide>
+      </Swiper> -->
+
       <!-- Products Container -->
+      <!-- 
+      <Swiper
+        ref="swiperRef"
+        :modules="[Autoplay, Pagination]"
+        :slides-per-view="1"
+        :space-between="10"
+        :loop="true"
+        :autoplay="{ delay: 4000, disableOnInteraction: false }"
+        class="w-full"
+      >
+        <SwiperSlide
+          v-for="(item, index) in duplicatedPosters"
+          :key="index"
+          class="flex flex-row items-center max-h-[250px] pb-4 p-8 bg-gray-50"
+        >
+          <img
+            :src="item.bannerImage"
+            :alt="item.bannerImage"
+            class="object-fit mb-2"
+          />
+        </SwiperSlide>
+      </Swiper> -->
 
       <div class="grid grid-cols-2">
         <div
@@ -55,6 +99,35 @@
           </div>
         </div>
       </div>
+      <!-- <div
+        class="border-2 border-black flex flex-row justify-evenly font-roboto mx-2"
+      >
+        <div
+          class="border-r-2 border-black h-12 flex items-center text-center w-24 justify-center"
+        >
+          <span>Shirts</span>
+        </div>
+        <div
+          class="border-r-2 border-black h-12 flex items-center text-center w-24 justify-center"
+        >
+          <span>Coats</span>
+        </div>
+        <div
+          class="border-r-2 border-black h-12 flex items-center text-center w-24 justify-center"
+        >
+          <span>Pants</span>
+        </div>
+        <div
+          class="border-r-2 border-black h-12 flex items-center text-center w-24 justify-center"
+        >
+          <span>Raincoats</span>
+        </div>
+        <div
+          class="border-black h-12 flex items-center text-center w-24 justify-center"
+        >
+          <span>Bags</span>
+        </div>
+      </div> -->
       <div>
         <div class="flex whitespace-nowrap animate-scroll mt-2">
           <h1 class="font-bermirs mx-8">Featured</h1>
@@ -171,6 +244,27 @@ type featuredCardTypes = {
   productPrice: number;
   productName: string;
 };
+
+type bannerTypes = {
+  bannerImage: string;
+};
+
+const bannerImages = ref<bannerTypes[]>([
+  {
+    bannerImage: "./images/Posters/poster1.webp",
+  },
+  {
+    bannerImage: "./images/Posters/poster2jpg.jpg",
+  },
+  {
+    bannerImage: "./images/Posters/tommyposter.webp",
+  },
+]);
+
+const duplicatedPosters = computed(() => [
+  ...bannerImages.value,
+  ...bannerImages.value,
+]);
 
 const mockupDBFeatured = ref<featuredCardTypes[]>([
   {
