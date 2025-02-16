@@ -2,7 +2,7 @@
   <ion-page>
     <ion-tabs>
       <ion-router-outlet></ion-router-outlet>
-      <ion-tab-bar class="focus:outline-none" slot="bottom">
+      <ion-tab-bar slot="bottom">
         <ion-tab-button tab="Home" href="/tabs/Home">
           <ion-icon aria-hidden="true" :icon="homeOutline" />
           <ion-label>Home</ion-label>
@@ -34,3 +34,5 @@ import {
 } from "@ionic/vue";
 import { ellipse, square, homeOutline } from "ionicons/icons";
 </script>
+
+<style scoped></style>
