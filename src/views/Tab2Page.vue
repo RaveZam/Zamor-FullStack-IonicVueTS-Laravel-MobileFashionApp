@@ -1,28 +1,6 @@
 <template>
   <ion-page>
-    <!-- <ion-header>
-      <ion-toolbar>
-        <ion-title>Tab 2</ion-title>
-      </ion-toolbar>
-    </ion-header> -->
-    <ion-content :fullscreen="true">
-      <!-- <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large">Tab 2</ion-title>
-        </ion-toolbar>
-      </ion-header> -->
-      <div class="bg-red-200">
-        <video
-          class="absolute inset-0 w-full h-full object-cover"
-          autoplay
-          muted
-          loop
-          playsinline
-        >
-          <source src="../../public/video/background.mp4" type="video/mp4" />
-        </video>
-      </div>
-    </ion-content>
+    <ion-content :fullscreen="true"> </ion-content>
   </ion-page>
 </template>
 

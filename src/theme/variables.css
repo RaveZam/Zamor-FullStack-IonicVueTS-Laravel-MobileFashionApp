@@ -28,6 +28,11 @@ http://ionicframework.com/docs/theming/ */
   font-style: normal;
   src: url("/fonts/Lato-Medium.ttf") format("truetype");
 }
+@font-face {
+  font-family: LatoReg;
+  font-style: normal;
+  src: url("/fonts/Lato-Regular.ttf") format("truetype");
+}
 
 @keyframes scrollAnimation {
   from {
@@ -45,6 +50,10 @@ http://ionicframework.com/docs/theming/ */
 .font-bermirs {
   font-family: "Bermirs", sans-serif;
   letter-spacing: -1px;
+}
+.font-bermirsTitle {
+  font-family: "Bermirs", sans-serif;
+  font-size: 2rem;
 }
 
 .font-robotoTitle {
@@ -64,10 +73,15 @@ http://ionicframework.com/docs/theming/ */
   font-family: "RobotoMed", sans-serif;
 }
 
-ion-header {
-  --border-width: 0;
+.font-lato {
+  font-family: "LatoReg", sans-serif;
 }
 
-.font-lato {
+.font-latoTitle {
   font-family: "LatoMed", sans-serif;
+  font-size: 2.2rem;
+}
+.font-latoReg {
+  font-family: "LatoReg", sans-serif;
+  font-size: 2.6rem;
 }
