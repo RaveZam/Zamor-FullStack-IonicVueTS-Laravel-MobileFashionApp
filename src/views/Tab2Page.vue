@@ -11,17 +11,16 @@
           <ion-title size="large">Tab 2</ion-title>
         </ion-toolbar>
       </ion-header> -->
-      <div class="w-full flex justify-center h-full items-center">
-        <div class="flex flex-col w-1/2">
-          <input
-            class="p-4 rounded-md boreder-2 border-black font-roboto"
-            type="number"
-            placeholder="Enter Number"
-          />
-          <ion-button class="mt-4 font-roboto" @click="computed()"
-            >Compute Grade</ion-button
-          >
-        </div>
+      <div class="bg-red-200">
+        <video
+          class="absolute inset-0 w-full h-full object-cover"
+          autoplay
+          muted
+          loop
+          playsinline
+        >
+          <source src="../../public/video/background.mp4" type="video/mp4" />
+        </video>
       </div>
     </ion-content>
   </ion-page>
