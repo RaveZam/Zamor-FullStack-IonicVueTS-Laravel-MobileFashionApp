@@ -38,13 +38,17 @@ import {
   settingsOutline,
   notificationsOutline,
   heartOutline,
+  menuSharp,
+  chevronForwardOutline,
 } from "ionicons/icons";
 import { addIcons } from "ionicons";
 
 addIcons({
   settingsOutline,
   notificationsOutline,
+  chevronForwardOutline,
   heartOutline,
+  menuSharp,
 });
 
 const app = createApp(App).use(IonicVue).use(router);

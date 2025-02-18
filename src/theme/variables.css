@@ -32,7 +32,7 @@ http://ionicframework.com/docs/theming/ */
 }
 
 .animate-scroll {
-  animation: scrollAnimation 14s linear infinite;
+  animation: scrollAnimation 10s linear infinite;
 }
 
 .font-bermirs {
@@ -52,6 +52,12 @@ http://ionicframework.com/docs/theming/ */
   font-family: "Lato", LatoReg;
   font-size: 32px;
 }
+
+.font-latoHeadings {
+  font-family: "Lato", LatoReg;
+  font-size: 32px;
+}
+
 .font-latoSubTitle {
   font-family: "Lato", LatoReg;
   font-size: 16px;

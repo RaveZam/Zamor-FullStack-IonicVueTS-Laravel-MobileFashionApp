@@ -6,8 +6,8 @@
           <div class="flex justify-between items-center">
             <ion-icon
               @click="logMsg()"
-              name="settings-outline"
-              class="text-3xl mx-4"
+              name="menu-sharp"
+              class="text-3xl mb-1 mx-4"
             ></ion-icon>
             <span class="font-latoTitle text-[2.2rem] font-[500]">ZAMOR</span>
             <ion-icon
@@ -17,19 +17,38 @@
           </div>
         </ion-toolbar>
       </div>
-      <div class="mx-4 mt-4">
-        <span class="font-latoGoogle text-[1.5rem]">Find Your Clothes</span>
-      </div>
 
       <div class="p-8 flex flex-col gap-y-2">
-        <div class="h-28 overflow-hidden rounded-md">
-          <IonImg src="./images/Posters/poster2jpg.jpg"></IonImg>
+        <span class="font-latoGoogle text-[1.5rem]">Find Your Clothes</span>
+        <div
+          class="h-28 overflow-hidden rounded-md items-center flex justify-center"
+        >
+          <IonImg
+            class="mt-auto"
+            src="./images/Posters/poster2jpg.jpg"
+          ></IonImg>
+          <span class="font-latoGoogle text-[1.5rem] absolute text-white">
+            SALES</span
+          >
         </div>
-        <div class="h-28 overflow-hidden rounded-md">
+        <div
+          class="h-28 overflow-hidden rounded-md items-center flex justify-center"
+        >
           <IonImg src="./images/Posters/poster1.webp"></IonImg>
+          <span class="font-latoGoogle text-[1.5rem] absolute text-white">
+            EXPLORE</span
+          >
         </div>
-        <div class="h-28 overflow-hidden rounded-md">
-          <IonImg src="./images/Posters/tommyposter.webp"></IonImg>
+        <div
+          class="h-28 overflow-hidden rounded-md flex items-center justify-center text-center"
+        >
+          <IonImg
+            class="mt-auto"
+            src="./images/Posters/tommyposter.webp"
+          ></IonImg>
+          <span class="font-latoGoogle text-[1.5rem] absolute text-white">
+            FEATURES</span
+          >
         </div>
       </div>
 
@@ -67,12 +86,12 @@
 
       <div>
         <div class="flex whitespace-nowrap animate-scroll mt-2">
-          <h1 class="font-bermirs mx-8">Featured</h1>
-          <h1 class="font-bermirs mx-8">Featured</h1>
-          <h1 class="font-bermirs mx-8">Featured</h1>
-          <h1 class="font-bermirs mx-8">Featured</h1>
-          <h1 class="font-bermirs mx-8">Featured</h1>
-          <h1 class="font-bermirs mx-8">Featured</h1>
+          <h1 class="font-bermirs mx-4">Featured</h1>
+          <h1 class="font-bermirs mx-4">Featured</h1>
+          <h1 class="font-bermirs mx-4">Featured</h1>
+          <h1 class="font-bermirs mx-4">Featured</h1>
+          <h1 class="font-bermirs mx-4">Featured</h1>
+          <h1 class="font-bermirs mx-4">Featured</h1>
         </div>
 
         <Swiper
@@ -103,18 +122,17 @@
         </Swiper>
 
         <div class="flex whitespace-nowrap animate-scroll">
-          <h1 class="font-bermirs mx-8">Explore</h1>
-          <h1 class="font-bermirs mx-8">Explore</h1>
-          <h1 class="font-bermirs mx-8">Explore</h1>
-          <h1 class="font-bermirs mx-8">Explore</h1>
-          <h1 class="font-bermirs mx-8">Explore</h1>
-          <h1 class="font-bermirs mx-8">Explore</h1>
-          <h1 class="font-bermirs mx-8">Explore</h1>
-          <h1 class="font-bermirs mx-8">Explore</h1>
-          <h1 class="font-bermirs mx-8">Explore</h1>
+          <h1 class="font-bermirs mx-4">Explore</h1>
+          <h1 class="font-bermirs mx-4">Explore</h1>
+          <h1 class="font-bermirs mx-4">Explore</h1>
+          <h1 class="font-bermirs mx-4">Explore</h1>
+          <h1 class="font-bermirs mx-4">Explore</h1>
+          <h1 class="font-bermirs mx-4">Explore</h1>
+          <h1 class="font-bermirs mx-4">Explore</h1>
+          <h1 class="font-bermirs mx-4">Explore</h1>
         </div>
 
-        <div class="grid grid-cols-2">
+        <!-- <div class="grid grid-cols-2">
           <div
             class="font-roboto"
             v-for="(productCard, index) in remainingProducts"
@@ -141,6 +159,47 @@
                 }}</span>
               </div>
             </div>
+          </div>
+        </div> -->
+
+        <div class="mx-8 mb-12">
+          <h1 class="font-latoTitle">Categories</h1>
+          <div
+            class="border-1 border-black p-4 mt-4 flex items-center justify-center"
+          >
+            <span class="font-latoGoogle text-[1.2rem]">Tote Bags</span>
+
+            <ion-icon
+              class="text-[1.3rem]"
+              name="chevron-forward-outline"
+            ></ion-icon>
+          </div>
+          <div
+            class="border-1 border-black p-4 text-center flex items-center justify-center"
+          >
+            <span class="font-latoGoogle text-[1.2rem]">Dresses</span>
+            <ion-icon
+              class="text-[1.3rem]"
+              name="chevron-forward-outline"
+            ></ion-icon>
+          </div>
+          <div
+            class="border-1 border-black p-4 text-center flex items-center justify-center"
+          >
+            <span class="font-latoGoogle text-[1.2rem]">Tops</span>
+            <ion-icon
+              class="text-[1.3rem]"
+              name="chevron-forward-outline"
+            ></ion-icon>
+          </div>
+          <div
+            class="border-1 border-black p-4 text-center flex items-center justify-center"
+          >
+            <span class="font-latoGoogle text-[1.2rem]">Coats & Jackets</span>
+            <ion-icon
+              class="text-[1.3rem]"
+              name="chevron-forward-outline"
+            ></ion-icon>
           </div>
         </div>
       </div>
