@@ -1,6 +1,8 @@
 /* For information on how to create your own theme, please see:
 http://ionicframework.com/docs/theming/ */
 
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+
 @import "tailwindcss";
 
 @font-face {
@@ -8,21 +10,7 @@ http://ionicframework.com/docs/theming/ */
   font-style: normal;
   src: url("/fonts/Bermirs.ttf") format("truetype");
 }
-@font-face {
-  font-family: RobotoLight;
-  font-style: normal;
-  src: url("/fonts/Roboto-Light.ttf") format("truetype");
-}
-@font-face {
-  font-family: RobotoBold;
-  font-style: normal;
-  src: url("/fonts/Roboto-Bold.ttf") format("truetype");
-}
-@font-face {
-  font-family: RobotoMed;
-  font-style: normal;
-  src: url("/fonts/Roboto-Medium.ttf") format("truetype");
-}
+
 @font-face {
   font-family: LatoMed;
   font-style: normal;
@@ -56,32 +44,28 @@ http://ionicframework.com/docs/theming/ */
   font-size: 2rem;
 }
 
-.font-robotoTitle {
-  font-family: "RobotoLight", sans-serif;
-  font-size: 2.3rem;
-  letter-spacing: -2px;
-}
-.font-roboto {
-  font-family: "RobotoLight", sans-serif;
-}
-.font-robotoBold {
-  font-family: "RobotoBold", sans-serif;
-  font-size: 1.8rem;
-  letter-spacing: -2px;
-}
-.font-robotoMed {
-  font-family: "RobotoMed", sans-serif;
-}
-
-.font-lato {
-  font-family: "LatoReg", sans-serif;
+/* .font-lato {
+  font-family: "Lato", sans-serif;
 }
 
 .font-latoTitle {
-  font-family: "LatoMed", sans-serif;
-  font-size: 2.2rem;
+  font-family: "Lato";
+  font-size: 32px;
 }
 .font-latoReg {
-  font-family: "LatoReg", sans-serif;
-  font-size: 2.6rem;
+  font-family: "Lato", sans-serif;
+  font-size: 2rem;
+} */
+
+.font-latoGoogle {
+  font-family: "Lato", LatoReg;
+}
+
+.font-latoTitle {
+  font-family: "Lato", LatoReg;
+  font-size: 32px;
+}
+.font-latoSubTitle {
+  font-family: "Lato", LatoReg;
+  font-size: 16px;
 }

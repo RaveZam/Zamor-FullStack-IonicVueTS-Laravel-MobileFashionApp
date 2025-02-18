@@ -7,18 +7,18 @@
         class="text-center items-center mt-auto mb-20 flex flex-col gap-4 z-20"
       >
         <div class="w-3/4 justify-center flex flex-col items-center">
-          <h1 class="font-latoReg">Fashion At Your Fingertips</h1>
+          <h1 class="font-latoTitle">FASHION AT YOUR FINGERTIPS</h1>
           <div class="w-3/4">
-            <p class="font-LatoSub opacity-90">
+            <p class="font-latoSubTitle">
               Shop from a wide selection of brands and style
             </p>
           </div>
         </div>
         <div
           @click="toMenu"
-          class="bg-white text-black py-4 rounded-full w-3/4"
+          class="bg-white text-black py-4 rounded-full w-4/6"
         >
-          <span>LET'S SHOP!</span>
+          <p class="font-latoSubTitle">LET'S SHOP</p>
         </div>
       </div>
       <video
@@ -28,6 +28,11 @@
         loop
         playsinline
       >
+        <!-- ADD MORE VIDEOS TO PLAY THROUGH  -->
+        <!-- ADD MORE VIDEOS TO PLAY THROUGH  -->
+        <!-- ADD MORE VIDEOS TO PLAY THROUGH  -->
+        <!-- ADD MORE VIDEOS TO PLAY THROUGH  -->
+        <!-- ADD MORE VIDEOS TO PLAY THROUGH  -->
         <source src="/video/background.mp4" type="video/mp4" />
       </video>
     </div>
