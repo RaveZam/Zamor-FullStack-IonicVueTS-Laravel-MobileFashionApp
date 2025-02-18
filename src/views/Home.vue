@@ -9,7 +9,7 @@
               name="settings-outline"
               class="text-3xl mx-4"
             ></ion-icon>
-            <span class="font-bermirs text-[2.2rem] font-[500]">Zamor</span>
+            <span class="font-latoTitle text-[2.2rem] font-[500]">ZAMOR</span>
             <ion-icon
               name="notifications-outline"
               class="text-3xl mx-4"
@@ -17,9 +17,20 @@
           </div>
         </ion-toolbar>
       </div>
-      <div class="mx-4 mt-4 flex flex-col -space-y-2">
-        <span class="font-robotoTitle">For You</span>
-        <span class="font-roboto opacity-80">Explore Brands To your taste</span>
+      <div class="mx-4 mt-4">
+        <span class="font-latoGoogle text-[1.5rem]">Find Your Clothes</span>
+      </div>
+
+      <div class="p-8 flex flex-col gap-y-2">
+        <div class="h-28 overflow-hidden rounded-md">
+          <IonImg src="./images/Posters/poster2jpg.jpg"></IonImg>
+        </div>
+        <div class="h-28 overflow-hidden rounded-md">
+          <IonImg src="./images/Posters/poster1.webp"></IonImg>
+        </div>
+        <div class="h-28 overflow-hidden rounded-md">
+          <IonImg src="./images/Posters/tommyposter.webp"></IonImg>
+        </div>
       </div>
 
       <div class="grid grid-cols-2">

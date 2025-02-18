@@ -44,19 +44,6 @@ http://ionicframework.com/docs/theming/ */
   font-size: 2rem;
 }
 
-/* .font-lato {
-  font-family: "Lato", sans-serif;
-}
-
-.font-latoTitle {
-  font-family: "Lato";
-  font-size: 32px;
-}
-.font-latoReg {
-  font-family: "Lato", sans-serif;
-  font-size: 2rem;
-} */
-
 .font-latoGoogle {
   font-family: "Lato", LatoReg;
 }

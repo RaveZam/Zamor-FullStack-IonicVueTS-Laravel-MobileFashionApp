@@ -4,7 +4,7 @@
       class="h-full w-full font-lato z-20 bg-white flex justify-center items-center flex-col"
     >
       <div
-        class="text-center items-center mt-auto mb-20 flex flex-col gap-4 z-20"
+        class="text-center items-center mt-auto mb-16 flex flex-col gap-4 z-20"
       >
         <div class="w-3/4 justify-center flex flex-col items-center">
           <h1 class="font-latoTitle">FASHION AT YOUR FINGERTIPS</h1>
