@@ -4,17 +4,35 @@
       <ion-router-outlet></ion-router-outlet>
 
       <ion-tab-bar :hidden="isLandingPage" slot="bottom">
-        <ion-tab-button tab="Home" href="/tabs/Home">
+        <ion-tab-button
+          :style="{
+            '--color-selected': 'black',
+          }"
+          tab="Home"
+          href="/tabs/Home"
+        >
           <ion-icon aria-hidden="true" :icon="homeOutline" />
           <ion-label>Home</ion-label>
         </ion-tab-button>
 
-        <ion-tab-button tab="tab2" href="/tabs/tab2">
+        <ion-tab-button
+          :style="{
+            '--color-selected': 'black',
+          }"
+          tab="tab2"
+          href="/tabs/tab2"
+        >
           <ion-icon aria-hidden="true" :icon="ellipse" />
           <ion-label>Tab 2</ion-label>
         </ion-tab-button>
 
-        <ion-tab-button tab="tab3" href="/tabs/tab3">
+        <ion-tab-button
+          :style="{
+            '--color-selected': 'black',
+          }"
+          tab="tab3"
+          href="/tabs/tab3"
+        >
           <ion-icon aria-hidden="true" :icon="square" />
           <ion-label>Tab 3</ion-label>
         </ion-tab-button>
