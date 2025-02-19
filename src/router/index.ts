@@ -30,8 +30,8 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import("@/views/SearchProducts.vue"),
       },
       {
-        path: "tab3",
-        component: () => import("@/views/Tab3Page.vue"),
+        path: "CartPage",
+        component: () => import("@/views/CartPage.vue"),
       },
       {
         path: "Account",

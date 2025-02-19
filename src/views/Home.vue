@@ -183,6 +183,10 @@ import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 
+import { useProducts } from "@/Hooks/useProducts";
+
+const { mockUpDBProducts } = useProducts();
+
 import {
   IonPage,
   IonHeader,
@@ -198,12 +202,6 @@ function logMsg() {
   console.log("Clicked");
 }
 
-type productCardTypes = {
-  productThumbnail: string;
-  brandName: string;
-  productPrice: number;
-  productName: string;
-};
 type featuredCardTypes = {
   productThumbnail: string;
   brandName: string;
@@ -225,11 +223,6 @@ const bannerImages = ref<bannerTypes[]>([
   {
     bannerImage: "./images/Posters/tommyposter.webp",
   },
-]);
-
-const duplicatedPosters = computed(() => [
-  ...bannerImages.value,
-  ...bannerImages.value,
 ]);
 
 const mockupDBFeatured = ref<featuredCardTypes[]>([
@@ -264,69 +257,5 @@ const duplicatedSlides = computed(() => [
   ...mockupDBFeatured.value,
 ]);
 
-const mockUpDBProducts = ref<productCardTypes[]>([
-  {
-    productThumbnail: "./images/Clothings/BrownCoat.webp",
-    brandName: "Kalvin Klein",
-    productPrice: 12000,
-    productName: "90's Brown Coat",
-  },
-  {
-    productThumbnail: "./images/Clothings/90sTruckerJacket.webp",
-    brandName: "Kalvin Klein",
-    productPrice: 18000,
-    productName: "90's TruckerJacket",
-  },
-  {
-    productThumbnail: "./images/Clothings/Denim90sOverShirt.webp",
-    brandName: "Kalvin Klein",
-    productPrice: 12000,
-    productName: "90's Denim Over Shirt",
-  },
-  {
-    productThumbnail: "./images/Clothings/LightBlueSlimJacket.webp",
-    brandName: "Kalvin Klein",
-    productPrice: 24000,
-    productName: "Light Blue Slim Jacket",
-  },
-  {
-    productThumbnail: "./images/Clothings/LongCoat.webp",
-    brandName: "Kalvin Klein",
-    productPrice: 2000,
-    productName: "Long Coat",
-  },
-  {
-    productThumbnail: "./images/Clothings/SlimLeggings.webp",
-    brandName: "Kalvin Klein",
-    productPrice: 24000,
-    productName: "SlimLeggings",
-  },
-  {
-    productThumbnail: "./images/Clothings/BrownCoat.webp",
-    brandName: "Kalvin Klein",
-    productPrice: 12000,
-    productName: "90's Brown Coat",
-  },
-  {
-    productThumbnail: "./images/Clothings/90sTruckerJacket.webp",
-    brandName: "Kalvin Klein",
-    productPrice: 18000,
-    productName: "90's TruckerJacket",
-  },
-  {
-    productThumbnail: "./images/Clothings/Denim90sOverShirt.webp",
-    brandName: "Kalvin Klein",
-    productPrice: 12000,
-    productName: "90's Denim Over Shirt",
-  },
-  {
-    productThumbnail: "./images/Clothings/LightBlueSlimJacket.webp",
-    brandName: "Kalvin Klein",
-    productPrice: 24000,
-    productName: "Light Blue Slim Jacket",
-  },
-]);
-
 const limitedProducts = computed(() => mockUpDBProducts.value.slice(0, 4));
-const remainingProducts = computed(() => mockUpDBProducts.value.slice(4));
 </script>

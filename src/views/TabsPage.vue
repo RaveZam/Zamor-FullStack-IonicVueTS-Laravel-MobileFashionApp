@@ -42,8 +42,8 @@
           :style="{
             '--color-selected': 'black',
           }"
-          tab="tab3"
-          href="/tabs/tab3"
+          tab="CartPage"
+          href="/tabs/CartPage"
         >
           <ion-icon aria-hidden="true" :icon="cartOutline" />
         </ion-tab-button>
