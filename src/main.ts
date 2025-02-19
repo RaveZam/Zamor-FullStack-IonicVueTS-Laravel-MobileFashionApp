@@ -40,15 +40,21 @@ import {
   heartOutline,
   menuSharp,
   chevronForwardOutline,
+  searchOutline,
+  cartOutline,
+  personOutline,
 } from "ionicons/icons";
 import { addIcons } from "ionicons";
 
 addIcons({
   settingsOutline,
+  searchOutline,
   notificationsOutline,
   chevronForwardOutline,
   heartOutline,
   menuSharp,
+  cartOutline,
+  personOutline,
 });
 
 const app = createApp(App).use(IonicVue).use(router);

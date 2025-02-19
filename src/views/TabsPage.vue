@@ -3,8 +3,9 @@
     <ion-tabs>
       <ion-router-outlet></ion-router-outlet>
 
-      <ion-tab-bar :hidden="isLandingPage" slot="bottom">
+      <ion-tab-bar class="h-12" :hidden="isLandingPage" slot="bottom">
         <ion-tab-button
+          class="my-4"
           :style="{
             '--color-selected': 'black',
           }"
@@ -12,29 +13,50 @@
           href="/tabs/Home"
         >
           <ion-icon aria-hidden="true" :icon="homeOutline" />
-          <ion-label>Home</ion-label>
         </ion-tab-button>
 
         <ion-tab-button
+          class="my-4"
           :style="{
             '--color-selected': 'black',
           }"
-          tab="tab2"
-          href="/tabs/tab2"
+          tab="SearchProducts"
+          href="/tabs/SearchProducts"
         >
-          <ion-icon aria-hidden="true" :icon="ellipse" />
-          <ion-label>Tab 2</ion-label>
+          <ion-icon aria-hidden="true" :icon="searchOutline" />
+        </ion-tab-button>
+        <ion-tab-button
+          class="my-4"
+          :style="{
+            '--color-selected': 'black',
+          }"
+          tab="SearchProducts"
+          href="/tabs/SearchProducts"
+        >
+          <h1 class="font-latoSubTitle pb-2">Menu</h1>
+          <!-- <ion-icon aria-hidden="true" :icon="searchOutline" /> -->
         </ion-tab-button>
 
         <ion-tab-button
+          class="my-4"
           :style="{
             '--color-selected': 'black',
           }"
           tab="tab3"
           href="/tabs/tab3"
         >
-          <ion-icon aria-hidden="true" :icon="square" />
-          <ion-label>Tab 3</ion-label>
+          <ion-icon aria-hidden="true" :icon="cartOutline" />
+        </ion-tab-button>
+
+        <ion-tab-button
+          class="my-4"
+          :style="{
+            '--color-selected': 'black',
+          }"
+          tab="Account"
+          href="/tabs/Account"
+        >
+          <ion-icon aria-hidden="true" :icon="personOutline" />
         </ion-tab-button>
       </ion-tab-bar>
     </ion-tabs>
@@ -51,7 +73,14 @@ import {
   IonPage,
   IonRouterOutlet,
 } from "@ionic/vue";
-import { ellipse, square, homeOutline } from "ionicons/icons";
+import {
+  ellipse,
+  square,
+  homeOutline,
+  searchOutline,
+  cartOutline,
+  personOutline,
+} from "ionicons/icons";
 import { computed } from "vue";
 import { useRoute } from "vue-router";
 

@@ -26,12 +26,16 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import("@/views/Landing.vue"),
       },
       {
-        path: "tab2",
-        component: () => import("@/views/Tab2Page.vue"),
+        path: "SearchProducts",
+        component: () => import("@/views/SearchProducts.vue"),
       },
       {
         path: "tab3",
         component: () => import("@/views/Tab3Page.vue"),
+      },
+      {
+        path: "Account",
+        component: () => import("@/views/Account.vue"),
       },
     ],
   },

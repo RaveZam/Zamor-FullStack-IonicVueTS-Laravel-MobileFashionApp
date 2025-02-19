@@ -132,36 +132,6 @@
           <h1 class="font-bermirs mx-4">Explore</h1>
         </div>
 
-        <!-- <div class="grid grid-cols-2">
-          <div
-            class="font-roboto"
-            v-for="(productCard, index) in remainingProducts"
-            :key="index"
-          >
-            <div class="p-2 relative">
-              <div
-                class="absolute right-1 mr-4 mt-4 bg-white px-4 pt-4 pb-2 rounded-md opacity-70"
-              >
-                <ion-icon name="heart-outline" class="text-2xl"></ion-icon>
-              </div>
-              <ion-img class="py-2" :src="productCard.productThumbnail">
-              </ion-img>
-
-              <div>
-                <div class="flex justify-between">
-                  <span>{{ productCard.brandName }}</span>
-                  <span class="font-roboto">
-                    ₱{{ productCard.productPrice }}</span
-                  >
-                </div>
-                <span class="font-robotoMed">{{
-                  productCard.productName
-                }}</span>
-              </div>
-            </div>
-          </div>
-        </div> -->
-
         <div class="mx-8 mb-12">
           <h1 class="font-latoTitle">Categories</h1>
           <div
@@ -222,7 +192,7 @@ import {
   IonIcon,
   IonImg,
 } from "@ionic/vue";
-import { computed, nextTick, onMounted, onUnmounted, ref } from "vue";
+import { computed, ref } from "vue";
 
 function logMsg() {
   console.log("Clicked");
