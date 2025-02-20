@@ -50,9 +50,12 @@ http://ionicframework.com/docs/theming/ */
 
 .font-latoTitle {
   font-family: "Lato", LatoReg;
-  font-size: 36px;
+  font-size: 2.3rem;
 }
 
+.font-lato {
+  font-family: "Lato", LatoReg;
+}
 .font-latoHeadings {
   font-family: "Lato", LatoReg;
   font-size: 32px;
@@ -60,5 +63,5 @@ http://ionicframework.com/docs/theming/ */
 
 .font-latoSubTitle {
   font-family: "Lato", LatoReg;
-  font-size: 16px;
+  font-size: 1.2rem;
 }
