@@ -43,6 +43,8 @@ import {
   searchOutline,
   cartOutline,
   personOutline,
+  closeOutline,
+  chatboxOutline,
 } from "ionicons/icons";
 import { addIcons } from "ionicons";
 
@@ -55,6 +57,8 @@ addIcons({
   menuSharp,
   cartOutline,
   personOutline,
+  closeOutline,
+  chatboxOutline,
 });
 
 const app = createApp(App).use(IonicVue).use(router);
