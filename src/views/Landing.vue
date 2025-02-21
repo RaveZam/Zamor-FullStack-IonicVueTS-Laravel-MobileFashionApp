@@ -5,9 +5,9 @@
         class="text-left items-center mt-auto mb-[20rem] flex flex-col gap-4 z-20"
       >
         <div class="w-4/5 flex flex-col items-center">
-          <h1 class="font-latoTitle">FASHION AT YOUR FINGERTIPS</h1>
+          <h1 class="font-latoTitle text-white">FASHION AT YOUR FINGERTIPS</h1>
           <div>
-            <p class="font-latoSubTitle">
+            <p class="font-latoSubTitle opacity-90">
               Shop from a wide selection of brands and style
             </p>
           </div>
