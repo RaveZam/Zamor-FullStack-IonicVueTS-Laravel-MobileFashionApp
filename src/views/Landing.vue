@@ -63,7 +63,7 @@ const swapVideo = () => {
 };
 
 onMounted(() => {
-  intervalId = window.setInterval(swapVideo, 4000); // Change video every 4 sec
+  intervalId = window.setInterval(swapVideo, 2000); // Change video every 4 sec
 });
 
 onUnmounted(() => {
