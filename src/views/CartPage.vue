@@ -23,8 +23,8 @@
             v-for="(item, index) in cart"
             :key="index"
           >
-            <IonImg class="w-48 h-full" :src="item.productThumbnail" />
-            <div class="flex flex-col m-4">
+            <IonImg class="w-120 h-full" :src="item.productThumbnail" />
+            <div class="flex flex-col m-4 w-screen">
               <div class="flex flex-col">
                 <span class="font-lato text-[0.9rem]">{{
                   item.productName
@@ -33,10 +33,19 @@
                   >₱{{ item.productPrice }}</span
                 >
               </div>
-              <div class="mt-auto flex">
+              <div class="mt-auto flex justify-between w-full">
                 <span class="font-lato text-[0.8rem]">DELETE</span>
                 <IonIcon name="bookmark-outline" />
               </div>
+            </div>
+          </div>
+          <div class="w-full p-4 flex items-center justify-between">
+            <div class="bg-black py-2 w-3/6 text-center text-white">
+              <span class="font-lato text-[0.9rem]">Continue</span>
+            </div>
+            <div class="flex flex-col text-right">
+              <span class="text-[0.8rem]">12800 PHP</span>
+              <span class="text-[0.8rem]">+ VAT Included</span>
             </div>
           </div>
         </div>
