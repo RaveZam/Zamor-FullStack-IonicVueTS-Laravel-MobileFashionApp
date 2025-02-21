@@ -1,7 +1,7 @@
 <template>
   <ion-page>
     <ion-content>
-      <div>
+      <!-- <div>
         <ion-toolbar class="border-0 my-4">
           <div class="flex justify-between items-center">
             <ion-icon
@@ -16,7 +16,8 @@
             ></ion-icon>
           </div>
         </ion-toolbar>
-      </div>
+      </div> -->
+      <Header />
 
       <div class="p-8 flex flex-col gap-y-2">
         <span class="font-latoGoogle text-[1.5rem]">Find Your Clothes</span>
@@ -197,6 +198,7 @@ import {
   IonImg,
 } from "@ionic/vue";
 import { computed, ref } from "vue";
+import Header from "@/components/Header.vue";
 
 function logMsg() {
   console.log("Clicked");

@@ -29,12 +29,14 @@
                 >
                   <ion-icon name="heart-outline" class="text-2xl"></ion-icon>
                 </div>
-                <ion-img
-                  @click="console.log(productCard.productName)"
-                  class="py-2"
-                  :src="productCard.productThumbnail"
-                >
-                </ion-img>
+                <router-link :to="`/product/${productCard.slug}`">
+                  <ion-img
+                    @click="console.log(productCard.productName)"
+                    class="py-2"
+                    :src="productCard.productThumbnail"
+                  >
+                  </ion-img>
+                </router-link>
 
                 <div>
                   <div class="flex justify-between">

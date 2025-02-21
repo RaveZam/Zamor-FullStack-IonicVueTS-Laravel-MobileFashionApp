@@ -37,6 +37,11 @@ const routes: Array<RouteRecordRaw> = [
         path: "Account",
         component: () => import("@/views/Account.vue"),
       },
+      {
+        path: "/product/:slug",
+        props: (route) => ({ slug: route.params.slug }),
+        component: () => import("@/views/ProductPage.vue"),
+      },
     ],
   },
 ];
