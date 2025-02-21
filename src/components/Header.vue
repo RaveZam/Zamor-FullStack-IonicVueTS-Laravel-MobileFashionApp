@@ -2,8 +2,12 @@
   <div>
     <ion-toolbar class="border-0 my-4">
       <div class="flex justify-between items-center">
-        <ion-icon name="menu-sharp" class="text-3xl mb-1 mx-4"></ion-icon>
-        <span class="font-latoTitle text-[2.2rem] font-[500]">ZAMOR</span>
+        <ion-icon
+          @click="$router.go(-1)"
+          name="menu-sharp"
+          class="text-3xl mb-1 mx-4"
+        ></ion-icon>
+        <span class="font-latoTitle text-[2.2rem]">ZAMOR</span>
         <ion-icon name="notifications-outline" class="text-3xl mx-4"></ion-icon>
       </div>
     </ion-toolbar>

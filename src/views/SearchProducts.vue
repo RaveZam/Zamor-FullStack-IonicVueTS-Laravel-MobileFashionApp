@@ -40,14 +40,12 @@
 
                 <div>
                   <div class="flex justify-between">
-                    <span>{{ productCard.brandName }}</span>
-                    <span class="font-roboto">
+                    <span class="font-bold">{{ productCard.brandName }}</span>
+                    <span class="font-lato">
                       ₱{{ productCard.productPrice }}</span
                     >
                   </div>
-                  <span class="font-robotoMed">{{
-                    productCard.productName
-                  }}</span>
+                  <span class="font-lato">{{ productCard.productName }}</span>
                 </div>
               </div>
             </div>
