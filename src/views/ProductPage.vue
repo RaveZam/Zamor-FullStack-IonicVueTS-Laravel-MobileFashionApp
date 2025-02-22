@@ -112,4 +112,10 @@ const route = useRoute();
 const product = computed(() =>
   mockUpDBProducts.value.find((p) => p.slug === route.params.slug)
 );
+
 </script>
+
+
+<!-- Do The Cart Section, Make everything clickable slugs
+
+and then move everything to laravel -->
