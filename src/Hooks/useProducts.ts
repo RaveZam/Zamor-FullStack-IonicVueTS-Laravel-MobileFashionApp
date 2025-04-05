@@ -2,6 +2,7 @@ import { ref } from "vue";
 
 export function useProducts() {
   type productCardTypes = {
+    productID: number;
     productThumbnail: string;
     brandName: string;
     productPrice: number;
@@ -11,6 +12,7 @@ export function useProducts() {
 
   const mockUpDBProducts = ref<productCardTypes[]>([
     {
+      productID: 1,
       productThumbnail: "./images/Clothings/BrownCoat.webp",
       brandName: "Kalvin Klein",
       productPrice: 12000,
@@ -18,6 +20,7 @@ export function useProducts() {
       slug: "90s-brown-coat",
     },
     {
+      productID: 2,
       productThumbnail: "./images/Clothings/90sTruckerJacket.webp",
       brandName: "Kalvin Klein",
       productPrice: 18000,
@@ -25,6 +28,7 @@ export function useProducts() {
       slug: "90s-truckerjacket",
     },
     {
+      productID: 3,
       productThumbnail: "./images/Clothings/Denim90sOverShirt.webp",
       brandName: "Kalvin Klein",
       productPrice: 12000,
@@ -32,6 +36,7 @@ export function useProducts() {
       slug: "90s-denim-over-shirt",
     },
     {
+      productID: 4,
       productThumbnail: "./images/Clothings/LightBlueSlimJacket.webp",
       brandName: "Kalvin Klein",
       productPrice: 24000,
@@ -39,6 +44,7 @@ export function useProducts() {
       slug: "light-blue-slim-jacket",
     },
     {
+      productID: 5,
       productThumbnail: "./images/Clothings/LongCoat.webp",
       brandName: "Kalvin Klein",
       productPrice: 2000,
@@ -46,6 +52,7 @@ export function useProducts() {
       slug: "long-coat",
     },
     {
+      productID: 6,
       productThumbnail: "./images/Clothings/SlimLeggings.webp",
       brandName: "Kalvin Klein",
       productPrice: 24000,
@@ -53,6 +60,7 @@ export function useProducts() {
       slug: "slim-leggings",
     },
     {
+      productID: 7,
       productThumbnail: "./images/Clothings/BrownCoat.webp",
       brandName: "Kalvin Klein",
       productPrice: 12000,
@@ -60,6 +68,7 @@ export function useProducts() {
       slug: "90s-brown-coat",
     },
     {
+      productID: 8,
       productThumbnail: "./images/Clothings/90sTruckerJacket.webp",
       brandName: "Kalvin Klein",
       productPrice: 18000,
@@ -67,6 +76,7 @@ export function useProducts() {
       slug: "90s-truckerjacket",
     },
     {
+      productID: 9,
       productThumbnail: "./images/Clothings/Denim90sOverShirt.webp",
       brandName: "Kalvin Klein",
       productPrice: 12000,
@@ -74,6 +84,7 @@ export function useProducts() {
       slug: "90s-denim-over-shirt",
     },
     {
+      productID: 10,
       productThumbnail: "./images/Clothings/LightBlueSlimJacket.webp",
       brandName: "Kalvin Klein",
       productPrice: 24000,
@@ -81,6 +92,7 @@ export function useProducts() {
       slug: "light-blue-slim-jacket",
     },
     {
+      productID: 11,
       productThumbnail: "./images/Clothings/LongCoat.webp",
       brandName: "Kalvin Klein",
       productPrice: 2000,
@@ -88,6 +100,7 @@ export function useProducts() {
       slug: "long-coat",
     },
     {
+      productID: 12,
       productThumbnail: "./images/Clothings/SlimLeggings.webp",
       brandName: "Kalvin Klein",
       productPrice: 24000,

@@ -3,7 +3,7 @@
     <ion-tabs>
       <ion-router-outlet></ion-router-outlet>
 
-      <ion-tab-bar class="h-12" :hidden="isLandingPage" slot="bottom">
+      <ion-tab-bar class="h-12" :hidden="isHidden" slot="bottom">
         <ion-tab-button
           class="my-4"
           :style="{
@@ -85,5 +85,7 @@ import { computed } from "vue";
 import { useRoute } from "vue-router";
 
 const route = useRoute();
-const isLandingPage = computed(() => route.path === "/tabs/Landing");
+const isHidden = computed(
+  () => route.path === "/tabs/CartPage" || route.path === "/tabs/Landing"
+);
 </script>

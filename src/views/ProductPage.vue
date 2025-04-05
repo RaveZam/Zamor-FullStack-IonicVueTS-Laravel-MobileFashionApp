@@ -29,6 +29,16 @@
 
             <div class="flex gap-x-1 my-4">
               <div
+                @click="
+                  addToCart({
+                    productID: product?.productID ?? 0,
+                    productName: product?.productName ?? 'Unknown',
+                    productThumbnail: product?.productThumbnail ?? '',
+                    productPrice: product?.productPrice ?? 0,
+                    productQuantity: 1,
+                    productSlug: product?.slug ?? 'unknown-product',
+                  })
+                "
                 class="bg-black text-white w-full p-4 rounded-md text-center"
               >
                 <span>Add To Cart</span>
@@ -85,7 +95,6 @@
                   </div>
                 </div>
               </div>
-              <div></div>
             </div>
           </div>
         </div>
@@ -100,9 +109,11 @@ import { IonPage, IonContent, IonImg, IonIcon } from "@ionic/vue";
 import { useProducts } from "@/Hooks/useProducts";
 import { useRoute } from "vue-router";
 import { computed } from "vue";
+import { useCart } from "@/Hooks/useCart";
 import Header from "@/components/Header.vue";
 
 const { mockUpDBProducts } = useProducts();
+const { addToCart } = useCart();
 
 const shuffled = mockUpDBProducts.value
   .sort(() => 0.5 - Math.random())
@@ -112,9 +123,7 @@ const route = useRoute();
 const product = computed(() =>
   mockUpDBProducts.value.find((p) => p.slug === route.params.slug)
 );
-
 </script>
-
 
 <!-- Do The Cart Section, Make everything clickable slugs
 
