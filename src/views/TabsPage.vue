@@ -86,6 +86,9 @@ import { useRoute } from "vue-router";
 
 const route = useRoute();
 const isHidden = computed(
-  () => route.path === "/tabs/CartPage" || route.path === "/tabs/Landing"
+  () =>
+    route.path === "/tabs/CartPage" ||
+    route.path === "/tabs/Landing" ||
+    route.path === "/tabs/Authpage"
 );
 </script>

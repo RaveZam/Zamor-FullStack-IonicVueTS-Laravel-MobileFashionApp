@@ -42,6 +42,10 @@ const routes: Array<RouteRecordRaw> = [
         props: (route) => ({ slug: route.params.slug }),
         component: () => import("@/views/ProductPage.vue"),
       },
+      {
+        path: "Authpage",
+        component: () => import("@/views/auth/Authpage.vue"),
+      },
     ],
   },
 ];

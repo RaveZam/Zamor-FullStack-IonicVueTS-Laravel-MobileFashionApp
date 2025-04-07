@@ -1,6 +1,8 @@
 <template>
   <ion-page>
-    <ion-content :fullscreen="true"> </ion-content>
+    <ion-content :fullscreen="true">
+      <div class="font-lato"></div>
+    </ion-content>
   </ion-page>
 </template>
 
