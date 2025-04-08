@@ -74,6 +74,7 @@ import {
   alertController,
   loadingController,
 } from "@ionic/vue";
+import router from "@/router";
 import { reactive } from "vue";
 import axios from "axios";
 
@@ -127,6 +128,9 @@ async function loadingScreen() {
   });
 
   await loading.present();
+
+  await loading.onDidDismiss();
+  router.push("/tabs/Home");
 }
 
 async function handleErrorMessage(message: string) {
@@ -169,7 +173,8 @@ ion-checkbox::part(label) {
   opacity: 0.8;
 }
 
-ion-loading {
-  --spinner-color: red;
+ion-loading.custom-loading {
+  --spinner-color: #1c1d20;
+  font-weight: 400;
 }
 </style>
