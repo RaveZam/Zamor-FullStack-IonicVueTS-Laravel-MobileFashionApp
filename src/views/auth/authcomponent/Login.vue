@@ -67,16 +67,11 @@
 </template>
 
 <script setup lang="ts">
-import {
-  IonInput,
-  IonCheckbox,
-  IonImg,
-  alertController,
-  loadingController,
-} from "@ionic/vue";
-import router from "@/router";
+import { IonInput, IonCheckbox, IonImg } from "@ionic/vue";
 import { reactive } from "vue";
 import axios from "axios";
+import { useLoadingScreen } from "@/Hooks/useLoadingScreen";
+import { useCustomAlert } from "@/Hooks/useCustomAlert";
 
 const props = defineProps({
   isLogin: {
@@ -91,6 +86,9 @@ const userCredentials = reactive({
   remember: false,
 });
 
+const { loadingScreen } = useLoadingScreen();
+const { handleErrorMessage } = useCustomAlert();
+
 function signIn() {
   if (userCredentials.email == "" || userCredentials.password == "") {
     return;
@@ -100,6 +98,11 @@ function signIn() {
       .then((response) => {
         if (response.status == 200) {
           loadingScreen();
+          document.cookie = `authToken=${response.data.token}; path=/; max-age=3600`;
+
+          if (response.data.remember_token) {
+            document.cookie = `rememberMeToken=${response.data.remember_token}; path=/; max-age=604800`;
+          }
         }
       })
       .catch((error) => {
@@ -113,68 +116,10 @@ function signIn() {
       });
   }
 }
+
 const emit = defineEmits(["update-login"]);
 
 function goToRegister() {
   emit("update-login", !props.isLogin);
 }
-
-async function loadingScreen() {
-  const loading = await loadingController.create({
-    message: "Redirecting...",
-    duration: 3000,
-    spinner: "crescent",
-    cssClass: "custom-loading",
-  });
-
-  await loading.present();
-
-  await loading.onDidDismiss();
-  router.push("/tabs/Home");
-}
-
-async function handleErrorMessage(message: string) {
-  const alert = await alertController.create({
-    header: "Oops!",
-    message: message,
-    cssClass: "custom-alert",
-    buttons: [
-      {
-        text: "Confirm",
-      },
-    ],
-  });
-  await alert.present();
-}
 </script>
-
-<style>
-ion-checkbox {
-  --size: 20px;
-  --checkbox-background-checked: #000000;
-  --transition: background-color 0.3s ease, border-color 0.3s ease;
-}
-ion-checkbox::part(container) {
-  border-radius: 6px;
-  border: 1px solid #000000;
-}
-
-ion-checkbox::part(label) {
-  padding-bottom: 4px;
-  opacity: 0.8;
-}
-
-.custom-alert .alert-wrapper {
-  gap: 8px;
-}
-
-.custom-alert .alert-message {
-  font-size: 1rem;
-  opacity: 0.8;
-}
-
-ion-loading.custom-loading {
-  --spinner-color: #1c1d20;
-  font-weight: 400;
-}
-</style>

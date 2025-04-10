@@ -65,3 +65,32 @@ http://ionicframework.com/docs/theming/ */
   font-family: "Lato", LatoReg;
   font-size: 1.1rem;
 }
+
+ion-checkbox {
+  --size: 20px;
+  --checkbox-background-checked: #000000;
+  --transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+ion-checkbox::part(container) {
+  border-radius: 6px;
+  border: 1px solid #000000;
+}
+
+ion-checkbox::part(label) {
+  padding-bottom: 4px;
+  opacity: 0.8;
+}
+
+.custom-alert .alert-wrapper {
+  gap: 8px;
+}
+
+.custom-alert .alert-message {
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+ion-loading.custom-loading {
+  --spinner-color: #1c1d20;
+  font-weight: 400;
+}

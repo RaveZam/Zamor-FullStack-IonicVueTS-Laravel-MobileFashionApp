@@ -1,22 +1,6 @@
 <template>
   <ion-page>
     <ion-content>
-      <!-- <div>
-        <ion-toolbar class="border-0 my-4">
-          <div class="flex justify-between items-center">
-            <ion-icon
-              @click="logMsg()"
-              name="menu-sharp"
-              class="text-3xl mb-1 mx-4"
-            ></ion-icon>
-            <span class="font-latoTitle text-[2.2rem] font-[500]">ZAMOR</span>
-            <ion-icon
-              name="notifications-outline"
-              class="text-3xl mx-4"
-            ></ion-icon>
-          </div>
-        </ion-toolbar>
-      </div> -->
       <Header />
 
       <div class="p-8 flex flex-col gap-y-2">
@@ -188,21 +172,9 @@ import { useProducts } from "@/Hooks/useProducts";
 
 const { mockUpDBProducts } = useProducts();
 
-import {
-  IonPage,
-  IonHeader,
-  IonToolbar,
-  IonTitle,
-  IonContent,
-  IonIcon,
-  IonImg,
-} from "@ionic/vue";
-import { computed, ref } from "vue";
+import { IonPage, IonContent, IonIcon, IonImg } from "@ionic/vue";
+import { computed, onMounted, ref } from "vue";
 import Header from "@/components/Header.vue";
-
-function logMsg() {
-  console.log("Clicked");
-}
 
 type featuredCardTypes = {
   productThumbnail: string;
@@ -210,22 +182,6 @@ type featuredCardTypes = {
   productPrice: number;
   productName: string;
 };
-
-type bannerTypes = {
-  bannerImage: string;
-};
-
-const bannerImages = ref<bannerTypes[]>([
-  {
-    bannerImage: "./images/Posters/poster1.webp",
-  },
-  {
-    bannerImage: "./images/Posters/poster2jpg.jpg",
-  },
-  {
-    bannerImage: "./images/Posters/tommyposter.webp",
-  },
-]);
 
 const mockupDBFeatured = ref<featuredCardTypes[]>([
   {
