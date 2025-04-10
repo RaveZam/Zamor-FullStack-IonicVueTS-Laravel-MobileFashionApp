@@ -45,8 +45,6 @@ import { useRouter } from "vue-router";
 import { useGetCookie } from "@/Hooks/useGetCookies";
 import { useLoadingScreen } from "@/Hooks/useLoadingScreen";
 
-// const {l}
-
 import axios from "axios";
 
 const { getCookie } = useGetCookie();

@@ -90,6 +90,7 @@ const { loadingScreen } = useLoadingScreen();
 const { handleErrorMessage } = useCustomAlert();
 
 function signIn() {
+  loadingScreen(true);
   if (userCredentials.email == "" || userCredentials.password == "") {
     return;
   } else {
@@ -97,20 +98,22 @@ function signIn() {
       .post("http://127.0.0.1:8000/api/login", userCredentials)
       .then((response) => {
         if (response.status == 200) {
-          loadingScreen();
           document.cookie = `authToken=${response.data.token}; path=/; max-age=3600`;
 
           if (response.data.remember_token) {
             document.cookie = `rememberMeToken=${response.data.remember_token}; path=/; max-age=604800`;
           }
+          loadingScreen(false);
         }
       })
       .catch((error) => {
         if (error.response.status == 401) {
           let message = "Invalid Password";
+
           handleErrorMessage(message);
-        } else if ((error.response.status = 404)) {
+        } else if (error.response.status == 404) {
           let message = "User Does Not Exist";
+
           handleErrorMessage(message);
         }
       });
