@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "@ionic/vue-router";
 import { RouteRecordRaw } from "vue-router";
 import TabsPage from "../views/TabsPage.vue";
 import axios from "axios";
+import { useGetCookie } from "@/Hooks/useGetCookies";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -34,7 +35,6 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "CartPage",
         component: () => import("@/views/CartPage.vue"),
-        meta: { requiresAuth: true },
       },
       {
         path: "Account",
@@ -59,12 +59,7 @@ const router = createRouter({
   routes,
 });
 
-function getCookie(name: string): string | null {
-  const value = `; ${document.cookie}`;
-  const parts = value.split(`; ${name}=`);
-  if (parts.length === 2) return parts.pop()?.split(";").shift() || null;
-  return null;
-}
+const { getCookie } = useGetCookie();
 
 router.beforeEach(async (to, from, next) => {
   const token = getCookie("authToken");
