@@ -62,11 +62,10 @@ const router = createRouter({
 const { getCookie } = useGetCookie();
 
 router.beforeEach(async (to, from, next) => {
-  const token = getCookie("authToken");
-  const rememberToken = getCookie("rememberMeToken");
-  console.log("Checking for token...");
-
   if (to.meta.requiresAuth) {
+    const token = getCookie("authToken");
+    const rememberToken = getCookie("rememberMeToken");
+    console.log("Checking for token...");
     if (!token) {
       console.log("Token not found redirecting...");
       next("/tabs/Authpage");
@@ -91,3 +90,5 @@ router.beforeEach(async (to, from, next) => {
 });
 
 export default router;
+
+//remove the function that it needs to be checked per page reload.

@@ -1,26 +1,34 @@
 import router from "@/router";
 import { loadingController } from "@ionic/vue";
 
-async function loadingScreen(isLoading: boolean) {
-  const loading = await loadingController.create({
-    message: "Redirecting...",
-    spinner: "crescent",
-    cssClass: "custom-loading",
-  });
+interface LoadingOptions {
+  show: boolean;
+  success: boolean;
+}
 
-  if (isLoading) {
+let loading: HTMLIonLoadingElement | null = null;
+
+async function loadingScreen(options: LoadingOptions) {
+  const { show, success } = options;
+
+  if (show) {
+    loading = await loadingController.create({
+      message: "Redirecting...",
+      spinner: "crescent",
+      cssClass: "custom-loading",
+    });
+
     await loading.present();
     console.log("Initiating Loading");
   } else {
-    if (!isLoading) {
+    if (loading) {
       await loading.dismiss();
       console.log("Dismissing Loading");
+      loading = null;
     }
-  }
-
-  if (!isLoading) {
-    loading.dismiss();
-    router.push("/tabs/Home");
+    if (success) {
+      router.push("/tabs/Home");
+    }
   }
 }
 

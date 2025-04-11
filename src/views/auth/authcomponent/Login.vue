@@ -90,7 +90,7 @@ const { loadingScreen } = useLoadingScreen();
 const { handleErrorMessage } = useCustomAlert();
 
 function signIn() {
-  loadingScreen(true);
+  loadingScreen({ show: true, success: false });
   if (userCredentials.email == "" || userCredentials.password == "") {
     return;
   } else {
@@ -103,17 +103,17 @@ function signIn() {
           if (response.data.remember_token) {
             document.cookie = `rememberMeToken=${response.data.remember_token}; path=/; max-age=604800`;
           }
-          loadingScreen(false);
+          loadingScreen({ show: false, success: true });
         }
       })
       .catch((error) => {
         if (error.response.status == 401) {
           let message = "Invalid Password";
-
+          loadingScreen({ show: false, success: false });
           handleErrorMessage(message);
         } else if (error.response.status == 404) {
           let message = "User Does Not Exist";
-
+          loadingScreen({ show: false, success: false });
           handleErrorMessage(message);
         }
       });
