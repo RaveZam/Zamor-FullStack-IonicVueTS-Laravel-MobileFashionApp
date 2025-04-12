@@ -94,11 +94,14 @@ function signIn() {
   if (userCredentials.email == "" || userCredentials.password == "") {
     return;
   } else {
+    document.cookie =
+      "rememberMeToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+
     axios
       .post("http://127.0.0.1:8000/api/login", userCredentials)
       .then((response) => {
         if (response.status == 200) {
-          document.cookie = `authToken=${response.data.token}; path=/; max-age=3600`;
+          document.cookie = `authToken=${response.data.token}; path=/; max-age=5`;
 
           if (response.data.remember_token) {
             document.cookie = `rememberMeToken=${response.data.remember_token}; path=/; max-age=604800`;

@@ -62,29 +62,51 @@ const router = createRouter({
 const { getCookie } = useGetCookie();
 
 router.beforeEach(async (to, from, next) => {
-  if (to.meta.requiresAuth) {
+  const protectedPaths = ["/tabs/Home", "/tabs/CartPage", "/tabs/Account"];
+
+  if (protectedPaths.includes(to.path)) {
     const token = getCookie("authToken");
     const rememberToken = getCookie("rememberMeToken");
-    console.log("Checking for token...");
-    if (!token) {
-      console.log("Token not found redirecting...");
-      next("/tabs/Authpage");
-      return;
-    }
 
-    try {
-      await axios.get("http://127.0.0.1:8000/api/validate-token", {
-        headers: { Authorization: `Bearer ${rememberToken}` },
-      });
-      console.log("Token Verified Redirecting...");
-      next();
-    } catch (error) {
-      console.log(token);
-      console.log("Token Has Expired Redirecting...");
-      next("/tabs/Authpage");
+    if (token) {
+      console.log("Token Found");
+      try {
+        await axios.get("http://127.0.0.1:8000/api/validate-token", {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        console.log("Token Verified, proceeding...");
+        next();
+      } catch (error) {
+        console.log("Token expired, redirecting...");
+        next("/tabs/Authpage");
+      }
+    } else {
+      if (rememberToken) {
+        console.log("Remember Token Found");
+        try {
+          await axios
+            .get("http://127.0.0.1:8000/api/validate-token", {
+              headers: { Authorization: `Bearer ${rememberToken}` },
+            })
+            .then(
+              (response) =>
+                (document.cookie = `authToken=${response.data.token}; path=/; max-age=3600`)
+            );
+          console.log("Remember Token Verified, proceeding...");
+          console.log;
+          rememberToken;
+          next();
+        } catch (error) {
+          console.log("Token expired, redirecting...");
+          next("/tabs/Authpage");
+        }
+      } else {
+        console.log("No Token Found, redirecting to login page...");
+        next("/tabs/Authpage");
+      }
     }
   } else {
-    console.log("Token not Required For This Page");
+    console.log("No auth check needed for this page.");
     next();
   }
 });
