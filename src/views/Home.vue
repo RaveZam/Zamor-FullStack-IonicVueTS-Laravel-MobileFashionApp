@@ -83,9 +83,13 @@
           ref="swiperRef"
           :modules="[Autoplay, Pagination]"
           :slides-per-view="1"
+  
           :space-between="10"
+          loopedSlidesLimit: null
+          :loopFillGroupWithBlank="true"
           :loop="true"
           :autoplay="{ delay: 3000, disableOnInteraction: false }"
+          :init="false"
           class="w-full max-w-[500px]"
         >
           <SwiperSlide
@@ -173,7 +177,7 @@ import { useProducts } from "@/Hooks/useProducts";
 const { mockUpDBProducts } = useProducts();
 
 import { IonPage, IonContent, IonIcon, IonImg } from "@ionic/vue";
-import { computed, ref } from "vue";
+import { computed, onMounted, ref } from "vue";
 import Header from "@/components/Header.vue";
 
 type featuredCardTypes = {
@@ -231,7 +235,12 @@ const mockupDBFeatured = ref<featuredCardTypes[]>([
 const duplicatedSlides = computed(() => [
   ...mockupDBFeatured.value,
   ...mockupDBFeatured.value,
+  ...mockupDBFeatured.value,
+  ...mockupDBFeatured.value,
 ]);
 
-const limitedProducts = computed(() => mockUpDBProducts.value.slice(0, 4));
+const limitedProducts = computed(() => {
+  const shuffled = [...mockUpDBProducts.value].sort(() => Math.random() - 0.5);
+  return shuffled.slice(-4);
+});
 </script>
