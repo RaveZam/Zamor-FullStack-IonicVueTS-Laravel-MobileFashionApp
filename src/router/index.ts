@@ -61,56 +61,52 @@ const router = createRouter({
 
 const { getCookie } = useGetCookie();
 
-router.beforeEach(async (to, from, next) => {
-  const protectedPaths = ["/tabs/Home", "/tabs/CartPage", "/tabs/Account"];
+// router.beforeEach(async (to, from, next) => {
+//   const protectedPaths = ["/tabs/Home", "/tabs/CartPage", "/tabs/Account"];
 
-  if (protectedPaths.includes(to.path)) {
-    const token = getCookie("authToken");
-    const rememberToken = getCookie("rememberMeToken");
+//   if (protectedPaths.includes(to.path)) {
+//     const token = getCookie("authToken");
+//     const rememberToken = getCookie("rememberMeToken");
 
-    if (token) {
-      console.log("Token Found");
-      try {
-        await axios.get("http://127.0.0.1:8000/api/validate-token", {
-          headers: { Authorization: `Bearer ${token}` },
-        });
-        console.log("Token Verified, proceeding...");
-        next();
-      } catch (error) {
-        console.log("Token expired, redirecting...");
-        next("/tabs/Authpage");
-      }
-    } else {
-      if (rememberToken) {
-        console.log("Remember Token Found");
-        try {
-          await axios
-            .get("http://127.0.0.1:8000/api/validate-token", {
-              headers: { Authorization: `Bearer ${rememberToken}` },
-            })
-            .then(
-              (response) =>
-                (document.cookie = `authToken=${response.data.token}; path=/; max-age=3600`)
-            );
-          console.log("Remember Token Verified, proceeding...");
-          console.log;
-          rememberToken;
-          next();
-        } catch (error) {
-          console.log("Token expired, redirecting...");
-          next("/tabs/Authpage");
-        }
-      } else {
-        console.log("No Token Found, redirecting to login page...");
-        next("/tabs/Authpage");
-      }
-    }
-  } else {
-    console.log("No auth check needed for this page.");
-    next();
-  }
-});
+//     if (token) {
+//       console.log("Token Found");
+//       try {
+//         await axios.get("http://127.0.0.1:8000/api/validate-token", {
+//           headers: { Authorization: `Bearer ${token}` },
+//         });
+//         console.log("Token Verified, proceeding...");
+//         next();
+//       } catch (error) {
+//         console.log("Token expired, redirecting...");
+//         next("/tabs/Authpage");
+//       }
+//     } else {
+//       if (rememberToken) {
+//         console.log("Remember Token Found");
+//         try {
+//           await axios
+//             .get("http://127.0.0.1:8000/api/validate-token", {
+//               headers: { Authorization: `Bearer ${rememberToken}` },
+//             })
+//             .then(
+//               (response) =>
+//                 (document.cookie = `authToken=${response.data.token}; path=/; max-age=3600`)
+//             );
+//           console.log("Remember Token Verified, proceeding...");
+//           next();
+//         } catch (error) {
+//           console.log("Token expired, redirecting...");
+//           next("/tabs/Authpage");
+//         }
+//       } else {
+//         console.log("No Token Found, redirecting to login page...");
+//         next("/tabs/Authpage");
+//       }
+//     }
+//   } else {
+//     console.log("No auth check needed for this page.");
+//     next();
+//   }
+// });
 
 export default router;
-
-//remove the function that it needs to be checked per page reload.

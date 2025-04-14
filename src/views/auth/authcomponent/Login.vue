@@ -101,7 +101,7 @@ function signIn() {
       .post("http://127.0.0.1:8000/api/login", userCredentials)
       .then((response) => {
         if (response.status == 200) {
-          document.cookie = `authToken=${response.data.token}; path=/; max-age=5`;
+          document.cookie = `authToken=${response.data.token}; path=/; max-age=3600`;
 
           if (response.data.remember_token) {
             document.cookie = `rememberMeToken=${response.data.remember_token}; path=/; max-age=604800`;

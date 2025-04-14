@@ -19,11 +19,9 @@ async function loadingScreen(options: LoadingOptions) {
     });
 
     await loading.present();
-    console.log("Initiating Loading");
   } else {
     if (loading) {
       await loading.dismiss();
-      console.log("Dismissing Loading");
       loading = null;
     }
     if (success) {

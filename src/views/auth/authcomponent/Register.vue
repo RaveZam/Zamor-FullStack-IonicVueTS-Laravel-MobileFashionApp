@@ -12,6 +12,7 @@
           label-placement="floating"
           fill="outline"
           placeholder="Enter Email"
+          v-model="userRegistration.email"
         ></ion-input>
       </div>
       <div class="border-1 border-black rounded-sm px-4 pb-1">
@@ -20,6 +21,7 @@
           label-placement="floating"
           fill="outline"
           placeholder="Enter Username"
+          v-model="userRegistration.name"
         ></ion-input>
       </div>
       <div class="border-1 border-black rounded-sm px-4 pb-1">
@@ -28,6 +30,7 @@
           label-placement="floating"
           fill="outline"
           placeholder="Enter Password"
+          v-model="userRegistration.password"
         ></ion-input>
       </div>
       <div class="border-1 border-black rounded-sm px-4 pb-1">
@@ -36,16 +39,23 @@
           label-placement="floating"
           fill="outline"
           placeholder="Confirm Password"
+          v-model="userRegistration.password_confirmation"
         ></ion-input>
       </div>
 
       <div class="items-center">
-        <ion-checkbox justify="start" label-placement="end"
+        <ion-checkbox
+          v-model="userRegistration.remember"
+          justify="start"
+          label-placement="end"
           >Remember Me</ion-checkbox
         >
       </div>
 
-      <div class="bg-black rounded-md w-full text-center p-4">
+      <div
+        @click="handleRegister"
+        class="bg-black rounded-md w-full text-center p-4"
+      >
         <span class="text-white font-latoSubTitle">Sign Up</span>
       </div>
 
@@ -79,6 +89,10 @@
 
 <script setup lang="ts">
 import { IonInput, IonCheckbox, IonImg } from "@ionic/vue";
+import axios from "axios";
+import { reactive } from "vue";
+import { useLoadingScreen } from "@/Hooks/useLoadingScreen";
+import { useCustomAlert } from "@/Hooks/useCustomAlert";
 
 const props = defineProps({
   isLogin: {
@@ -87,10 +101,58 @@ const props = defineProps({
   },
 });
 
+const userRegistration = reactive({
+  email: "",
+  name: "",
+  password: "",
+  password_confirmation: "",
+  remember: false,
+});
+
 const emit = defineEmits(["update-login"]);
 
 function goToRegister() {
   emit("update-login", !props.isLogin);
+}
+
+const { loadingScreen } = useLoadingScreen();
+const { handleErrorMessage } = useCustomAlert();
+
+function handleRegister() {
+  loadingScreen({ show: true, success: false });
+  axios
+    .post("http://127.0.0.1:8000/api/register", userRegistration)
+    .then((response) => {
+      if (response.status === 201 || 200)
+        document.cookie = `authToken=${response.data.token}; path=/; max-age=3600`;
+
+      if (response.data.remember_token) {
+        document.cookie = `rememberMeToken=${response.data.remember_token}; path=/; max-age=604800`;
+      }
+
+      loadingScreen({ show: false, success: true });
+    })
+    .catch((error) => {
+      console.log(error);
+      if (
+        error.response.data.message ===
+        "The password confirmation does not match."
+      ) {
+        loadingScreen({ show: false, success: false });
+        handleErrorMessage(error.response.data.message);
+      } else if (error.status === 500) {
+        let message = "Email Already Exists";
+        loadingScreen({ show: false, success: false });
+        handleErrorMessage(message);
+      } else if (
+        error.response.data.errors.email[0] ===
+        "The email must be a valid email address."
+      ) {
+        let message = "Invalid Email";
+        loadingScreen({ show: false, success: false });
+        handleErrorMessage(message);
+      }
+    });
 }
 </script>
 

@@ -39,35 +39,14 @@
 </template>
 
 <script setup lang="ts">
-import { IonPage, IonButton, IonImg } from "@ionic/vue";
+import { IonPage } from "@ionic/vue";
 import { onMounted, onUnmounted, ref } from "vue";
 import { useRouter } from "vue-router";
-import { useGetCookie } from "@/Hooks/useGetCookies";
-import { useLoadingScreen } from "@/Hooks/useLoadingScreen";
 
-import axios from "axios";
-
-const { getCookie } = useGetCookie();
 const router = useRouter();
 
 const toMenu = () => {
-  console.log("Finding Remember Me Token");
-  const remember = getCookie("rememberMeToken");
-
-  if (!remember) {
-    console.log("No Remember Me Token Found");
-  } else {
-    console.log("Remember Token Found Verifying...");
-    try {
-      axios.get("http://127.0.0.1:8000/api/validate-token", {
-        headers: { Authorization: `Bearer ${remember}` },
-      });
-      console.log("Token Verified...");
-      router.push("/tabs/Authpage");
-    } catch (error) {
-      console.log("Token Has Expired Requiring Login Again...");
-    }
-  }
+  router.push("/tabs/Home");
 };
 
 const videos = [
@@ -83,8 +62,6 @@ let intervalId: number | null = null;
 const swapVideo = () => {
   activeVideo.value = (activeVideo.value + 1) % videos.length;
 };
-
-const stillLoggedIn = ref<boolean>(true);
 
 onMounted(() => {
   intervalId = window.setInterval(swapVideo, 2000);
