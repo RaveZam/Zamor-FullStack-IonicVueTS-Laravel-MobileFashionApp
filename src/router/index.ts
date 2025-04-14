@@ -59,7 +59,7 @@ const router = createRouter({
   routes,
 });
 
-const { getCookie } = useGetCookie();
+// const { getCookie } = useGetCookie();
 
 // router.beforeEach(async (to, from, next) => {
 //   const protectedPaths = ["/tabs/Home", "/tabs/CartPage", "/tabs/Account"];
