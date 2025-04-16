@@ -4,7 +4,7 @@
       <Header />
       <div class="flex flex-col w-full h-full font-latoGoogle">
         <div class="p-4">
-          <ion-img :src="product?.productThumbnail"> </ion-img>
+          <ion-img loading="lazy" :src="product?.productThumbnail"> </ion-img>
           <div class="mt-4 flex flex-col">
             <div class="flex flex-col gap-y-4">
               <span class="font-latoTitle tracking-tighter">{{
@@ -31,7 +31,7 @@
               <div
                 @click="
                   addToCart({
-                    productID: product?.productID ?? 0,
+                    id: product?.id ?? 0,
                     productName: product?.productName ?? 'Unknown',
                     productThumbnail: product?.productThumbnail ?? '',
                     productPrice: product?.productPrice ?? 0,
@@ -108,7 +108,7 @@ import { IonPage, IonContent, IonImg, IonIcon } from "@ionic/vue";
 
 import { useProducts } from "@/Hooks/useProducts";
 import { useRoute } from "vue-router";
-import { computed } from "vue";
+import { computed, onMounted } from "vue";
 import { useCart } from "@/Hooks/useCart";
 import Header from "@/components/Header.vue";
 
@@ -120,6 +120,7 @@ const shuffled = mockUpDBProducts.value
   .splice(0, 2);
 
 const route = useRoute();
+
 const product = computed(() =>
   mockUpDBProducts.value.find((p) => p.slug === route.params.slug)
 );

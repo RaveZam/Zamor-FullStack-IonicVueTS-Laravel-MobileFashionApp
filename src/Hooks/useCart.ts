@@ -1,7 +1,7 @@
 import { ref } from "vue";
 
 interface cartItem {
-  productID: number;
+  id: number;
   productName: string;
   productThumbnail: string;
   productPrice: number;
@@ -13,9 +13,7 @@ const cart = ref<cartItem[]>([]);
 
 function addToCart(item: cartItem) {
   console.log("Initated Push");
-  const existingItem = cart.value.find(
-    (cartItem) => cartItem.productID === item.productID
-  );
+  const existingItem = cart.value.find((cartItem) => cartItem.id === item.id);
 
   if (existingItem) {
     existingItem.productQuantity += item.productQuantity;

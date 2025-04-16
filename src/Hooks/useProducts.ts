@@ -3,7 +3,7 @@ import { ref } from "vue";
 
 export function useProducts() {
   type productCardTypes = {
-    productID: number;
+    id: number;
     productThumbnail: string;
     brandName: string;
     productPrice: number;
