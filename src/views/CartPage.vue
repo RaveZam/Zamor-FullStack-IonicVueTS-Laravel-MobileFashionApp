@@ -30,7 +30,10 @@
                   >₱{{ item.product.productPrice }}</span
                 >
               </div>
-              <div class="mt-auto flex justify-between w-full">
+              <div
+                @click="removeItem(item.id)"
+                class="mt-auto flex justify-between w-full"
+              >
                 <span class="font-lato text-[0.8rem]">DELETE</span>
                 <IonIcon name="bookmark-outline" />
               </div>
@@ -39,7 +42,7 @@
         </div>
 
         <div class="w-full p-4 flex items-center justify-between relative">
-          <div @click="log" class="bg-black py-2 w-3/6 text-center text-white">
+          <div class="bg-black py-2 w-3/6 text-center text-white">
             <span class="font-lato text-[0.9rem]">Continue</span>
           </div>
           <div class="flex flex-col text-right">
@@ -68,11 +71,7 @@ import { useCart } from "@/Hooks/useCart";
 import { onMounted } from "vue";
 import axios from "axios";
 import { body } from "ionicons/icons";
-const { cart, fetchCart } = useCart();
-
-function log() {
-  console.log(cart.value[0].product.productName);
-}
+const { cart, fetchCart, removeItem } = useCart();
 
 onMounted(() => {
   fetchCart();

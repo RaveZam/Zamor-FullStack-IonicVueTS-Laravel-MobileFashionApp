@@ -29,16 +29,7 @@
 
             <div class="flex gap-x-1 my-4">
               <div
-                @click="
-                  addToCart({
-                    id: product?.id ?? 0,
-                    productName: product?.productName ?? 'Unknown',
-                    productThumbnail: product?.productThumbnail ?? '',
-                    productPrice: product?.productPrice ?? 0,
-                    productQuantity: 1,
-                    productSlug: product?.slug ?? 'unknown-product',
-                  })
-                "
+                @click="addToCart(product?.id)"
                 class="bg-black text-white w-full p-4 rounded-md text-center"
               >
                 <span>Add To Cart</span>
