@@ -46,7 +46,7 @@ import { useRouter } from "vue-router";
 const router = useRouter();
 
 const toMenu = () => {
-  router.push("/tabs/Home");
+  router.push("/tabs/Authpage");
 };
 
 const videos = [

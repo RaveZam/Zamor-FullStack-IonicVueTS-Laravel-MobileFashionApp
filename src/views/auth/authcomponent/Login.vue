@@ -17,6 +17,7 @@
       </div>
       <div class="border-1 border-black rounded-sm px-4 pb-1">
         <ion-input
+          type="password"
           label="Password"
           label-placement="floating"
           fill="outline"
@@ -56,7 +57,9 @@
 
       <div class="justify-center flex">
         <span class="opacity-70">Dont have an Account? </span>
-        <span @click="goToRegister" class="ml-2 font-bold"> Sign Up</span>
+        <span @click="goToRegister" class="ml-2 font-bold hover:cursor-pointer">
+          Sign Up</span
+        >
       </div>
 
       <div class="flex justify-center w-full mt-8">

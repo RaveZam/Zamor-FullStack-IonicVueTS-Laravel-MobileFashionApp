@@ -31,6 +31,7 @@
           fill="outline"
           placeholder="Enter Password"
           v-model="userRegistration.password"
+          type="password"
         ></ion-input>
       </div>
       <div class="border-1 border-black rounded-sm px-4 pb-1">
@@ -40,6 +41,7 @@
           fill="outline"
           placeholder="Confirm Password"
           v-model="userRegistration.password_confirmation"
+          type="password"
         ></ion-input>
       </div>
 

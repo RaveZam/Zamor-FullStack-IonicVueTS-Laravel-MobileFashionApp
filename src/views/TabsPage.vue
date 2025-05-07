@@ -34,7 +34,6 @@
           href="/tabs/SearchProducts"
         >
           <h1 class="font-latoSubTitle pb-2">Menu</h1>
-          <!-- <ion-icon aria-hidden="true" :icon="searchOutline" /> -->
         </ion-tab-button>
 
         <ion-tab-button

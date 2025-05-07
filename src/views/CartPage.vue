@@ -18,16 +18,16 @@
           <span class="text-[0.8rem] opacity-40">FAVOURITES</span>
         </div>
 
-        <div class="flex-1">
-          <div class="mx-4 flex" v-for="(item, index) in cart" :key="index">
-            <IonImg class="w-120 h-full" :src="item.productThumbnail" />
+        <div class="overflow-auto h-[80%]">
+          <div class="m-4 flex" v-for="(item, index) in cart" :key="index">
+            <IonImg class="w-120 h-full" :src="item.product.productThumbnail" />
             <div class="flex flex-col m-4 w-screen">
               <div class="flex flex-col">
                 <span class="font-lato text-[0.9rem]">{{
-                  item.productName
+                  item.product.productName
                 }}</span>
                 <span class="font-lato text-[0.9rem]"
-                  >₱{{ item.productPrice }}</span
+                  >₱{{ item.product.productPrice }}</span
                 >
               </div>
               <div class="mt-auto flex justify-between w-full">
@@ -39,7 +39,7 @@
         </div>
 
         <div class="w-full p-4 flex items-center justify-between relative">
-          <div class="bg-black py-2 w-3/6 text-center text-white">
+          <div @click="log" class="bg-black py-2 w-3/6 text-center text-white">
             <span class="font-lato text-[0.9rem]">Continue</span>
           </div>
           <div class="flex flex-col text-right">
@@ -65,30 +65,16 @@ import {
 
 import { useProducts } from "@/Hooks/useProducts";
 import { useCart } from "@/Hooks/useCart";
-const { cart } = useCart();
-const { mockUpDBProducts } = useProducts();
+import { onMounted } from "vue";
+import axios from "axios";
+import { body } from "ionicons/icons";
+const { cart, fetchCart } = useCart();
 
-// const cart = [
-//   {
-//     productThumbnail: "./images/Clothings/BrownCoat.webp",
-//     brandName: "Kalvin Klein",
-//     productPrice: 12000,
-//     productName: "90's Brown Coat",
-//     slug: "90s-brown-coat",
-//   },
-//   {
-//     productThumbnail: "./images/Clothings/90sTruckerJacket.webp",
-//     brandName: "Kalvin Klein",
-//     productPrice: 18000,
-//     productName: "90's TruckerJacket",
-//     slug: "90s-truckerjacket",
-//   },
-//   {
-//     productThumbnail: "./images/Clothings/Denim90sOverShirt.webp",
-//     brandName: "Kalvin Klein",
-//     productPrice: 12000,
-//     productName: "90's Denim Over Shirt",
-//     slug: "90s-denim-over-shirt",
-//   },
-// ];
+function log() {
+  console.log(cart.value[0].product.productName);
+}
+
+onMounted(() => {
+  fetchCart();
+});
 </script>
