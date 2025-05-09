@@ -15,7 +15,7 @@
           <span class="font-latoGoogle text-[1.5rem] absolute text-white">
             SALES</span
           >
-        </div>
+        </div>     
         <div
           class="h-28 overflow-hidden rounded-md items-center flex justify-center"
         >
@@ -37,7 +37,7 @@
         </div>
       </div>
 
-      <div class="grid grid-cols-2">
+      <div class="grid grid-cols-2 mx-2">
         <div
           class="font-roboto"
           v-for="(productCard, index) in limitedProducts"
@@ -49,13 +49,14 @@
             >
               <ion-icon name="heart-outline" class="text-2xl"></ion-icon>
             </div>
+            <router-link :to="`/product/${productCard.slug}`">
             <ion-img
               @click="console.log(productCard.productName)"
               class="py-2"
               :src="productCard.productThumbnail"
             >
             </ion-img>
-
+            </router-link>
             <div>
               <div class="flex justify-between">
                 <span>{{ productCard.brandName }}</span>
@@ -97,11 +98,13 @@
             :key="index"
             class="flex flex-row items-center p-8 pb-4 bg-gray-50"
           >
+          <router-link :to="`/product/${item.slug}`">
             <img
               :src="item.productThumbnail"
               :alt="item.productName"
               class="object-cover mb-2"
             />
+          </router-link>
             <p class="text-lg font-bold">{{ item.brandName }}</p>
             <p class="text-md">{{ item.productName }}</p>
             <p class="text-sm text-gray-600">
@@ -169,6 +172,7 @@
 <script setup lang="ts">
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Autoplay, Pagination } from "swiper/modules";
+
 import "swiper/css";
 import "swiper/css/pagination";
 
@@ -185,6 +189,7 @@ type featuredCardTypes = {
   brandName: string;
   productPrice: number;
   productName: string;
+  slug: string;
 };
 
 const mockupDBFeatured = ref<featuredCardTypes[]>([
@@ -194,6 +199,7 @@ const mockupDBFeatured = ref<featuredCardTypes[]>([
     brandName: "Kalvin Klein",
     productPrice: 12000,
     productName: "90's Brown Coat",
+    slug: "90s-brown-coat",
   },
   {
     productThumbnail:
@@ -201,6 +207,7 @@ const mockupDBFeatured = ref<featuredCardTypes[]>([
     brandName: "Kalvin Klein",
     productPrice: 27000,
     productName: "Emblem Logo Graphic Classic T-Shirt",
+    slug: "emblem-logo-graphic-classic-t-shirt",
   },
   {
     productThumbnail:
@@ -208,6 +215,7 @@ const mockupDBFeatured = ref<featuredCardTypes[]>([
     brandName: "Kalvin Klein",
     productPrice: 11000,
     productName: "Solid Seesucker Classic Button-Down Shirt",
+    slug: "solid-seesucker-classic-button-down-shirt",
   },
   {
     productThumbnail:
@@ -215,6 +223,7 @@ const mockupDBFeatured = ref<featuredCardTypes[]>([
     brandName: "Kalvin Klein",
     productPrice: 21000,
     productName: "Cotton Stretch Slim Button-Down Shirt",
+    slug: "cotton-stretch-slim-button-down-shirt",
   },
   {
     productThumbnail:
@@ -222,6 +231,7 @@ const mockupDBFeatured = ref<featuredCardTypes[]>([
     brandName: "Kalvin Klein",
     productPrice: 21000,
     productName: "Classic Stretch Button-Down Shirt",
+    slug: "classic-stretch-button-down-shirt",
   },
   {
     productThumbnail:
@@ -229,6 +239,7 @@ const mockupDBFeatured = ref<featuredCardTypes[]>([
     brandName: "Kalvin Klein",
     productPrice: 21000,
     productName: "Boucle Ribbed Sleeveless Midi Dress",
+    slug: "boucle-ribbed-sleeveless-midi-dress",
   },
 ]);
 

@@ -1,7 +1,7 @@
 <template>
   <ion-page>
     <ion-content>
-      <div class="w-full h-[100%] flex flex-col font-lato overflow-hidden">
+      <div class="w-full h-[100%] flex flex-col font-lato overflow-hidden slide-up">
         <div class="flex justify-between w-full opacity-50">
           <ion-icon
             @click="$router.go(-1)"
@@ -75,3 +75,20 @@ onIonViewWillEnter(() => {
   fetchCart();
 });
 </script>
+
+<style scoped>
+.slide-up {
+  animation: slideUp 1s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+</style>

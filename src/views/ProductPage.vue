@@ -7,7 +7,7 @@
           <ion-img loading="lazy" :src="product?.productThumbnail"> </ion-img>
           <div class="mt-4 flex flex-col">
             <div class="flex flex-col gap-y-4">
-              <span class="font-latoTitle tracking-tighter">{{
+              <span class="font-latoGoogle text-[2.5rem] tracking-tighter">{{
                 product?.productName
               }}</span>
               <span class="text-[1.2rem] font-semibold"

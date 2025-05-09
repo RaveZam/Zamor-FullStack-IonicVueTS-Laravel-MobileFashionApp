@@ -7,7 +7,7 @@
           name="menu-sharp"
           class="text-3xl mb-1 mx-4"
         ></ion-icon>
-        <span class="font-latoTitle text-[2.2rem]">ZAMOR</span>
+        <span class="font-latoGoogle text-[2.2rem]">ZAMOR</span>
         <ion-icon name="notifications-outline" class="text-3xl mx-4"></ion-icon>
       </div>
     </ion-toolbar>

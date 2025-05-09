@@ -5,7 +5,7 @@
 
       <ion-tab-bar class="h-12" :hidden="isHidden" slot="bottom">
         <ion-tab-button
-          class="my-4"
+          class="my-4 h-8"
           :style="{
             '--color-selected': 'black',
           }"
@@ -16,7 +16,7 @@
         </ion-tab-button>
 
         <ion-tab-button
-          class="my-4"
+          class="my-4 h-8"
           :style="{
             '--color-selected': 'black',
           }"
@@ -27,7 +27,7 @@
         </ion-tab-button>
 
         <ion-tab-button
-          class="my-4"
+          class="my-4 h-8"
           :style="{
             '--color-selected': 'black',
           }"
@@ -38,7 +38,7 @@
         </ion-tab-button>
 
         <ion-tab-button
-          class="my-4"
+          class="my-4 h-8"
           :style="{
             '--color-selected': 'black',
           }"
@@ -49,7 +49,7 @@
         </ion-tab-button>
 
         <ion-tab-button
-          class="my-4"
+          class="my-4 h-8"
           :style="{
             '--color-selected': 'black',
           }"
