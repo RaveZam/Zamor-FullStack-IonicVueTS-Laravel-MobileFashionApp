@@ -20,17 +20,34 @@
 </template>
 
 <script setup lang="ts">
-import { IonPage, IonContent } from "@ionic/vue";
+import { IonPage, IonContent, alertController } from "@ionic/vue";
 
 const userData = JSON.parse(localStorage.getItem("userData") || "{}");
 
-function terminateSession() {
-  localStorage.clear();
-  document.cookie =
-    "authToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-  document.cookie =
-    "remember_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-}
+async function terminateSession() {
+  const alert = await alertController.create({
+    header: userData.username.toUpperCase(),
+    message: "Are you sure you want to log out of Zamor?",
+    buttons: [
+      {
+        text: "Yes",
+        handler: async () => {
+          localStorage.clear();
+          document.cookie =
+            "authToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+          document.cookie =
+            "rememberMeToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 
-console.log(userData);
+          window.location.href = "/tabs/Authpage";
+        },
+      },
+      {
+        text: "No",
+        role: "cancel",
+      },
+    ],
+  });
+
+  await alert.present();
+}
 </script>
