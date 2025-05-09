@@ -27,9 +27,9 @@
               </div>
             </div>
 
-            <div class="flex gap-x-1 my-4">
+            <div class="flex gap-x-1 my-4 hover:cursor-pointer">
               <div
-                @click="addToCart(product?.id)"
+                @click="addToCart(product?.id, product?.productName)"
                 class="bg-black text-white w-full p-4 rounded-md text-center"
               >
                 <span>Add To Cart</span>

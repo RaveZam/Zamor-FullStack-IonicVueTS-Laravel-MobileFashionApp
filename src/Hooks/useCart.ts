@@ -1,5 +1,5 @@
 import axios from "axios";
-import { onMounted, ref } from "vue";
+import { computed, onMounted, ref } from "vue";
 import { useGetCookie } from "@/Hooks/useGetCookies";
 import { alertController } from "@ionic/vue";
 const { getCookie } = useGetCookie();
@@ -7,20 +7,20 @@ const token = getCookie("authToken");
 
 interface cartItem {
   id: number;
+  quantity: number;
   product: {
     id: number;
     productName: string;
     productThumbnail: string;
     productPrice: number;
-    productQuantity: number;
     productSlug: string;
   };
 }
 
 const cart = ref<cartItem[]>([]);
 
-function fetchCart() {
-  axios
+async function fetchCart() {
+  await axios
     .get("http://127.0.0.1:8000/api/cart", {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -29,24 +29,39 @@ function fetchCart() {
     })
     .then((response) => {
       cart.value = response.data;
-      console.log("Cart data fetched successfully:", cart.value);
     })
     .catch((error) => console.log(error));
 }
 
-function addToCart(product_id: number | undefined) {
-  axios.post("http://127.0.0.1:8000/api/cart", {
-    headers: {
-      Authorization: `Bearer ${token}`,
-      Accept: "application/json",
-    },
-    data: {
-      product_id: product_id,
-      quantity: 1
+const total = computed(() =>
+  cart.value.reduce(
+    (sum, item) => sum + item.quantity * item.product.productPrice,
+    0
+  )
+);
 
-    })
+function addToCart(
+  product_id: number | undefined,
+  productName: string | undefined
+) {
+  axios
+    .post(
+      "http://127.0.0.1:8000/api/cart",
+      {
+        product_id: product_id,
+        quantity: 1,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: "application/json",
+        },
+      }
+    )
+    .then(() => {
+      successAlert(productName);
+    });
 }
-
 
 async function removeItem(id: number) {
   const alert = await alertController.create({
@@ -82,6 +97,21 @@ async function removeItem(id: number) {
   await alert.present();
 }
 
+async function successAlert(productName: string | undefined) {
+  const alert = await alertController.create({
+    header: "Item Added To Cart",
+    message: `${productName} Added Successfully`,
+    buttons: [
+      {
+        text: "Continue",
+        handler: async () => {},
+      },
+    ],
+  });
+
+  await alert.present();
+}
+
 export function useCart() {
-  return { cart, addToCart, fetchCart, removeItem };
+  return { cart, addToCart, fetchCart, removeItem, total };
 }

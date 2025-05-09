@@ -106,6 +106,13 @@ function signIn() {
         if (response.status == 200) {
           document.cookie = `authToken=${response.data.token}; path=/; max-age=3600`;
 
+          let userData = {
+            username: response.data.user.name,
+            email: response.data.user.email,
+          };
+
+          localStorage.setItem("userData", JSON.stringify(userData));
+
           if (response.data.remember_token) {
             document.cookie = `rememberMeToken=${response.data.remember_token}; path=/; max-age=604800`;
           }

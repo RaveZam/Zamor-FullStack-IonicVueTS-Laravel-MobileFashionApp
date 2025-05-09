@@ -25,13 +25,14 @@
         >
           <ion-icon aria-hidden="true" :icon="searchOutline" />
         </ion-tab-button>
+
         <ion-tab-button
           class="my-4"
           :style="{
             '--color-selected': 'black',
           }"
-          tab="SearchProducts"
-          href="/tabs/SearchProducts"
+          tab="Menu"
+          href=""
         >
           <h1 class="font-latoSubTitle pb-2">Menu</h1>
         </ion-tab-button>
@@ -86,8 +87,7 @@ import { useRoute } from "vue-router";
 const route = useRoute();
 const isHidden = computed(
   () =>
-    route.path === "/tabs/CartPage" ||
-    route.path === "/tabs/Landing" ||
-    route.path === "/tabs/Authpage"
+    // route.path === "/tabs/CartPage" ||
+    route.path === "/tabs/Landing" || route.path === "/tabs/Authpage"
 );
 </script>

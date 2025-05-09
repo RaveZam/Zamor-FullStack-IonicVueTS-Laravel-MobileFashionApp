@@ -1,7 +1,7 @@
 <template>
   <ion-page>
     <ion-content>
-      <div class="w-full h-screen flex flex-col font-lato overflow-hidden">
+      <div class="w-full h-[100%] flex flex-col font-lato overflow-hidden">
         <div class="flex justify-between w-full opacity-50">
           <ion-icon
             @click="$router.go(-1)"
@@ -32,7 +32,7 @@
               </div>
               <div
                 @click="removeItem(item.id)"
-                class="mt-auto flex justify-between w-full"
+                class="mt-auto flex justify-between w-full hover:cursor-pointer"
               >
                 <span class="font-lato text-[0.8rem]">DELETE</span>
                 <IonIcon name="bookmark-outline" />
@@ -43,10 +43,10 @@
 
         <div class="w-full p-4 flex items-center justify-between relative">
           <div class="bg-black py-2 w-3/6 text-center text-white">
-            <span class="font-lato text-[0.9rem]">Continue</span>
+            <span class="font-lato text-[0.9rem]">Checkout</span>
           </div>
           <div class="flex flex-col text-right">
-            <span class="text-[0.8rem]">12800 PHP</span>
+            <span class="text-[0.8rem]">{{ total }} PHP</span>
             <span class="text-[0.8rem]">+ VAT Included</span>
           </div>
         </div>
@@ -64,16 +64,14 @@ import {
   IonContent,
   IonIcon,
   IonImg,
+  onIonViewWillEnter,
 } from "@ionic/vue";
 
-import { useProducts } from "@/Hooks/useProducts";
 import { useCart } from "@/Hooks/useCart";
-import { onMounted } from "vue";
-import axios from "axios";
-import { body } from "ionicons/icons";
-const { cart, fetchCart, removeItem } = useCart();
 
-onMounted(() => {
+const { cart, fetchCart, removeItem, total } = useCart();
+
+onIonViewWillEnter(() => {
   fetchCart();
 });
 </script>
