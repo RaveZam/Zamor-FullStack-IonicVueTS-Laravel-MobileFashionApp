@@ -35,7 +35,7 @@
         >
       </div>
 
-      <div @click="signIn" class="bg-black rounded-md w-full text-center p-4">
+      <div @click="signIn" class="bg-black rounded-md w-full text-center p-4 hover:cursor-pointer">
         <span class="text-white font-latoSubTitle">Sign In</span>
       </div>
 
@@ -93,7 +93,7 @@ const { loadingScreen } = useLoadingScreen();
 const { handleErrorMessage } = useCustomAlert();
 
 function signIn() {
-  loadingScreen({ show: true, success: false });
+  loadingScreen({ show: true, success: false, message: "Signing In..." });
   if (userCredentials.email == "" || userCredentials.password == "") {
     return;
   } else {
@@ -116,17 +116,17 @@ function signIn() {
           if (response.data.remember_token) {
             document.cookie = `rememberMeToken=${response.data.remember_token}; path=/; max-age=604800`;
           }
-          loadingScreen({ show: false, success: true });
+          loadingScreen({ show: false, success: true, message: "Signing In..." });
         }
       })
       .catch((error) => {
         if (error.response.status == 401) {
           let message = "Invalid Password";
-          loadingScreen({ show: false, success: false });
+          loadingScreen({ show: false, success: false, message: "Invalid Password" });
           handleErrorMessage(message);
         } else if (error.response.status == 404) {
           let message = "User Does Not Exist";
-          loadingScreen({ show: false, success: false });
+          loadingScreen({ show: false, success: false, message: "User Does Not Exist" });
           handleErrorMessage(message);
         }
       });

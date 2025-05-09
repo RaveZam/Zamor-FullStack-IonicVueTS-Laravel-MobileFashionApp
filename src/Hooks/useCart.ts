@@ -2,6 +2,7 @@ import axios from "axios";
 import { computed, onMounted, ref } from "vue";
 import { useGetCookie } from "@/Hooks/useGetCookies";
 import { alertController } from "@ionic/vue";
+import { useLoadingScreen } from "@/Hooks/useLoadingScreen";
 const { getCookie } = useGetCookie();
 const token = getCookie("authToken");
 
@@ -18,8 +19,10 @@ interface cartItem {
 }
 
 const cart = ref<cartItem[]>([]);
+const { loadingScreen } = useLoadingScreen();
 
 async function fetchCart() {
+  loadingScreen({ show: true, success: false, message: "Loading Cart..." });
   await axios
     .get("http://127.0.0.1:8000/api/cart", {
       headers: {
@@ -29,6 +32,7 @@ async function fetchCart() {
     })
     .then((response) => {
       cart.value = response.data;
+      loadingScreen({ show: false, success: true, message: "Cart Loaded" });
     })
     .catch((error) => console.log(error));
 }
@@ -63,10 +67,10 @@ function addToCart(
     });
 }
 
-async function removeItem(id: number) {
+async function removeItem(id: number, productName: string | undefined) {
   const alert = await alertController.create({
     header: "Delete",
-    message: "Are you sure you want to delete this Item?",
+    message: `Are you sure you want to delete ${productName}?`,
     buttons: [
       {
         text: "Yes",

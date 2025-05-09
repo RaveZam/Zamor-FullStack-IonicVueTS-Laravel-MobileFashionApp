@@ -2,10 +2,13 @@
   <ion-page>
     <ion-content>
       <div class="font-lato flex flex-col h-[100%]">
-        <div>
-          <h1>{{ userData.username }}</h1>
-
-          <h1>Email: {{ userData.email }}</h1>
+        <div class="flex flex-col m-4 mt-12 gap-y-4">
+          <span class="text-2xl">{{ userData.username.toUpperCase() }}</span>
+          <div class="flex flex-col">
+            <span class=""> Email</span>
+            <span class="text-lg"> {{ userData.email }}</span>
+          </div>
+         
         </div>
 
         <div

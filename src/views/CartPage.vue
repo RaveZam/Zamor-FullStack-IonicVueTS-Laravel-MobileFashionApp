@@ -31,7 +31,7 @@
                 >
               </div>
               <div
-                @click="removeItem(item.id)"
+                @click="removeItem(item.id, item.product.productName)"
                 class="mt-auto flex justify-between w-full hover:cursor-pointer"
               >
                 <span class="font-lato text-[0.8rem]">DELETE</span>
@@ -61,7 +61,7 @@ import {
   IonHeader,
   IonToolbar,
   IonTitle,
-  IonContent,
+  IonContent,  
   IonIcon,
   IonImg,
   onIonViewWillEnter,

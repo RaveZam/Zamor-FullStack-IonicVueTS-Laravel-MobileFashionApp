@@ -4,16 +4,17 @@ import { loadingController } from "@ionic/vue";
 interface LoadingOptions {
   show: boolean;
   success: boolean;
+  message: string;
 }
 
 let loading: HTMLIonLoadingElement | null = null;
 
 async function loadingScreen(options: LoadingOptions) {
-  const { show, success } = options;
+  const { show, success, message } = options;
 
   if (show) {
     loading = await loadingController.create({
-      message: "Redirecting...",
+      message: message,
       spinner: "crescent",
       cssClass: "custom-loading",
     });
@@ -25,10 +26,11 @@ async function loadingScreen(options: LoadingOptions) {
       loading = null;
     }
     if (success) {
-      router.push("/tabs/Home");
+      if(message === "Signing In...") {
+        router.push("/tabs/Home");
     }
   }
-}
+  } }
 
 export function useLoadingScreen() {
   return { loadingScreen };
