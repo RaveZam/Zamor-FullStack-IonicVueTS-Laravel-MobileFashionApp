@@ -26,7 +26,7 @@
                         <div class="flex items-center justify-between w-full">
                             <div class="flex items-center">
                                 <IonIcon class="mr-1" name="radio-button-on-outline"></IonIcon>
-                                <span class="text-[0.8rem] whitespace-nowrap">Monday 26, May - Wednesday 28, May</span>
+                                <span class="text-[0.8rem] whitespace-nowrap">{{ estimatedDelivery }} - {{ estimatedDelivery2 }}</span>
                             </div>
                             <span class="text-[0.8rem] whitespace-nowrap">{{ shippingFree ? 'Free' : '150.00' }} PHP</span>
                         </div>
@@ -64,7 +64,7 @@
 import { IonPage, IonContent, IonIcon,  IonImg } from "@ionic/vue";
 
 import { useCart } from "@/Hooks/useCart";
-import { computed } from "vue";
+import { computed, onMounted, ref } from "vue";
 
 const { cart } = useCart();
 
@@ -76,6 +76,25 @@ const shippingFree = computed(() => {
     return selectedCartItems.value.reduce((sum, item) => sum + item.product.productPrice, 0) >= 3995;
 });
 
+const estimatedDelivery = ref('');
+const estimatedDelivery2 = ref('');
+
+onMounted(() => {
+  const today = new Date();
+  const deliveryDate = new Date();
+  deliveryDate.setDate(today.getDate() + 7);
+  const deliveryDate2 = new Date();
+  deliveryDate2.setDate(today.getDate() + 10);
+
+  const options: Intl.DateTimeFormatOptions = {
+    weekday: 'long', // "Wednesday"
+    day: 'numeric',  // "27"
+    month: 'long'    // "May"
+  };
+
+  estimatedDelivery.value = deliveryDate.toLocaleDateString('en-US', options);
+  estimatedDelivery2.value = deliveryDate2.toLocaleDateString('en-US', options);
+});
 
 
 </script>
