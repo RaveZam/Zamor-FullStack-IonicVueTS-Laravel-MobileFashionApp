@@ -255,3 +255,6 @@ const limitedProducts = computed(() => {
   return shuffled.slice(-4);
 });
 </script>
+
+
+Add Checkout Function, 

@@ -117,6 +117,3 @@ const product = computed(() =>
 );
 </script>
 
-<!-- Do The Cart Section, Make everything clickable slugs
-
-and then move everything to laravel -->

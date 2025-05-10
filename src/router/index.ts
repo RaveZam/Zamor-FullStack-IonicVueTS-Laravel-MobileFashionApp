@@ -50,6 +50,14 @@ const routes: Array<RouteRecordRaw> = [
         path: "Authpage",
         component: () => import("@/views/auth/Authpage.vue"),
       },
+      {
+        path: "SummaryPage",
+        component: () => import("@/views/TransactionScreens/SummaryPage.vue"),
+      },
+      {
+        path: "AuthorizePaymentPage",
+        component: () => import("@/views/TransactionScreens/AuthorizePaymentPage.vue"),
+      },
     ],
   },
 ];

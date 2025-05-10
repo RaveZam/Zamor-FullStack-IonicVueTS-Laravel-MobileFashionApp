@@ -3,7 +3,7 @@
     <ion-content>
       <div class="font-lato flex flex-col h-[100%] mx-2">
         <div class="flex flex-col m-4 mt-12 gap-y-4">
-          <span class="text-2xl">{{ userData.username.toUpperCase() }}</span>
+          <span class="text-2xl">Hi {{ userData.username.toUpperCase() }}!</span>
           <div class="flex flex-col gap-y-1">
             <span class=""> Email</span>
             <span class="text-lg"> {{ userData.email }}</span>

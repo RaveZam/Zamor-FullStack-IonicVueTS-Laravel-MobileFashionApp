@@ -20,6 +20,12 @@
 
         <div class="overflow-auto h-[80%]">
           <div class="m-4 flex" v-for="(item, index) in cart" :key="index">
+            <ion-checkbox
+            class="mr-4 mt-28"
+             justify="start"
+         
+          > </ion-checkbox
+        >
             <IonImg class="w-120 h-full" :src="item.product.productThumbnail" />
             <div class="flex flex-col m-4 w-screen">
               <div class="flex flex-col">
@@ -42,7 +48,7 @@
         </div>
 
         <div class="w-full p-4 flex items-center justify-between relative">
-          <div class="bg-black py-2 w-3/6 text-center text-white">
+          <div @click="$router.push('/tabs/SummaryPage')" class="bg-black py-2 w-3/6 text-center text-white cursor-pointer">
             <span class="font-lato text-[0.9rem]">Checkout</span>
           </div>
           <div class="flex flex-col text-right">
@@ -65,6 +71,7 @@ import {
   IonIcon,
   IonImg,
   onIonViewWillEnter,
+  IonCheckbox,
 } from "@ionic/vue";
 
 import { useCart } from "@/Hooks/useCart";

@@ -46,6 +46,9 @@ import {
   closeOutline,
   chatboxOutline,
   bookmarkOutline,
+  cubeOutline,
+  arrowBackSharp,
+  radioButtonOnOutline,
 } from "ionicons/icons";
 import { addIcons } from "ionicons";
 
@@ -61,6 +64,9 @@ addIcons({
   closeOutline,
   chatboxOutline,
   bookmarkOutline,
+  cubeOutline,
+  arrowBackSharp,
+  radioButtonOnOutline
 });
 
 const app = createApp(App).use(IonicVue).use(router);
