@@ -19,10 +19,11 @@
         </div>
 
         <div class="overflow-auto h-[80%]">
-          <div class="m-4 flex" v-for="(item, index) in cart" :key="index">
+          <div class="m-4 flex items-center" v-for="(item, index) in cart" :key="index">
             <ion-checkbox
             class="mr-4 mt-28"
              justify="start"
+             v-model="item.checked"
          
           > </ion-checkbox
         >
@@ -75,17 +76,42 @@ import {
 } from "@ionic/vue";
 
 import { useCart } from "@/Hooks/useCart";
+import { computed, watch } from "vue";
 
-const { cart, fetchCart, removeItem, total } = useCart();
+const { cart, fetchCart, removeItem } = useCart();
 
 onIonViewWillEnter(() => {
   fetchCart();
 });
+
+const selectedCartItems = computed(() => {
+    return cart.value.filter(item => item.checked);
+});
+
+const total = computed(() =>
+selectedCartItems.value.reduce(
+    (sum, item) => sum + item.quantity * item.product.productPrice,
+    0
+  )
+);
+
+watch(
+  cart,
+  () => {
+    const checkedMap: Record<number, boolean> = {};
+    cart.value.forEach(item => {
+      checkedMap[item.id] = item.checked;
+    });
+    localStorage.setItem('checkedItem', JSON.stringify(checkedMap)); // Save to localStorage
+  },
+  { deep: true }
+);
+
 </script>
 
 <style scoped>
 .slide-up {
-  animation: slideUp 1s ease-out;
+  animation: slideUp 0.5s ease-out;
 }
 
 @keyframes slideUp {

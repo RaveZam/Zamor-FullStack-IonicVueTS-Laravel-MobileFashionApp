@@ -1,5 +1,5 @@
 import axios from "axios";
-import { computed, onMounted, ref } from "vue";
+import { computed, onMounted, ref, watch } from "vue";
 import { useGetCookie } from "@/Hooks/useGetCookies";
 import { alertController } from "@ionic/vue";
 import { useLoadingScreen } from "@/Hooks/useLoadingScreen";
@@ -16,13 +16,21 @@ interface cartItem {
     productPrice: number;
     productSlug: string;
   };
+} 
+
+interface cartItemWithCheckbox extends cartItem {
+  checked: boolean;
 }
 
-const cart = ref<cartItem[]>([]);
+const cart = ref<cartItemWithCheckbox[]>([]);
+
+
 const { loadingScreen } = useLoadingScreen();
 
 async function fetchCart() {
   loadingScreen({ show: true, success: false, message: "Loading Cart..." });
+
+
   await axios
     .get("http://127.0.0.1:8000/api/cart", {
       headers: {
@@ -31,18 +39,25 @@ async function fetchCart() {
       },
     })
     .then((response) => {
-      cart.value = response.data;
+      const savedCheckbox = JSON.parse(localStorage.getItem("checkedItem") || "{}");
+
+      cart.value = response.data.map((item: cartItemWithCheckbox) => ({
+        ...item,
+        checked: savedCheckbox[item.id] || false,
+      })) ;
       loadingScreen({ show: false, success: true, message: "Cart Loaded" });
     })
     .catch((error) => console.log(error));
 }
 
-const total = computed(() =>
-  cart.value.reduce(
-    (sum, item) => sum + item.quantity * item.product.productPrice,
-    0
-  )
-);
+
+
+// const total = computed(() =>
+//   cart.value.reduce(
+//     (sum, item) => sum + item.quantity * item.product.productPrice,
+//     0
+//   )
+// );
 
 function addToCart(
   product_id: number | undefined,
@@ -117,5 +132,5 @@ async function successAlert(productName: string | undefined) {
 }
 
 export function useCart() {
-  return { cart, addToCart, fetchCart, removeItem, total };
+  return { cart, addToCart, fetchCart, removeItem };
 }
