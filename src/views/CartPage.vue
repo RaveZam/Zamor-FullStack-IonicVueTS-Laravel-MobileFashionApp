@@ -1,7 +1,9 @@
 <template>
   <ion-page>
     <ion-content>
-      <div class="w-full h-[100%] flex flex-col font-lato overflow-hidden slide-up">
+      <div
+        class="w-full h-[100%] flex flex-col font-lato overflow-hidden slide-up"
+      >
         <div class="flex justify-between w-full opacity-50">
           <ion-icon
             @click="$router.go(-1)"
@@ -19,14 +21,17 @@
         </div>
 
         <div class="overflow-auto h-[80%]">
-          <div class="m-4 flex items-center" v-for="(item, index) in cart" :key="index">
+          <div
+            class="m-4 flex items-center"
+            v-for="(item, index) in cart"
+            :key="index"
+          >
             <ion-checkbox
-            class="mr-4 mt-28"
-             justify="start"
-             v-model="item.checked"
-         
-          > </ion-checkbox
-        >
+              class="mr-4 mt-28"
+              justify="start"
+              v-model="item.checked"
+            >
+            </ion-checkbox>
             <IonImg class="w-120 h-full" :src="item.product.productThumbnail" />
             <div class="flex flex-col m-4 w-screen">
               <div class="flex flex-col">
@@ -49,7 +54,12 @@
         </div>
 
         <div class="w-full p-4 flex items-center justify-between relative">
-          <div @click="$router.push('/tabs/SummaryPage')" class="bg-black py-2 w-3/6 text-center text-white cursor-pointer">
+          <div
+            @click="
+              selectedCartItems.length > 0 && $router.push('/tabs/SummaryPage')
+            "
+            class="bg-black py-2 w-3/6 text-center text-white cursor-pointer"
+          >
             <span class="font-lato text-[0.9rem]">Checkout</span>
           </div>
           <div class="flex flex-col text-right">
@@ -68,7 +78,7 @@ import {
   IonHeader,
   IonToolbar,
   IonTitle,
-  IonContent,  
+  IonContent,
   IonIcon,
   IonImg,
   onIonViewWillEnter,
@@ -85,11 +95,11 @@ onIonViewWillEnter(() => {
 });
 
 const selectedCartItems = computed(() => {
-    return cart.value.filter(item => item.checked);
+  return cart.value.filter((item) => item.checked);
 });
 
 const total = computed(() =>
-selectedCartItems.value.reduce(
+  selectedCartItems.value.reduce(
     (sum, item) => sum + item.quantity * item.product.productPrice,
     0
   )
@@ -99,19 +109,18 @@ watch(
   cart,
   () => {
     const checkedMap: Record<number, boolean> = {};
-    cart.value.forEach(item => {
+    cart.value.forEach((item) => {
       checkedMap[item.id] = item.checked;
     });
-    localStorage.setItem('checkedItem', JSON.stringify(checkedMap)); // Save to localStorage
+    localStorage.setItem("checkedItem", JSON.stringify(checkedMap)); // Save to localStorage
   },
   { deep: true }
 );
-
 </script>
 
 <style scoped>
 .slide-up {
-  animation: slideUp 0.5s ease-out;
+  animation: slideUp 0.8s ease-out;
 }
 
 @keyframes slideUp {

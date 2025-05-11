@@ -116,4 +116,3 @@ const product = computed(() =>
   mockUpDBProducts.value.find((p) => p.slug === route.params.slug)
 );
 </script>
-

@@ -10,6 +10,7 @@
 
         <div class="border-b flex mx-4 justfiy-center pt-[40%] border-black">
           <input
+            v-model="search"
             class="w-full focus:outline-none font-latoGoogle justify-center flex text-center py-4"
             placeholder="WHAT ARE YOU LOOKING FOR?"
             type="text"
@@ -20,7 +21,7 @@
           <div class="grid grid-cols-2 gap-x-2">
             <div
               class=""
-              v-for="(productCard, index) in mockUpDBProducts"
+              v-for="(productCard, index) in filteredItems"
               :key="index"
             >
               <div class="relative">
@@ -37,7 +38,6 @@
                   >
                   </ion-img>
                 </router-link>
-
                 <div>
                   <div class="flex justify-between">
                     <span class="font-bold">{{ productCard.brandName }}</span>
@@ -58,8 +58,16 @@
 
 <script setup lang="ts">
 import { IonPage, IonContent, IonIcon, IonImg } from "@ionic/vue";
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import { useProducts } from "@/Hooks/useProducts";
 
 const { mockUpDBProducts } = useProducts();
+
+const search = ref<string>("");
+
+const filteredItems = computed(() =>
+  mockUpDBProducts.value.filter((item) =>
+    item.productName.toLocaleLowerCase().includes(search.value.toLowerCase())
+  )
+);
 </script>

@@ -15,7 +15,7 @@
           <span class="font-latoGoogle text-[1.5rem] absolute text-white">
             SALES</span
           >
-        </div>     
+        </div>
         <div
           class="h-28 overflow-hidden rounded-md items-center flex justify-center"
         >
@@ -35,43 +35,11 @@
             FEATURES</span
           >
         </div>
-      </div>
 
-      <div class="grid grid-cols-2 mx-2">
-        <div
-          class="font-roboto"
-          v-for="(productCard, index) in limitedProducts"
-          :key="index"
-        >
-          <div class="p-2 relative">
-            <div
-              class="absolute right-1 mr-4 mt-4 bg-white px-4 pt-4 pb-2 rounded-md opacity-70"
-            >
-              <ion-icon name="heart-outline" class="text-2xl"></ion-icon>
-            </div>
-            <router-link :to="`/product/${productCard.slug}`">
-            <ion-img
-              @click="console.log(productCard.productName)"
-              class="py-2"
-              :src="productCard.productThumbnail"
-            >
-            </ion-img>
-            </router-link>
-            <div>
-              <div class="flex justify-between">
-                <span>{{ productCard.brandName }}</span>
-                <span class="font-roboto">
-                  ₱{{ productCard.productPrice }}</span
-                >
-              </div>
-              <span class="font-robotoMed">{{ productCard.productName }}</span>
-            </div>
-          </div>
-        </div>
       </div>
-
-      <div>
-        <div class="flex whitespace-nowrap animate-scroll mt-2">
+ 
+    
+        <div class="flex whitespace-nowrap animate-scroll">
           <h1 class="font-bermirs mx-4">Featured</h1>
           <h1 class="font-bermirs mx-4">Featured</h1>
           <h1 class="font-bermirs mx-4">Featured</h1>
@@ -123,7 +91,40 @@
           <h1 class="font-bermirs mx-4">Explore</h1>
           <h1 class="font-bermirs mx-4">Explore</h1>
         </div>
+      <div class="grid grid-cols-2 mx-2">
+        <div
+          class="font-roboto"
+          v-for="(productCard, index) in limitedProducts"
+          :key="index"
+        >
+          <div class="p-2 relative">
+            <div
+              class="absolute right-1 mr-4 mt-4 bg-white px-4 pt-4 pb-2 rounded-md opacity-70"
+            >
+              <ion-icon name="heart-outline" class="text-2xl"></ion-icon>
+            </div>
+            <router-link :to="`/product/${productCard.slug}`">
+              <ion-img
+                @click="console.log(productCard.productName)"
+                class="py-2"
+                :src="productCard.productThumbnail"
+              >
+              </ion-img>
+            </router-link>
+            <div>
+              <div class="flex justify-between">
+                <span>{{ productCard.brandName }}</span>
+                <span class="font-roboto">
+                  ₱{{ productCard.productPrice }}</span
+                >
+              </div>
+              <span class="font-robotoMed">{{ productCard.productName }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
 
+      <div>
         <div class="mx-8 mb-12">
           <h1 class="font-latoTitle">Categories</h1>
           <div
@@ -256,5 +257,4 @@ const limitedProducts = computed(() => {
 });
 </script>
 
-
-Add Checkout Function, 
+Add Checkout Function,
