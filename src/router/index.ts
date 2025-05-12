@@ -56,7 +56,12 @@ const routes: Array<RouteRecordRaw> = [
       },
       {
         path: "AuthorizePaymentPage",
-        component: () => import("@/views/TransactionScreens/AuthorizePaymentPage.vue"),
+        component: () =>
+          import("@/views/TransactionScreens/AuthorizePaymentPage.vue"),
+      },
+      {
+        path: "AddressPage",
+        component: () => import("@/views/AddressPage/AddressPage.vue"),
       },
     ],
   },

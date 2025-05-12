@@ -16,7 +16,7 @@ interface cartItem {
     productPrice: number;
     productSlug: string;
   };
-} 
+}
 
 interface cartItemWithCheckbox extends cartItem {
   checked: boolean;
@@ -24,12 +24,10 @@ interface cartItemWithCheckbox extends cartItem {
 
 const cart = ref<cartItemWithCheckbox[]>([]);
 
-
 const { loadingScreen } = useLoadingScreen();
 
 async function fetchCart() {
-  loadingScreen({ show: true, success: false, message: "Loading Cart..." });
-
+  loadingScreen({ show: true, success: false, message: "Loading Items..." });
 
   await axios
     .get("http://127.0.0.1:8000/api/cart", {
@@ -39,18 +37,18 @@ async function fetchCart() {
       },
     })
     .then((response) => {
-      const savedCheckbox = JSON.parse(localStorage.getItem("checkedItem") || "{}");
+      const savedCheckbox = JSON.parse(
+        localStorage.getItem("checkedItem") || "{}"
+      );
 
       cart.value = response.data.map((item: cartItemWithCheckbox) => ({
         ...item,
         checked: savedCheckbox[item.id] || false,
-      })) ;
+      }));
       loadingScreen({ show: false, success: true, message: "Cart Loaded" });
     })
     .catch((error) => console.log(error));
 }
-
-
 
 // const total = computed(() =>
 //   cart.value.reduce(

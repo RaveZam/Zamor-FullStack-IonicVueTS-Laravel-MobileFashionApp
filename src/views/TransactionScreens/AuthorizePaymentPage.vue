@@ -86,7 +86,13 @@
 
 <script setup lang="ts">
 import { useCart } from "@/Hooks/useCart";
-import { IonPage, IonContent, IonIcon, IonImg } from "@ionic/vue";
+import {
+  IonPage,
+  IonContent,
+  IonIcon,
+  IonImg,
+  onIonViewWillEnter,
+} from "@ionic/vue";
 import { computed, onMounted, ref } from "vue";
 
 import { Swiper, SwiperSlide } from "swiper/vue";
@@ -95,7 +101,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Pagination } from "swiper/modules";
 
-const { cart } = useCart();
+const { cart, fetchCart } = useCart();
 
 const selectedCartItems = computed(() => {
   return cart.value.filter((item) => item.checked);
@@ -104,12 +110,16 @@ const selectedCartItems = computed(() => {
 const estimatedDelivery = ref("");
 const estimatedDelivery2 = ref("");
 
-onMounted(() => {
-  if (selectedCartItems.value.length == 0) {
-    console.log("Empty Cart");
-    window.location.href = "/tabs/CartPage";
-  }
+onIonViewWillEnter(() => {
+  fetchCart();
+});
 
+onMounted(() => {
+  // if (selectedCartItems.value.length == 0) {
+  // console.log("Empty Cart");
+  // window.location.href = "/tabs/CartPage";
+  // }
+  //
   const today = new Date();
   const deliveryDate = new Date();
   deliveryDate.setDate(today.getDate() + 7);

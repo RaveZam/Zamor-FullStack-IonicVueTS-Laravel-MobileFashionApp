@@ -84,13 +84,23 @@
 </template>
 
 <script setup lang="ts">
-import { IonPage, IonContent, IonIcon, IonImg } from "@ionic/vue";
+import {
+  IonPage,
+  IonContent,
+  IonIcon,
+  IonImg,
+  onIonViewWillEnter,
+} from "@ionic/vue";
 
 import { useCart } from "@/Hooks/useCart";
 import { computed, onMounted, ref } from "vue";
 import { logoWindows } from "ionicons/icons";
 
-const { cart } = useCart();
+const { cart, fetchCart } = useCart();
+
+onIonViewWillEnter(() => {
+  fetchCart();
+});
 
 const selectedCartItems = computed(() => {
   return cart.value.filter((item) => item.checked);
@@ -116,10 +126,10 @@ const total = computed(() =>
 );
 
 onMounted(() => {
-  if (selectedCartItems.value.length == 0) {
-    console.log("Empty Cart");
-    window.location.href = "/tabs/CartPage";
-  }
+  //    if (selectedCartItems.value.length == 0) {
+  // console.log("Empty Cart");
+  // window.location.href = "/tabs/CartPage";
+  //  }
 
   const today = new Date();
   const deliveryDate = new Date();
