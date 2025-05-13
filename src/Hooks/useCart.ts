@@ -50,13 +50,6 @@ async function fetchCart() {
     .catch((error) => console.log(error));
 }
 
-// const total = computed(() =>
-//   cart.value.reduce(
-//     (sum, item) => sum + item.quantity * item.product.productPrice,
-//     0
-//   )
-// );
-
 function addToCart(
   product_id: number | undefined,
   productName: string | undefined

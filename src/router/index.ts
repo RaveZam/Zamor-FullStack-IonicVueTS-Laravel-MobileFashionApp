@@ -103,7 +103,7 @@ router.beforeEach(async (to, from, next) => {
             })
             .then(
               (response) =>
-                (document.cookie = `authToken=${response.data.token}; path=/; max-age=3600`)
+                (document.cookie = `authToken=${response.data.token}; path=/; max-age=86400`)
             );
           console.log("Remember Token Verified, proceeding...");
           next();

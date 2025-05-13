@@ -22,19 +22,17 @@
 
         <div class="overflow-auto h-[80%]">
           <div
-            class="m-4 flex items-center"
+            class="m-4 flex items-stretch"
             v-for="(item, index) in cart"
             :key="index"
           >
-            <ion-checkbox
-              class="mr-4 mt-28"
-              justify="start"
-              v-model="item.checked"
-            >
-            </ion-checkbox>
+            <div class="flex items-stretch my-auto mr-4">
+              <ion-checkbox justify="start" v-model="item.checked">
+              </ion-checkbox>
+            </div>
             <IonImg class="w-120 h-full" :src="item.product.productThumbnail" />
-            <div class="flex flex-col m-4 w-screen">
-              <div class="flex flex-col">
+            <div class="flex flex-col m-4 w-full items-center">
+              <div class="flex flex-col mb-auto w-full h-full">
                 <span class="font-lato text-[0.9rem]">{{
                   item.product.productName
                 }}</span>
@@ -44,7 +42,7 @@
               </div>
               <div
                 @click="removeItem(item.id, item.product.productName)"
-                class="mt-auto flex justify-between w-full hover:cursor-pointer"
+                class="flex justify-between w-full hover:cursor-pointer"
               >
                 <span class="font-lato text-[0.8rem]">DELETE</span>
                 <IonIcon name="bookmark-outline" />
