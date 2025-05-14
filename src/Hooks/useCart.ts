@@ -45,9 +45,11 @@ async function fetchCart() {
         ...item,
         checked: savedCheckbox[item.id] || false,
       }));
-      loadingScreen({ show: false, success: true, message: "Cart Loaded" });
     })
-    .catch((error) => console.log(error));
+    .catch((error) => console.log(error))
+    .finally(() => {
+      loadingScreen({ show: false, success: true, message: "Cart Loaded" });
+    });
 }
 
 function addToCart(

@@ -63,6 +63,10 @@ const routes: Array<RouteRecordRaw> = [
         path: "AddressPage",
         component: () => import("@/views/AddressPage/AddressPage.vue"),
       },
+      {
+        path: "ViewAddressList",
+        component: () => import("@/views/AddressPage/ViewAddressList.vue"),
+      },
     ],
   },
 ];
@@ -91,7 +95,24 @@ router.beforeEach(async (to, from, next) => {
         next();
       } catch (error) {
         console.log("Token expired, redirecting...");
-        window.location.href = "/tabs/Authpage";
+        if (rememberToken) {
+          console.log("Remember Token Found");
+          try {
+            await axios
+              .get("http://127.0.0.1:8000/api/validate-token", {
+                headers: { Authorization: `Bearer ${rememberToken}` },
+              })
+              .then(
+                (response) =>
+                  (document.cookie = `authToken=${response.data.token}; path=/; max-age=86400`)
+              );
+            console.log("Remember Token Verified, proceeding...");
+            next();
+          } catch (error) {
+            console.log("Token expired, redirecting...");
+            window.location.href = "/tabs/Authpage";
+          }
+        }
       }
     } else {
       if (rememberToken) {

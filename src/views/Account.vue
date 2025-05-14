@@ -14,7 +14,7 @@
             <div class="flex flex-row justify-between">
               <span>Address</span>
               <IonIcon
-                @click="router.push('/tabs/AddressPage')"
+                @click="router.push('/tabs/ViewAddressList')"
                 class="hover:cursor-pointer"
                 name="chevron-forward-outline"
               ></IonIcon>

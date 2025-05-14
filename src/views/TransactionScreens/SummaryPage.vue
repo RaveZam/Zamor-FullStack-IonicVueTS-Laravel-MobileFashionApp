@@ -21,9 +21,17 @@
               <span class="text-sm">ADDRESS</span>
               <IonIcon name="chevron-forward-outline"></IonIcon>
             </div>
-            <span class="text-sm"
-              >Victoria Alicia, Isabela Highway #5 Alicia</span
+            <span class="text-sm" v-if="selectedAddress">
+              {{ selectedAddress?.address }}
+              {{ selectedAddress?.flatNumber }}
+            </span>
+            <span
+              v-else
+              @click="$router.push('/tabs/ViewAddressList')"
+              class="text-sm hover:cursor-pointer text-red-500"
             >
+              No address selected
+            </span>
           </div>
 
           <div class="mt-8">
@@ -93,26 +101,19 @@ import {
 } from "@ionic/vue";
 
 import { useCart } from "@/Hooks/useCart";
-import { computed, onMounted, ref } from "vue";
-import { logoWindows } from "ionicons/icons";
+import { computed, onMounted, ref, watch } from "vue";
+import { useAddress } from "@/Hooks/useAddress";
 
 const { cart, fetchCart } = useCart();
+const { fetchAddresses, selectedAddress } = useAddress();
 
 onIonViewWillEnter(() => {
   fetchCart();
+  fetchAddresses();
 });
 
 const selectedCartItems = computed(() => {
   return cart.value.filter((item) => item.checked);
-});
-
-const shippingFree = computed(() => {
-  return (
-    selectedCartItems.value.reduce(
-      (sum, item) => sum + item.product.productPrice,
-      0
-    ) >= 3995
-  );
 });
 
 const estimatedDelivery = ref("");
@@ -125,24 +126,26 @@ const total = computed(() =>
   )
 );
 
-onMounted(() => {
-  //    if (selectedCartItems.value.length == 0) {
-  // console.log("Empty Cart");
-  // window.location.href = "/tabs/CartPage";
-  //  }
+const shippingFree = computed(() => {
+  return (
+    selectedCartItems.value.reduce(
+      (sum, item) => sum + item.product.productPrice,
+      0
+    ) >= 3995
+  );
+});
 
+onMounted(() => {
   const today = new Date();
   const deliveryDate = new Date();
   deliveryDate.setDate(today.getDate() + 7);
   const deliveryDate2 = new Date();
   deliveryDate2.setDate(today.getDate() + 10);
-
   const options: Intl.DateTimeFormatOptions = {
     weekday: "long",
     day: "numeric",
     month: "long",
   };
-
   estimatedDelivery.value = deliveryDate.toLocaleDateString("en-US", options);
   estimatedDelivery2.value = deliveryDate2.toLocaleDateString("en-US", options);
 });
