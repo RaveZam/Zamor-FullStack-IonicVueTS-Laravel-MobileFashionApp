@@ -39,7 +39,6 @@ async function fetchAddresses() {
     })
     .then((response) => {
       addressList.value = response.data;
-
       const selectedAddressID = localStorage.getItem("selectedAddressID");
 
       if (selectedAddressID) {

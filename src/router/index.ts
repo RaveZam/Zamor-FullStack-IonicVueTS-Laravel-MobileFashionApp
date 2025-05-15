@@ -67,6 +67,11 @@ const routes: Array<RouteRecordRaw> = [
         path: "ViewAddressList",
         component: () => import("@/views/AddressPage/ViewAddressList.vue"),
       },
+      {
+        path: "PaymentOptionScreen",
+        component: () =>
+          import("@/views/TransactionScreens/PaymentOptionScreen.vue"),
+      },
     ],
   },
 ];

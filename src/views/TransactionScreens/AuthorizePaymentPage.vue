@@ -50,12 +50,25 @@
         </div>
 
         <div class="font-latoGoogle text-[0.8rem] flex flex-col">
-          <span class="text-[1rem]">Home Delivery</span>
-          <div class="flex flex-col gap-y-2 mt-1 mb-4">
-            <span>RaveZM Zamora</span>
-            <span>Highway #5, Victoria Alicia Isabela</span>
-            <span>3306 Alicia, Isabela</span>
-            <span>Philippines</span>
+          <div class="flex justify-between items-center mr-12">
+            <span class="text-[1rem]">Home Delivery</span>
+            <IonIcon
+              class="hover:cursor-pointer"
+              name="chevron-forward-outline"
+              @click="$router.push('/tabs/ViewAddressList')"
+            ></IonIcon>
+          </div>
+          <div class="flex flex-col gap-y-1 mt-3 mb-4 text-[0.9rem]">
+            <span
+              >{{ selectedAddress?.name }} {{ selectedAddress?.surname }}</span
+            >
+            <span
+              >{{ selectedAddress?.address }} {{ selectedAddress?.province }}
+            </span>
+            <span
+              >{{ selectedAddress?.flatNumber }} {{ selectedAddress?.postcode }}
+            </span>
+            <span>{{ selectedAddress?.phoneNumber }}</span>
           </div>
           <span class="text-blue-900 font-bold"
             >Free Shipping over 3,995.00 PHP applies only for full price
@@ -63,20 +76,35 @@
           >
         </div>
 
-        <div class="flex flex-col gap-y-2 mt-8">
-          <span>PAYMENT</span>
-          <span class="text-red-400">Select Payment Method</span>
+        <div class="flex flex-col gap-y-2 my-8">
+          <div class="flex justify-between mr-12 items-center">
+            <span>PAYMENT</span>
+            <IonIcon
+              class="hover:cursor-pointer"
+              name="chevron-forward-outline"
+              @click="$router.push('/tabs/PaymentOptionScreen')"
+            ></IonIcon>
+          </div>
+          <span
+            v-if="!paymentMethod"
+            @click="$router.push('/tabs/PaymentOptionScreen')"
+            class="text-red-400"
+            >Select Payment Method</span
+          >
+          <span v-else>{{ paymentMethod }}</span>
         </div>
 
-        <div class="flex mt-auto justify-between items-center my-4">
+        <div
+          class="flex mt-auto justify-between items-center my-4 hover:cursor-pointer"
+        >
           <div
-            @click="$router.push('/tabs/AuthorizePaymentPage')"
+            @click="authorizePayment()"
             class="text-center bg-black text-white p-2 w-3/6"
           >
             <span class="text-sm"> Continue </span>
           </div>
           <div>
-            <span class="text-sm pr-18"> Free Shipping </span>
+            <span class="text-sm pr-12"> Total: {{ total }} PHP </span>
           </div>
         </div>
       </div>
@@ -100,8 +128,10 @@ import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Pagination } from "swiper/modules";
+import { useAddress } from "@/Hooks/useAddress";
 
 const { cart, fetchCart } = useCart();
+const { fetchAddresses, selectedAddress } = useAddress();
 
 const selectedCartItems = computed(() => {
   return cart.value.filter((item) => item.checked);
@@ -110,16 +140,41 @@ const selectedCartItems = computed(() => {
 const estimatedDelivery = ref("");
 const estimatedDelivery2 = ref("");
 
+function getPaymentMethod() {
+  return localStorage.getItem("defaultPaymentMethod");
+}
+
+let paymentMethod = ref<string | null>(null);
+
 onIonViewWillEnter(() => {
+  fetchAddresses();
   fetchCart();
+  paymentMethod.value = getPaymentMethod();
 });
 
+const total = computed(() =>
+  selectedCartItems.value.reduce(
+    (sum, item) => sum + item.quantity * item.product.productPrice,
+    0
+  )
+);
+
+import { useCustomAlert } from "@/Hooks/useCustomAlert";
+
+const { handleErrorMessage } = useCustomAlert();
+function authorizePayment() {
+  if (!selectedAddress.value) {
+    handleErrorMessage("Please select an address");
+    return;
+  }
+
+  if (!paymentMethod.value) {
+    handleErrorMessage("Please select a payment method");
+    return;
+  }
+}
+
 onMounted(() => {
-  // if (selectedCartItems.value.length == 0) {
-  // console.log("Empty Cart");
-  // window.location.href = "/tabs/CartPage";
-  // }
-  //
   const today = new Date();
   const deliveryDate = new Date();
   deliveryDate.setDate(today.getDate() + 7);
