@@ -19,7 +19,10 @@
           <div class="flex flex-col mt-8">
             <div class="flex justify-between pb-1">
               <span class="text-sm">ADDRESS</span>
-              <IonIcon name="chevron-forward-outline"></IonIcon>
+              <IonIcon
+                @click="$router.push(`/tabs/ViewAddressList`)"
+                name="chevron-forward-outline"
+              ></IonIcon>
             </div>
             <span class="text-sm" v-if="selectedAddress">
               {{ selectedAddress?.address }}

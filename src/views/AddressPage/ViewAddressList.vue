@@ -1,5 +1,5 @@
 <template>
-  <IonPage>
+  <ion-page>
     <ion-content>
       <div class="font-latoGoogle flex flex-col mx-6 h-full">
         <div @click="$router.go(-1)" class="mt-8 w-full hover:cursor-pointer">
@@ -25,16 +25,22 @@
                   <span>{{ address.postcode }} {{ address.address }} </span>
                   <span>+63 {{ address.phoneNumber }}</span>
                 </div>
+
+                <div
+                  v-if="selectedAddress?.id == address.id"
+                  class="border-1 border-black py-2 mt-1 w-1/2 text-center"
+                >
+                  <span>Invoicing</span>
+                </div>
               </div>
-              <div
-                @click="console.log('address', address.id)"
-                class="flex flex-auto items-center justify-end mr-8"
-              >
-                <IonIcon
-                  @click="deleteAddress(address.id)"
-                  class="text-lg hover:cusor-pointer"
-                  name="trash-outline"
-                ></IonIcon>
+              <div class="flex flex-auto items-center justify-end mr-8">
+                <div class="text-lg hover:cusor-pointer z-10">
+                  <IonIcon
+                    class="text-lg hover:cusor-pointer"
+                    @click="deleteAddress(address.id)"
+                    name="trash-outline"
+                  ></IonIcon>
+                </div>
               </div>
             </div>
           </div>
@@ -50,15 +56,20 @@
         </div>
       </div>
     </ion-content>
-  </IonPage>
+  </ion-page>
 </template>
 
 <script setup lang="ts">
 import { IonContent, IonPage, IonIcon, onIonViewWillEnter } from "@ionic/vue";
 import { useAddress } from "@/Hooks/useAddress";
 
-const { fetchAddresses, addressList, deleteAddress, setSelectedAddress } =
-  useAddress();
+const {
+  fetchAddresses,
+  addressList,
+  deleteAddress,
+  setSelectedAddress,
+  selectedAddress,
+} = useAddress();
 
 onIonViewWillEnter(() => {
   fetchAddresses();
