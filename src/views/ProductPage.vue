@@ -124,7 +124,7 @@
                 </SwiperSlide>
               </Swiper>
             </div>
-            <div>
+            <div class="mt-4">
               <span class="text-gray-700">{{ product?.stock }} in stock</span>
             </div>
             <div class="flex gap-x-1 my-4 hover:cursor-pointer">
@@ -166,7 +166,6 @@
                       >
                       </ion-img>
                     </router-link>
-
                     <div>
                       <div class="flex justify-between">
                         <span class="font-bold">{{

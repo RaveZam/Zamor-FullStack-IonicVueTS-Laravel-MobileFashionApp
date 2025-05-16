@@ -3,8 +3,11 @@ import { computed, onMounted, ref, watch } from "vue";
 import { alertController } from "@ionic/vue";
 import { useLoadingScreen } from "@/Hooks/useLoadingScreen";
 import { useGetCookie } from "@/Hooks/useGetCookies";
+import { useRouter } from "vue-router";
+
 const { getCookie } = useGetCookie();
 const token = getCookie("authToken");
+const router = useRouter();
 
 interface cartItem {
   id: number;
@@ -121,6 +124,12 @@ async function successAlert(productName: string | undefined) {
       {
         text: "Continue",
         handler: async () => {},
+      },
+      {
+        text: "View Cart",
+        handler: async () => {
+          window.location.href = "/tabs/cartPage";
+        },
       },
     ],
   });

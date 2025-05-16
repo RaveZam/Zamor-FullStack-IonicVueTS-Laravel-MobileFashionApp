@@ -1,7 +1,7 @@
 <template>
   <ion-page>
     <ion-content>
-      <Header />
+      <HomeHeader />
 
       <div class="p-8 flex flex-col gap-y-2">
         <span class="font-latoGoogle text-[1.5rem]">Find Your Clothes</span>
@@ -184,6 +184,7 @@ const { mockUpDBProducts, shuffledProducts } = useProducts();
 import { IonPage, IonContent, IonIcon, IonImg } from "@ionic/vue";
 import { computed } from "vue";
 import Header from "@/components/Header.vue";
+import HomeHeader from "@/components/HomeHeader.vue";
 
 
 const duplicatedSlides = computed(() => [
