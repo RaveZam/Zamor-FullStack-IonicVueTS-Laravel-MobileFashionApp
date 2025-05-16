@@ -4,8 +4,8 @@
       <div class="flex justify-between items-center">
         <ion-icon
           @click="$router.go(-1)"
-          name="menu-sharp"
-          class="text-3xl mb-1 mx-4"
+          name="chevron-back-outline"
+          class="text-3xl mb-1 mx-4 hover:cursor-pointer"
         ></ion-icon>
         <span class="font-latoGoogle text-[2.2rem]">ZAMOR</span>
         <ion-icon name="notifications-outline" class="text-3xl mx-4"></ion-icon>

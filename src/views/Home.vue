@@ -179,76 +179,22 @@ import "swiper/css/pagination";
 
 import { useProducts } from "@/Hooks/useProducts";
 
-const { mockUpDBProducts } = useProducts();
+const { mockUpDBProducts, shuffledProducts } = useProducts();
 
 import { IonPage, IonContent, IonIcon, IonImg } from "@ionic/vue";
-import { computed, onMounted, ref } from "vue";
+import { computed } from "vue";
 import Header from "@/components/Header.vue";
 
-type featuredCardTypes = {
-  productThumbnail: string;
-  brandName: string;
-  productPrice: number;
-  productName: string;
-  slug: string;
-};
-
-const mockupDBFeatured = ref<featuredCardTypes[]>([
-  {
-    productThumbnail:
-      "https://res.cloudinary.com/dcdgu2fxc/image/upload/v1744620438/BrownCoat_iijdvu.webp",
-    brandName: "Kalvin Klein",
-    productPrice: 12000,
-    productName: "90's Brown Coat",
-    slug: "90s-brown-coat",
-  },
-  {
-    productThumbnail:
-      "https://res.cloudinary.com/dcdgu2fxc/image/upload/v1744623761/Emblem_Logo_Graphic_Classic_T-Shirt_cbxyeo.webp",
-    brandName: "Kalvin Klein",
-    productPrice: 27000,
-    productName: "Emblem Logo Graphic Classic T-Shirt",
-    slug: "emblem-logo-graphic-classic-t-shirt",
-  },
-  {
-    productThumbnail:
-      "https://res.cloudinary.com/dcdgu2fxc/image/upload/v1744623751/Solid_SeerSucker_Classic_Button-Down_Shirt_dfq4md.webp",
-    brandName: "Kalvin Klein",
-    productPrice: 11000,
-    productName: "Solid Seesucker Classic Button-Down Shirt",
-    slug: "solid-seesucker-classic-button-down-shirt",
-  },
-  {
-    productThumbnail:
-      "https://res.cloudinary.com/dcdgu2fxc/image/upload/v1744623760/Cotton_Stretch_Slim_Button-Down_Shirt_wpouv7.webp",
-    brandName: "Kalvin Klein",
-    productPrice: 21000,
-    productName: "Cotton Stretch Slim Button-Down Shirt",
-    slug: "cotton-stretch-slim-button-down-shirt",
-  },
-  {
-    productThumbnail:
-      "https://res.cloudinary.com/dcdgu2fxc/image/upload/v1744623754/Classic_Stretch_Button-Down_Shirt_xrpgpe.webp",
-    brandName: "Kalvin Klein",
-    productPrice: 21000,
-    productName: "Classic Stretch Button-Down Shirt",
-    slug: "classic-stretch-button-down-shirt",
-  },
-  {
-    productThumbnail:
-      "https://res.cloudinary.com/dcdgu2fxc/image/upload/v1744623756/Boucle_Ribbed_Sleeveless_Midi_Dress_ktf3dl.webp",
-    brandName: "Kalvin Klein",
-    productPrice: 21000,
-    productName: "Boucle Ribbed Sleeveless Midi Dress",
-    slug: "boucle-ribbed-sleeveless-midi-dress",
-  },
-]);
 
 const duplicatedSlides = computed(() => [
-  ...mockupDBFeatured.value,
-  ...mockupDBFeatured.value,
-  ...mockupDBFeatured.value,
-  ...mockupDBFeatured.value,
+  ...shuffledProducts.value,
+  ...shuffledProducts.value,
+  ...shuffledProducts.value,
+  ...shuffledProducts.value,
+  ...shuffledProducts.value,
+  ...shuffledProducts.value,
+  ...shuffledProducts.value,
+  ...shuffledProducts.value,
 ]);
 
 const limitedProducts = computed(() => {

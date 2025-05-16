@@ -22,6 +22,13 @@
 
         <div class="overflow-auto h-[80%]">
           <div
+            class="flex h-full justify-center items-center"
+            v-if="cart.length === 0"
+          >
+            <span class="text-gray-500">No items in cart</span>
+          </div>
+          <div
+            v-else
             class="m-4 flex items-stretch"
             v-for="(item, index) in cart"
             :key="index"
@@ -30,16 +37,42 @@
               <ion-checkbox justify="start" v-model="item.checked">
               </ion-checkbox>
             </div>
+
             <IonImg class="w-120 h-full" :src="item.product.productThumbnail" />
-            <div class="flex flex-col m-4 w-full items-center">
-              <div class="flex flex-col mb-auto w-full h-full">
-                <span class="font-lato text-[0.9rem]">{{
-                  item.product.productName
-                }}</span>
+
+            <div class="flex flex-col m-4 w-full">
+              <div class="flex flex-col mb-auto w-full h-full gap-y-1">
+                <router-link :to="`/product/${item.product.slug}`">
+                  <span class="font-lato text-[0.9rem] text-black">{{
+                    item.product.productName
+                  }}</span>
+                </router-link>
                 <span class="font-lato text-[0.9rem]"
                   >₱{{ item.product.productPrice }}</span
                 >
+                <span class="font-lato text-[0.9rem]"
+                  >Size: {{ item.size }}</span
+                >
               </div>
+
+              <div v-if="item.quantity > 1" class="flex gap-2">
+                <div
+                  @click="decreaseQuantity(item)"
+                  class="w-6 h-6 flex items-center justify-center bg-gray-200 rounded text-sm font-bold cursor-pointer"
+                >
+                  -
+                </div>
+
+                <span class="text-sm font-medium">{{ item.quantity }}</span>
+
+                <div
+                  @click="increaseQuantity(item)"
+                  class="w-6 h-6 flex items-center justify-center bg-gray-200 rounded text-sm font-bold cursor-pointer"
+                >
+                  +
+                </div>
+              </div>
+
               <div
                 @click="removeItem(item.id, item.product.productName)"
                 class="flex justify-between w-full hover:cursor-pointer"
@@ -86,7 +119,8 @@ import {
 import { useCart } from "@/Hooks/useCart";
 import { computed, watch } from "vue";
 
-const { cart, fetchCart, removeItem } = useCart();
+const { cart, fetchCart, removeItem, increaseQuantity, decreaseQuantity } =
+  useCart();
 
 onIonViewWillEnter(() => {
   fetchCart();

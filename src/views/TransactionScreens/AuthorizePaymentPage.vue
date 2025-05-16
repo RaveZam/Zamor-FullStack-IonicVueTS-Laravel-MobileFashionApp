@@ -42,7 +42,9 @@
                   <span class="text-[0.9rem]">{{
                     item.product.productName
                   }}</span>
+
                   <span>{{ item.product.productPrice }}PHP</span>
+                  <span>Size: {{ item.size }}</span>
                 </div>
               </SwiperSlide>
             </Swiper>
@@ -98,11 +100,18 @@
           class="flex mt-auto justify-between items-center my-4 hover:cursor-pointer"
         >
           <div
-            @click="authorizePayment()"
-            class="text-center bg-black text-white p-2 w-3/6"
+            @click="
+              isConfirmActive = !isConfirmActive;
+              authorizePayment();
+            "
+            :class="[
+              'text-center p-2 w-3/6',
+              isConfirmActive ? 'bg-white text-black' : 'bg-black text-white',
+            ]"
           >
-            <span class="text-sm"> Continue </span>
+            <span class="text-sm"> Confirm Payment </span>
           </div>
+
           <div>
             <span class="text-sm pr-12"> Total: {{ total }} PHP </span>
           </div>
@@ -133,10 +142,6 @@ import { useAddress } from "@/Hooks/useAddress";
 const { cart, fetchCart } = useCart();
 const { fetchAddresses, selectedAddress } = useAddress();
 
-const selectedCartItems = computed(() => {
-  return cart.value.filter((item) => item.checked);
-});
-
 const estimatedDelivery = ref("");
 const estimatedDelivery2 = ref("");
 
@@ -159,10 +164,53 @@ const total = computed(() =>
   )
 );
 
-import { useCustomAlert } from "@/Hooks/useCustomAlert";
+const selectedCartItems = computed(() => {
+  return cart.value.filter((item) => item.checked);
+});
 
+interface orderItem {
+  product_id: number;
+  quantity: number;
+  size: string;
+  price: number;
+}
+
+interface AuthorizePayment {
+  address_id: number;
+  status: string;
+  payment_method: string;
+  total: number;
+  items: orderItem[];
+}
+
+import { useCustomAlert } from "@/Hooks/useCustomAlert";
+import axios from "axios";
+
+import { useGetCookie } from "@/Hooks/useGetCookies";
+import { useRouter } from "vue-router";
+const router = useRouter();
+const { getCookie } = useGetCookie();
+const token = getCookie("authToken");
 const { handleErrorMessage } = useCustomAlert();
+
+const isConfirmActive = ref(false);
+
 function authorizePayment() {
+  const orderItems: orderItem[] = selectedCartItems.value.map((item) => ({
+    product_id: item.product.id,
+    quantity: item.quantity,
+    size: item.size,
+    price: item.product.productPrice,
+  }));
+
+  const transactionData = ref<AuthorizePayment>({
+    address_id: selectedAddress.value?.id ?? 0,
+    status: "pending",
+    payment_method: paymentMethod.value ?? "",
+    total: total.value ?? 0,
+    items: orderItems,
+  });
+
   if (!selectedAddress.value) {
     handleErrorMessage("Please select an address");
     return;
@@ -172,6 +220,28 @@ function authorizePayment() {
     handleErrorMessage("Please select a payment method");
     return;
   }
+
+  axios
+    .post("http://127.0.0.1:8000/api/order", transactionData.value, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        Accept: "application/json",
+      },
+    })
+    .then((response) => {
+      console.log(response);
+      if (response.status == 200) {
+        console.log("success");
+        localStorage.setItem(
+          "transactionData",
+          JSON.stringify(selectedCartItems.value)
+        );
+        router.push("/tabs/SuccessfulTransactionPage");
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 }
 
 onMounted(() => {

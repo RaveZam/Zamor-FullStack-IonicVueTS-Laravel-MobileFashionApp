@@ -1,20 +1,22 @@
 import axios from "axios";
 import { computed, onMounted, ref, watch } from "vue";
-import { useGetCookie } from "@/Hooks/useGetCookies";
 import { alertController } from "@ionic/vue";
 import { useLoadingScreen } from "@/Hooks/useLoadingScreen";
+import { useGetCookie } from "@/Hooks/useGetCookies";
 const { getCookie } = useGetCookie();
 const token = getCookie("authToken");
 
 interface cartItem {
   id: number;
   quantity: number;
+  size: string;
   product: {
     id: number;
     productName: string;
     productThumbnail: string;
     productPrice: number;
-    productSlug: string;
+    slug: string;
+    stock: number;
   };
 }
 
@@ -54,7 +56,8 @@ async function fetchCart() {
 
 function addToCart(
   product_id: number | undefined,
-  productName: string | undefined
+  productName: string | undefined,
+  size: string | undefined
 ) {
   axios
     .post(
@@ -62,6 +65,7 @@ function addToCart(
       {
         product_id: product_id,
         quantity: 1,
+        size: size,
       },
       {
         headers: {
@@ -124,6 +128,50 @@ async function successAlert(productName: string | undefined) {
   await alert.present();
 }
 
+const increaseQuantity = (item: any) => {
+  item.quantity++;
+
+  axios
+    .put(
+      "http://127.0.0.1:8000/api/increaseQuantity",
+      {
+        id: item.id,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: "application/json",
+        },
+      }
+    )
+    .then(() => fetchCart());
+};
+const decreaseQuantity = (item: any) => {
+  if (item.quantity > 1) item.quantity--;
+
+  axios
+    .put(
+      "http://127.0.0.1:8000/api/decreaseQuantity",
+      {
+        id: item.id,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: "application/json",
+        },
+      }
+    )
+    .then(() => fetchCart());
+};
+
 export function useCart() {
-  return { cart, addToCart, fetchCart, removeItem };
+  return {
+    cart,
+    addToCart,
+    fetchCart,
+    removeItem,
+    increaseQuantity,
+    decreaseQuantity,
+  };
 }

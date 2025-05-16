@@ -72,7 +72,10 @@
               </ion-img>
               <div class="flex flex-col text-[0.7rem]">
                 <span>{{ item.product.productName }}</span>
-                <span>{{ item.product.productPrice }} PHP</span>
+                <div class="flex justify-between mr-2">
+                  <span>{{ item.product.productPrice }} PHP</span>
+                  <span>Size: {{ item.size }}</span>
+                </div>
               </div>
             </div>
           </div>
