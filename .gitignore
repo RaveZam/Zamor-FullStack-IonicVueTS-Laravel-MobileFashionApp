@@ -32,3 +32,4 @@ npm-debug.log*
 /www
 /public/video/*.mp4/public/video/*.mp4
 /public/video/*.mp4
+/public/images/*
