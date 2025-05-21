@@ -13,6 +13,9 @@
           Thank you for shopping with us. Here’s what you purchased:
         </p>
         <span class="text-sm text-gray-500">Estimated Delivery</span>
+        <!-- <div class="pb-1">
+          <h1 class="font-latoGoogle text-center">Your Total: ₱{{ total }}</h1>
+        </div> -->
         <p>
           {{ estimatedDelivery.toLocaleUpperCase() }} -
           {{ estimatedDelivery2.toLocaleUpperCase() }}
@@ -58,10 +61,9 @@ import {
   IonContent,
   IonIcon,
   IonImg,
-  alertController,
   onIonViewDidEnter,
 } from "@ionic/vue";
-import { ref } from "vue";
+import { computed, ref } from "vue";
 
 const transactionData = ref<any[] | null>(null);
 
@@ -70,6 +72,13 @@ function getTransactionData() {
     localStorage.getItem("transactionData") || "{}"
   );
 }
+
+// const total = computed(() => {
+//   return transactionData.value?.reduce(
+//     (sum, item) => sum + item.product.productPrice * item.quantity,
+//     0
+//   );
+// });
 
 function logValues() {
   console.log(transactionData.value);

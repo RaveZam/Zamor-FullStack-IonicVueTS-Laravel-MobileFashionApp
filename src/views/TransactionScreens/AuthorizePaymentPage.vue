@@ -60,7 +60,15 @@
               @click="$router.push('/tabs/ViewAddressList')"
             ></IonIcon>
           </div>
-          <div class="flex flex-col gap-y-1 mt-3 mb-4 text-[0.9rem]">
+
+          <div
+            v-if="!selectedAddress"
+            class="flex flex-col gap-y-1 mt-3 mb-4 text-[0.9rem]"
+          >
+            <span class="text-red-400">Please Select An Address</span>
+          </div>
+
+          <div v-else class="flex flex-col gap-y-1 mt-3 mb-4 text-[0.9rem]">
             <span
               >{{ selectedAddress?.name }} {{ selectedAddress?.surname }}</span
             >

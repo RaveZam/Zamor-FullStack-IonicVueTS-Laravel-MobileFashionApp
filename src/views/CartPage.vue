@@ -21,6 +21,12 @@
         </div>
 
         <div class="overflow-auto h-[80%]">
+          <div class="flex items-center gap-x-4 ml-4 py-4">
+            <ion-checkbox justify="start" v-model="selectAll"> </ion-checkbox>
+            <span class="text-[0.8rem]">{{
+              selectAll ? "Deselect All" : "Select All"
+            }}</span>
+          </div>
           <div
             class="flex h-full justify-center items-center"
             v-if="cart.length === 0"
@@ -73,11 +79,12 @@
                 </div>
               </div>
 
-              <div
-                @click="removeItem(item.id, item.product.productName)"
-                class="flex justify-between w-full hover:cursor-pointer"
-              >
-                <span class="font-lato text-[0.8rem]">DELETE</span>
+              <div class="flex justify-between w-full hover:cursor-pointer">
+                <span
+                  @click="removeItem(item.id, item.product.productName)"
+                  class="font-lato text-[0.8rem]"
+                  >DELETE</span
+                >
                 <IonIcon name="bookmark-outline" />
               </div>
             </div>
@@ -136,6 +143,15 @@ const total = computed(() =>
     0
   )
 );
+
+const selectAll = computed({
+  get: () => cart.value.length > 0 && cart.value.every((item) => item.checked),
+  set: (value) => {
+    cart.value.forEach((item) => {
+      item.checked = value;
+    });
+  },
+});
 
 watch(
   cart,

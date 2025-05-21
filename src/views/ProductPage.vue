@@ -128,21 +128,20 @@
               <span class="text-gray-700">{{ product?.stock }} in stock</span>
             </div>
             <div class="flex gap-x-1 my-4 hover:cursor-pointer">
-              <div
-                @click="handleAddToCart()"
-                :class="[
-                  'w-full p-4 rounded-md text-center transition-all duration-200',
-                  isAddToCartActive
-                    ? 'bg-white text-black border-1 border-black'
-                    : 'bg-black text-white border-1 border-black ',
-                ]"
-              >
-                <span>Add To Cart</span>
+              <div class="w-full">
+                <ion-button
+                  class="w-full bg-black p-1 rounded-md active:scale-98 transition-all duration-200 active:bg-white active:text-black"
+                  color="black"
+                  @click="handleAddToCart()"
+                >
+                  Add To Cart
+                </ion-button>
               </div>
               <div
                 class="bg-black text-white flex items-center justify-center p-4 rounded-md"
               >
                 <ion-icon
+                  @click="addToFavorites(product?.id ?? null)"
                   name="heart-outline"
                   class="text-2xl font-bold"
                 ></ion-icon>
@@ -197,6 +196,7 @@ import {
   IonImg,
   IonIcon,
   onIonViewWillLeave,
+  IonButton,
 } from "@ionic/vue";
 
 import { Swiper, SwiperSlide } from "swiper/vue";
@@ -207,16 +207,38 @@ import { Pagination } from "swiper/modules";
 
 import { useProducts } from "@/Hooks/useProducts";
 import { useRoute } from "vue-router";
-import { computed, onMounted, ref } from "vue";
+import { computed, ref } from "vue";
 import { useCart } from "@/Hooks/useCart";
 import Header from "@/components/Header.vue";
 import { useCustomAlert } from "@/Hooks/useCustomAlert";
+import axios from "axios";
+import { useGetCookie } from "@/Hooks/useGetCookies";
+
+const { getCookie } = useGetCookie();
+
+const token = getCookie("authToken");
 
 const { handleErrorMessage } = useCustomAlert();
 const { mockUpDBProducts, shuffledProducts } = useProducts();
 const { addToCart } = useCart();
 
 const route = useRoute();
+
+function addToFavorites(id: number | null) {
+  console.log(id);
+  axios.post(
+    "http://127.0.0.1:8000/api/favorite",
+    {
+      product_id: id,
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        Accept: "application/json",
+      },
+    }
+  );
+}
 
 const selectedSize = ref<string>("");
 const isAddToCartActive = ref(false);

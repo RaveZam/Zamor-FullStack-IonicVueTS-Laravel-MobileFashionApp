@@ -53,8 +53,8 @@
           :style="{
             '--color-selected': 'black',
           }"
-          tab="Account"
-          href="/tabs/Account"
+          tab="SettingsPage"
+          href="/tabs/SettingsPage"
         >
           <ion-icon aria-hidden="true" :icon="personOutline" />
         </ion-tab-button>

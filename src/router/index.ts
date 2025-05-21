@@ -38,7 +38,7 @@ const routes: Array<RouteRecordRaw> = [
       },
       {
         path: "Account",
-        component: () => import("@/views/Account.vue"),
+        component: () => import("@/views/AccountPages/Account.vue"),
         meta: { requiresAuth: true },
       },
       {
@@ -76,6 +76,10 @@ const routes: Array<RouteRecordRaw> = [
         path: "SuccessfulTransactionPage",
         component: () =>
           import("@/views/TransactionScreens/SuccessfulTransactionPage.vue"),
+      },
+      {
+        path: "SettingsPage",
+        component: () => import("@/views/AccountPages/SettingsPage.vue"),
       },
     ],
   },
