@@ -14,7 +14,6 @@
                 >₱{{ product?.productPrice }}</span
               >
             </div>
-
             <div class="mt-4">
               <span>Available Sizes</span>
               <Swiper
@@ -130,7 +129,7 @@
             <div class="flex gap-x-1 my-4 hover:cursor-pointer">
               <div class="w-full">
                 <ion-button
-                  class="w-full bg-black p-1 rounded-md active:scale-98 transition-all duration-200 active:bg-white active:text-black"
+                  class="w-full font-latoGoogle border-1 border-black bg-black p-1 rounded-md active:scale-98 transition-all duration-200 active:border-black active:border-1 active:bg-white active:text-black"
                   color="black"
                   @click="handleAddToCart()"
                 >
@@ -141,7 +140,7 @@
                 class="bg-black text-white flex items-center justify-center p-4 rounded-md"
               >
                 <ion-icon
-                  @click="addToFavorites(product?.id ?? null)"
+                  @click="handleAddToFavorites(product?.id ?? null)"
                   name="heart-outline"
                   class="text-2xl font-bold"
                 ></ion-icon>
@@ -200,52 +199,28 @@ import {
 } from "@ionic/vue";
 
 import { Swiper, SwiperSlide } from "swiper/vue";
-
 import "swiper/css";
 import "swiper/css/navigation";
 import { Pagination } from "swiper/modules";
-
 import { useProducts } from "@/Hooks/useProducts";
 import { useRoute } from "vue-router";
 import { computed, ref } from "vue";
 import { useCart } from "@/Hooks/useCart";
 import Header from "@/components/Header.vue";
 import { useCustomAlert } from "@/Hooks/useCustomAlert";
-import axios from "axios";
-import { useGetCookie } from "@/Hooks/useGetCookies";
-
-const { getCookie } = useGetCookie();
-
-const token = getCookie("authToken");
-
+import { useFavorite } from "@/Hooks/useFavorite";
 const { handleErrorMessage } = useCustomAlert();
 const { mockUpDBProducts, shuffledProducts } = useProducts();
 const { addToCart } = useCart();
+const { handleAddToFavorites } = useFavorite();
 
 const route = useRoute();
-
-function addToFavorites(id: number | null) {
-  console.log(id);
-  axios.post(
-    "http://127.0.0.1:8000/api/favorite",
-    {
-      product_id: id,
-    },
-    {
-      headers: {
-        Authorization: `Bearer ${token}`,
-        Accept: "application/json",
-      },
-    }
-  );
-}
-
-const selectedSize = ref<string>("");
-const isAddToCartActive = ref(false);
 
 const product = computed(() =>
   mockUpDBProducts.value.find((p) => p.slug === route.params.slug)
 );
+
+const selectedSize = ref<string>("");
 
 function handleAddToCart() {
   if (product?.value?.stock === 0) {
@@ -258,7 +233,6 @@ function handleAddToCart() {
     return;
   }
 
-  isAddToCartActive.value = !isAddToCartActive.value;
   addToCart(
     product?.value?.id,
     product?.value?.productName,

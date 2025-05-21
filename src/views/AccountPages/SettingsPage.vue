@@ -23,6 +23,7 @@
             <ion-icon name="chevron-forward-outline" />
           </div>
           <div
+            @click="$router.push('/tabs/FavoriteProducts')"
             class="flex item-center justify-between mt-8 hover:cursor-pointer"
           >
             <div class="flex item-center gap-x-2">

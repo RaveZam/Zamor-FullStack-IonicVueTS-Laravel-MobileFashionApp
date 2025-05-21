@@ -1,8 +1,8 @@
 import axios from "axios";
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 
 export function useProducts() {
-  type productCardTypes = {
+  type Product = {
     id: number;
     productThumbnail: string;
     brandName: string;
@@ -12,20 +12,37 @@ export function useProducts() {
     stock: number;
   };
 
-  let shuffledProducts = ref<productCardTypes[]>([]);
+  const mockUpDBProducts = ref<Product[]>([]);
+  const shuffledProducts = ref<Product[]>([]);
+  const isLoading = ref(true);
+  const error = ref<string | null>(null);
 
-  const mockUpDBProducts = ref<productCardTypes[]>([]);
+  async function fetchProducts() {
+    try {
+      const response = await axios.get("http://127.0.0.1:8000/api/product");
+      const availableProducts: Product[] = response.data.filter(
+        (product: Product) => product.stock > 0
+      );
+      mockUpDBProducts.value = availableProducts;
+      shuffledProducts.value = [...availableProducts]
+        .sort(() => 0.5 - Math.random())
+        .slice(0, 4);
+    } catch (err: any) {
+      error.value = err.message || "Failed to load products";
+    } finally {
+      isLoading.value = false;
+    }
+  }
 
-  axios.get("http://127.0.0.1:8000/api/product").then((response) => {
-    const filteredProducts = response.data.filter(
-      (product: productCardTypes) => product.stock > 0
-    );
-    mockUpDBProducts.value = filteredProducts;
-
-    shuffledProducts.value = filteredProducts
-      .sort(() => 0.5 - Math.random())
-      .splice(0, 4);
+  onMounted(() => {
+    fetchProducts();
   });
 
-  return { mockUpDBProducts, shuffledProducts };
+  return {
+    mockUpDBProducts,
+    shuffledProducts,
+    isLoading,
+    error,
+    refetch: fetchProducts,
+  };
 }

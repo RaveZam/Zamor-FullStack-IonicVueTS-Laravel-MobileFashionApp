@@ -26,7 +26,8 @@
             >
               <div class="relative">
                 <div
-                  class="absolute right-1 mr-4 mt-4 bg-white px-4 pt-4 pb-2 rounded-md opacity-70"
+                  @click="handleAddToFavorites(productCard.id)"
+                  class="absolute right-1 mr-4 mt-4 bg-white px-4 pt-4 pb-2 rounded-md opacity-70 hover:cursor-pointer"
                 >
                   <ion-icon name="heart-outline" class="text-2xl"></ion-icon>
                 </div>
@@ -60,8 +61,10 @@
 import { IonPage, IonContent, IonIcon, IonImg } from "@ionic/vue";
 import { computed, ref } from "vue";
 import { useProducts } from "@/Hooks/useProducts";
+import { useFavorite } from "@/Hooks/useFavorite";
 
 const { mockUpDBProducts } = useProducts();
+const { handleAddToFavorites } = useFavorite();
 
 const search = ref<string>("");
 

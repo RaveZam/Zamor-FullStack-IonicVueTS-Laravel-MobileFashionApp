@@ -1,7 +1,7 @@
 <template>
   <ion-page>
     <ion-content>
-      <div class="flex flex-col mx-4">
+      <div class="flex flex-col mx-4 font-latoGoogle">
         <div
           @click="$router.go(-1)"
           class="mt-8 mb-4 w-full hover:cursor-pointer"
@@ -10,9 +10,17 @@
         </div>
         <div class="flex flex-col">
           <span>PAYMENT</span>
+
+          <div class="flex flex-col my-8">
+            <span class="text-[0.7rem] text-gray-600">
+              Current Payment Method:
+            </span>
+            <span class="text-lg font-bold">{{ currentPaymentMethod }}</span>
+          </div>
+
           <span>Select Payment Method</span>
 
-          <div class="grid grid-cols-3 gap-x-4 gap-y-4 mt-4">
+          <div class="grid grid-cols-3 gap-x-4 gap-y-6 mt-4">
             <div
               class="flex flex-col items-center justify-center border-1 border-gray-700 p-2 hover:cursor-pointer"
               @click="setDefaultPaymentMethod('Cash on Delivery')"
@@ -22,6 +30,7 @@
                 >Cash on Delivery</span
               >
             </div>
+
             <div
               class="border-1 border-gray-700 p-2 flex flex-col justify-center items-center hover:cursor-pointer"
               @click="setDefaultPaymentMethod('Gcash')"
@@ -64,7 +73,9 @@ import {
   IonIcon,
   IonImg,
   alertController,
+  onIonViewDidEnter,
 } from "@ionic/vue";
+import { computed, ref } from "vue";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
@@ -89,7 +100,7 @@ async function setDefaultPaymentMethod(method: string) {
               {
                 text: "OK",
                 handler: () => {
-                  router.push("/tabs/AuthorizePaymentPage");
+                  getCurrentPaymentMethod();
                 },
               },
             ],
@@ -106,4 +117,15 @@ async function setDefaultPaymentMethod(method: string) {
 
   await alert.present();
 }
+
+let currentPaymentMethod = ref("No Payment Method");
+
+function getCurrentPaymentMethod() {
+  currentPaymentMethod.value =
+    localStorage.getItem("defaultPaymentMethod") || "No Payment Method";
+}
+
+onIonViewDidEnter(() => {
+  getCurrentPaymentMethod();
+});
 </script>

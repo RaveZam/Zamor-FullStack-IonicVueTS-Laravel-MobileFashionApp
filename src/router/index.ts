@@ -81,6 +81,11 @@ const routes: Array<RouteRecordRaw> = [
         path: "SettingsPage",
         component: () => import("@/views/AccountPages/SettingsPage.vue"),
       },
+      {
+        path: "FavoriteProducts",
+        component: () =>
+          import("@/views/FavoriteScreenPages/FavoriteProducts.vue"),
+      },
     ],
   },
 ];

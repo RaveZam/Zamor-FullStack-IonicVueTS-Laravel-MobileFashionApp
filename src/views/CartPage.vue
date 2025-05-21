@@ -21,71 +21,75 @@
         </div>
 
         <div class="overflow-auto h-[80%]">
-          <div class="flex items-center gap-x-4 ml-4 py-4">
-            <ion-checkbox justify="start" v-model="selectAll"> </ion-checkbox>
-            <span class="text-[0.8rem]">{{
-              selectAll ? "Deselect All" : "Select All"
-            }}</span>
-          </div>
           <div
             class="flex h-full justify-center items-center"
             v-if="cart.length === 0"
           >
             <span class="text-gray-500">No items in cart</span>
           </div>
-          <div
-            v-else
-            class="m-4 flex items-stretch"
-            v-for="(item, index) in cart"
-            :key="index"
-          >
-            <div class="flex items-stretch my-auto mr-4">
-              <ion-checkbox justify="start" v-model="item.checked">
-              </ion-checkbox>
+          <div v-else class="flex flex-col">
+            <div class="flex items-center gap-x-4 ml-4 py-4">
+              <ion-checkbox justify="start" v-model="selectAll"> </ion-checkbox>
+              <span class="text-[0.8rem]">{{
+                selectAll ? "Deselect All" : "Select All"
+              }}</span>
             </div>
-
-            <IonImg class="w-120 h-full" :src="item.product.productThumbnail" />
-
-            <div class="flex flex-col m-4 w-full">
-              <div class="flex flex-col mb-auto w-full h-full gap-y-1">
-                <router-link :to="`/product/${item.product.slug}`">
-                  <span class="font-lato text-[0.9rem] text-black">{{
-                    item.product.productName
-                  }}</span>
-                </router-link>
-                <span class="font-lato text-[0.9rem]"
-                  >₱{{ item.product.productPrice }}</span
-                >
-                <span class="font-lato text-[0.9rem]"
-                  >Size: {{ item.size }}</span
-                >
+            <div
+              class="m-4 flex flex items-stretch"
+              v-for="(item, index) in cart"
+              :key="index"
+            >
+              <div class="flex items-stretch my-auto mr-4">
+                <ion-checkbox justify="start" v-model="item.checked">
+                </ion-checkbox>
               </div>
 
-              <div v-if="item.quantity > 1" class="flex gap-2">
-                <div
-                  @click="decreaseQuantity(item)"
-                  class="w-6 h-6 flex items-center justify-center bg-gray-200 rounded text-sm font-bold cursor-pointer"
-                >
-                  -
+              <IonImg
+                class="w-120 h-full"
+                :src="item.product.productThumbnail"
+              />
+
+              <div class="flex flex-col m-4 w-full">
+                <div class="flex flex-col mb-auto w-full h-full gap-y-1">
+                  <router-link :to="`/product/${item.product.slug}`">
+                    <span class="font-lato text-[0.9rem] text-black">{{
+                      item.product.productName
+                    }}</span>
+                  </router-link>
+                  <span class="font-lato text-[0.9rem]"
+                    >₱{{ item.product.productPrice }}</span
+                  >
+                  <span class="font-lato text-[0.9rem]"
+                    >Size: {{ item.size }}</span
+                  >
                 </div>
 
-                <span class="text-sm font-medium">{{ item.quantity }}</span>
+                <div v-if="item.quantity > 1" class="flex gap-2">
+                  <div
+                    @click="decreaseQuantity(item)"
+                    class="w-6 h-6 flex items-center justify-center bg-gray-200 rounded text-sm font-bold cursor-pointer"
+                  >
+                    -
+                  </div>
 
-                <div
-                  @click="increaseQuantity(item)"
-                  class="w-6 h-6 flex items-center justify-center bg-gray-200 rounded text-sm font-bold cursor-pointer"
-                >
-                  +
+                  <span class="text-sm font-medium">{{ item.quantity }}</span>
+
+                  <div
+                    @click="increaseQuantity(item)"
+                    class="w-6 h-6 flex items-center justify-center bg-gray-200 rounded text-sm font-bold cursor-pointer"
+                  >
+                    +
+                  </div>
                 </div>
-              </div>
 
-              <div class="flex justify-between w-full hover:cursor-pointer">
-                <span
-                  @click="removeItem(item.id, item.product.productName)"
-                  class="font-lato text-[0.8rem]"
-                  >DELETE</span
-                >
-                <IonIcon name="bookmark-outline" />
+                <div class="flex justify-between w-full hover:cursor-pointer">
+                  <span
+                    @click="removeItem(item.id, item.product.productName)"
+                    class="font-lato text-[0.8rem]"
+                    >DELETE</span
+                  >
+                  <IonIcon name="bookmark-outline" />
+                </div>
               </div>
             </div>
           </div>
