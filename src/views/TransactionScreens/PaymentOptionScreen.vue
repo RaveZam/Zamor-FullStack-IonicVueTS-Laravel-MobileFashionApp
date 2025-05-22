@@ -75,7 +75,7 @@ import {
   alertController,
   onIonViewDidEnter,
 } from "@ionic/vue";
-import { computed, ref } from "vue";
+import { ref } from "vue";
 import { useRouter } from "vue-router";
 
 const router = useRouter();

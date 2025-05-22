@@ -53,6 +53,7 @@ import {
   checkmarkCircleOutline,
   chevronBackOutline,
   bookmarksOutline,
+  bookmarkSharp,
 } from "ionicons/icons";
 import { addIcons } from "ionicons";
 
@@ -75,6 +76,7 @@ addIcons({
   checkmarkCircleOutline,
   chevronBackOutline,
   bookmarksOutline,
+  bookmarkSharp,
 });
 
 const app = createApp(App).use(IonicVue).use(router);

@@ -23,7 +23,7 @@ function addToFavorites(id: number | null) {
         },
       }
     )
-    .then((response) => {
+    .then(() => {
       successAlert();
     })
     .catch((error) => {
@@ -67,8 +67,77 @@ async function successAlert() {
   await alert.present();
 }
 
+import { useLoadingScreen } from "./useLoadingScreen";
+import { onMounted, ref } from "vue";
+
+const { loadingScreen } = useLoadingScreen();
+
+async function removeFavorite(id: number | null) {
+  const alert = await alertController.create({
+    header: "Remove From Favorites?",
+    message: "Confirm to remove this item from your favorites",
+    buttons: [
+      {
+        text: "Continue",
+        handler: () => {
+          loadingScreen({ show: true, success: false, message: "Removing..." });
+          console.log(id);
+          axios
+            .delete(`http://127.0.0.1:8000/api/favorite`, {
+              headers: {
+                Authorization: `Bearer ${token}`,
+                Accept: "application/json",
+              },
+              data: {
+                product_id: id,
+              },
+            })
+            .then((response) => {
+              loadingScreen({ show: false, success: true, message: "Removed" });
+              fetchFavorites();
+              console.log(response);
+            })
+            .catch((error) => {
+              loadingScreen({ show: false, success: false, message: "Error" });
+              console.log(error);
+            });
+        },
+      },
+      {
+        text: "Cancel",
+        role: "cancel",
+      },
+    ],
+  });
+  await alert.present();
+}
+
+const favoriteItems = ref<any[]>([]);
+function fetchFavorites() {
+  axios
+    .get("http://127.0.0.1:8000/api/favorite", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then((response) => {
+      favoriteItems.value = response.data;
+      console.log(favoriteItems.value);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
+onMounted(() => {
+  fetchFavorites();
+});
+
 export function useFavorite() {
   return {
     handleAddToFavorites,
+    removeFavorite,
+    favoriteItems,
+    fetchFavorites,
   };
 }
