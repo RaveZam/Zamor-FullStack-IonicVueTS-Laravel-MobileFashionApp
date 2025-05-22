@@ -23,7 +23,12 @@
             <ion-icon name="chevron-forward-outline" />
           </div>
           <div
-            @click="$router.push('/tabs/FavoriteProducts')"
+            @click="
+              $router.push({
+                path: '/tabs/CartPage',
+                query: { fromAccounts: 'true' },
+              })
+            "
             class="flex item-center justify-between mt-8 hover:cursor-pointer"
           >
             <div class="flex item-center gap-x-2">

@@ -9,6 +9,8 @@ const { handleErrorMessage } = useCustomAlert();
 
 const token = getCookie("authToken");
 
+let wasAdded = false;
+
 function addToFavorites(id: number | null) {
   axios
     .post(
@@ -24,7 +26,8 @@ function addToFavorites(id: number | null) {
       }
     )
     .then(() => {
-      successAlert();
+      wasAdded = true;
+      fetchFavorites();
     })
     .catch((error) => {
       if (error.status === 400) {
@@ -67,10 +70,10 @@ async function successAlert() {
   await alert.present();
 }
 
-import { useLoadingScreen } from "./useLoadingScreen";
 import { onMounted, ref } from "vue";
+import { useLoadingScreen2 } from "./useLoadingScreen2";
 
-const { loadingScreen } = useLoadingScreen();
+const { loadingScreen } = useLoadingScreen2();
 
 async function removeFavorite(id: number | null) {
   const alert = await alertController.create({
@@ -80,7 +83,6 @@ async function removeFavorite(id: number | null) {
       {
         text: "Continue",
         handler: () => {
-          loadingScreen({ show: true, success: false, message: "Removing..." });
           console.log(id);
           axios
             .delete(`http://127.0.0.1:8000/api/favorite`, {
@@ -93,12 +95,10 @@ async function removeFavorite(id: number | null) {
               },
             })
             .then((response) => {
-              loadingScreen({ show: false, success: true, message: "Removed" });
               fetchFavorites();
               console.log(response);
             })
             .catch((error) => {
-              loadingScreen({ show: false, success: false, message: "Error" });
               console.log(error);
             });
         },
@@ -114,6 +114,11 @@ async function removeFavorite(id: number | null) {
 
 const favoriteItems = ref<any[]>([]);
 function fetchFavorites() {
+  loadingScreen({
+    show: true,
+    success: false,
+    message: "Loading Items...",
+  });
   axios
     .get("http://127.0.0.1:8000/api/favorite", {
       headers: {
@@ -122,7 +127,16 @@ function fetchFavorites() {
     })
     .then((response) => {
       favoriteItems.value = response.data;
-      console.log(favoriteItems.value);
+      loadingScreen({
+        show: false,
+        success: true,
+        message: "Fetched",
+      });
+
+      if (wasAdded) {
+        successAlert();
+        wasAdded = false;
+      }
     })
     .catch((error) => {
       console.log(error);

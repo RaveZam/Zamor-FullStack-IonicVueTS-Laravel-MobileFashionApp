@@ -16,11 +16,25 @@
           ></ion-icon>
         </div>
         <div class="gap-x-4 flex m-4">
-          <span class="text-[0.8rem] opacity-100">SHOPPING BAG</span>
-          <span class="text-[0.8rem] opacity-40">FAVOURITES</span>
+          <span
+            @click="selectedTab = 'cart'"
+            :class="[
+              'text-[0.8rem] hover:cursor-pointer ',
+              selectedTab === 'cart' ? 'text-black' : 'text-gray-400',
+            ]"
+            >SHOPPING BAG</span
+          >
+          <span
+            @click="selectedTab = 'favorites'"
+            :class="[
+              'text-[0.8rem] hover:cursor-pointer ',
+              selectedTab === 'favorites' ? 'text-black' : 'text-gray-400',
+            ]"
+            >FAVOURITES</span
+          >
         </div>
 
-        <div class="overflow-auto h-[80%]">
+        <div v-if="selectedTab === 'cart'" class="overflow-auto h-[80%]">
           <div
             class="flex h-full justify-center items-center"
             v-if="cart.length === 0"
@@ -95,6 +109,10 @@
           </div>
         </div>
 
+        <div v-if="selectedTab === 'favorites'" class="overflow-auto h-[80%]">
+          <FavoriteProducts />
+        </div>
+
         <div class="w-full p-4 flex items-center justify-between relative">
           <div
             @click="
@@ -117,9 +135,6 @@
 <script setup lang="ts">
 import {
   IonPage,
-  IonHeader,
-  IonToolbar,
-  IonTitle,
   IonContent,
   IonIcon,
   IonImg,
@@ -128,12 +143,18 @@ import {
 } from "@ionic/vue";
 
 import { useCart } from "@/Hooks/useCart";
-import { computed, watch } from "vue";
-
+import { computed, ref, watch } from "vue";
+import FavoriteProducts from "./FavoriteScreenPages/FavoriteProducts.vue";
+import { useRoute } from "vue-router";
 const { cart, fetchCart, removeItem, increaseQuantity, decreaseQuantity } =
   useCart();
 
+const route = useRoute();
+
 onIonViewWillEnter(() => {
+  if (route.query.fromAccounts) {
+    selectedTab.value = "favorites";
+  }
   fetchCart();
 });
 
@@ -157,6 +178,8 @@ const selectAll = computed({
   },
 });
 
+const selectedTab = ref("cart");
+
 watch(
   cart,
   () => {
@@ -164,7 +187,7 @@ watch(
     cart.value.forEach((item) => {
       checkedMap[item.id] = item.checked;
     });
-    localStorage.setItem("checkedItem", JSON.stringify(checkedMap)); // Save to localStorage
+    localStorage.setItem("checkedItem", JSON.stringify(checkedMap));
   },
   { deep: true }
 );
