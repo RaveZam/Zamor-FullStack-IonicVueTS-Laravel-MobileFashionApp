@@ -28,18 +28,6 @@
 
 ---
 
-
-
-Login And Register Screen: 
-
-<div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: flex-start;">
-  <img src="https://res.cloudinary.com/dcdgu2fxc/image/upload/v1748078668/Login_lvf9cv.png" alt="ZamorLogin" style="width: 45%; max-width: 300px; border-radius: 8px;" />
-  <img src="https://res.cloudinary.com/dcdgu2fxc/image/upload/v1748078668/Screenshot_2025-05-24_at_17-10-06_Ionic_App_umcrzz.png" alt="ZamorRegister" style="width: 45%; max-width: 300px; border-radius: 8px;" />
-</div>
-
-**Register** features Bcrypt for password encryption and Sanctum tokens for handling user sessions.  
-**VueTS** handles password salt features manually.
-
 **HomePage** 
 <table>
   <tr>
@@ -69,6 +57,18 @@ Login And Register Screen:
     Initially, Cloudinary was used for hosting all product and UI images.
 
     Due to inconsistent internet connectivity on campus, images are temporarily stored locally for development and testing.
+
+
+
+Login And Register Screen: 
+
+<div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: flex-start;">
+  <img src="https://res.cloudinary.com/dcdgu2fxc/image/upload/v1748078668/Login_lvf9cv.png" alt="ZamorLogin" style="width: 45%; max-width: 300px; border-radius: 8px;" />
+  <img src="https://res.cloudinary.com/dcdgu2fxc/image/upload/v1748078668/Screenshot_2025-05-24_at_17-10-06_Ionic_App_umcrzz.png" alt="ZamorRegister" style="width: 45%; max-width: 300px; border-radius: 8px;" />
+</div>
+
+**Register** features Bcrypt for password encryption and Sanctum tokens for handling user sessions.  
+**VueTS** handles password salt features manually.
 
     
 **Cart And Favorites Section** 
