@@ -28,7 +28,18 @@
 
 ---
 
-[ZamorUI](https://res.cloudinary.com/dcdgu2fxc/image/upload/v1744620438/tommyposterlong_q5cvyu.jpg)
+![ZamorUI](https://res.cloudinary.com/dcdgu2fxc/image/upload/v1744620438/tommyposterlong_q5cvyu.jpg) 
+
+Login And Register Screen: 
+
+![ZamorLogin](https://res.cloudinary.com/dcdgu2fxc/image/upload/v1748078668/Login_lvf9cv.png)
+
+Register Features Bcrypt for password encryption and Sanctum tokens for handling user sessions. 
+
+![ZamorRegister](https://res.cloudinary.com/dcdgu2fxc/image/upload/v1748078668/Screenshot_2025-05-24_at_17-10-06_Ionic_App_umcrzz.png)
+
+VueTS Handles Password Salt Features manually. 
+
 
 ## 📦 Installation
 
