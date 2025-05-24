@@ -28,7 +28,7 @@
 
 ---
 
-![ZamorUI](https://res.cloudinary.com/dcdgu2fxc/image/upload/v1744620438/tommyposterlong_q5cvyu.jpg)
+[ZamorUI](https://res.cloudinary.com/dcdgu2fxc/image/upload/v1744620438/tommyposterlong_q5cvyu.jpg)
 
 ## 📦 Installation
 
