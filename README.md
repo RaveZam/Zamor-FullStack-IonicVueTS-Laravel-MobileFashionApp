@@ -32,13 +32,13 @@
 
 Login And Register Screen: 
 
-![ZamorLogin](https://res.cloudinary.com/dcdgu2fxc/image/upload/v1748078668/Login_lvf9cv.png)
+<div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: flex-start;">
+  <img src="https://res.cloudinary.com/dcdgu2fxc/image/upload/v1748078668/Login_lvf9cv.png" alt="ZamorLogin" style="width: 45%; max-width: 300px; border-radius: 8px;" />
+  <img src="https://res.cloudinary.com/dcdgu2fxc/image/upload/v1748078668/Screenshot_2025-05-24_at_17-10-06_Ionic_App_umcrzz.png" alt="ZamorRegister" style="width: 45%; max-width: 300px; border-radius: 8px;" />
+</div>
 
-Register Features Bcrypt for password encryption and Sanctum tokens for handling user sessions. 
-
-![ZamorRegister](https://res.cloudinary.com/dcdgu2fxc/image/upload/v1748078668/Screenshot_2025-05-24_at_17-10-06_Ionic_App_umcrzz.png)
-
-VueTS Handles Password Salt Features manually. 
+**Register** features Bcrypt for password encryption and Sanctum tokens for handling user sessions.  
+**VueTS** handles password salt features manually.
 
 
 ## 📦 Installation
