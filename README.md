@@ -28,7 +28,7 @@
 
 ---
 
-![ZamorUI](https://res.cloudinary.com/dcdgu2fxc/image/upload/v1744620438/tommyposterlong_q5cvyu.jpg) 
+
 
 Login And Register Screen: 
 
@@ -75,8 +75,12 @@ Login And Register Screen:
 
 <table>
   <tr>
- <td> <img src="https://res.cloudinary.com/dcdgu2fxc/image/upload/v1748078664/Screenshot_2025-05-24_at_17-12-59_Ionic_App_t70zxf.png" alt="Cart Section" style="width: 48%; max-width: 100px; border-radius: 8px;" /> </td>
-<td>  <img src="https://res.cloudinary.com/dcdgu2fxc/image/upload/v1748078664/Screenshot_2025-05-24_at_17-13-30_Ionic_App_je6mri.png" alt="Favorites Section" style="width: 48%; max-width: 100px; border-radius: 8px;" /></td>
+    <td>
+      <img src="https://res.cloudinary.com/dcdgu2fxc/image/upload/v1748078664/Screenshot_2025-05-24_at_17-12-59_Ionic_App_t70zxf.png" alt="Cart Section" width="200" style="border-radius: 8px;" />
+    </td>
+    <td>
+      <img src="https://res.cloudinary.com/dcdgu2fxc/image/upload/v1748078664/Screenshot_2025-05-24_at_17-13-30_Ionic_App_je6mri.png" alt="Favorites Section" width="200" style="border-radius: 8px;" />
+    </td>
   </tr>
 </table>
 
@@ -95,12 +99,52 @@ Login And Register Screen:
 
   **Transaction Screens from Selecting Address To Payment Methods** 
 
-  <table>
+<table>
   <tr>
-    <td> <img src="https://res.cloudinary.com/dcdgu2fxc/image/upload/v1748078664/Screenshot_2025-05-24_at_17-12-59_Ionic_App_t70zxf.png" alt="Cart Section" style="width: 48%; max-width: 100px; border-radius: 8px;" /> </td>
-    <td> <img src="https://res.cloudinary.com/dcdgu2fxc/image/upload/v1748078664/Screenshot_2025-05-24_at_17-13-30_Ionic_App_je6mri.png" alt="Favorites Section" style="width: 48%; max-width: 100px; border-radius: 8px;" /></td>
+    <td>
+      <img src="https://res.cloudinary.com/dcdgu2fxc/image/upload/v1748078664/Screenshot_2025-05-24_at_17-21-27_Ionic_App_x15ofm.png" alt="Cart Section" width="200" style="border-radius: 8px;" />
+    </td>
+    <td>
+      <img  src="https://res.cloudinary.com/dcdgu2fxc/image/upload/v1748078663/Screenshot_2025-05-24_at_17-21-39_Ionic_App_vdirms.png" alt="Favorites Section" width="200" style="border-radius: 8px;" />
+    </td>
+    <td>
+      <img  src="https://res.cloudinary.com/dcdgu2fxc/image/upload/v1748078663/Screenshot_2025-05-24_at_17-22-00_Ionic_App_cm3zjc.png" alt="Favorites Section" width="200" style="border-radius: 8px;" />
+    </td>
+    <td>
+      <img  src="https://res.cloudinary.com/dcdgu2fxc/image/upload/v1748078664/Screenshot_2025-05-24_at_17-14-26_Ionic_App_hbtchb.png" alt="Favorites Section" width="200" style="border-radius: 8px;" />
+    </td>
   </tr>
 </table>
+
+
+🧾 Transaction System
+
+The transaction system features:
+
+    Dynamic Address Handling – Users can input custom delivery addresses at checkout.
+
+    Payment Integration – Supports flexible payment flows.
+
+    Automatic Stock Management – Product stock adjusts in real-time based on orders.
+
+    Order History Tracking – Each user has access to a detailed record of their past transactions to monitor their spending and activity.
+
+## Account Settings Section
+
+This section manages user authentication through Laravel Sanctum tokens, ensuring secure and reliable session handling. Additionally, it incorporates a Remember Me functionality that validates persistent tokens, enabling users to maintain their login state for improved convenience and a seamless experience.
+
+---
+
+### Screenshots
+
+<p align="center">
+  <img src="https://res.cloudinary.com/dcdgu2fxc/image/upload/v1748078663/Screenshot_2025-05-24_at_17-13-57_Ionic_App_jzqzf4.png" alt="Account Settings 1" width="200" style="margin-right:10px;" />
+  <img src="https://res.cloudinary.com/dcdgu2fxc/image/upload/v1748078663/Screenshot_2025-05-24_at_17-14-07_Ionic_App_tm6byi.png" alt="Account Settings 2" width="200" style="margin-right:10px;" />
+  <img src="https://res.cloudinary.com/dcdgu2fxc/image/upload/v1748078663/Screenshot_2025-05-24_at_17-15-16_Ionic_App_cmciqm.png" alt="Account Settings 3" width="200" style="margin-right:10px;" />
+  <img src="https://res.cloudinary.com/dcdgu2fxc/image/upload/v1748078663/Screenshot_2025-05-24_at_17-13-57_Ionic_App_jzqzf4.png" alt="Account Settings 4" width="200" />
+</p>
+
+
 
 
 ## 📦 Installation
