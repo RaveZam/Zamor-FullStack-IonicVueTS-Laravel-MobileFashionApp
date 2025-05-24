@@ -108,10 +108,7 @@
           class="flex mt-auto justify-between items-center my-4 hover:cursor-pointer"
         >
           <div
-            @click="
-              isConfirmActive = !isConfirmActive;
-              authorizePayment();
-            "
+            @click="authorizePayment()"
             :class="[
               'text-center p-2 w-3/6',
               isConfirmActive ? 'bg-white text-black' : 'bg-black text-white',
@@ -200,6 +197,9 @@ const router = useRouter();
 const { getCookie } = useGetCookie();
 const token = getCookie("authToken");
 const { handleErrorMessage } = useCustomAlert();
+import { useLoadingScreen } from "@/Hooks/useLoadingScreen";
+
+const { loadingScreen } = useLoadingScreen();
 
 const isConfirmActive = ref(false);
 
@@ -229,6 +229,7 @@ function authorizePayment() {
     return;
   }
 
+  loadingScreen({ show: true, success: false, message: "Authorizing..." });
   axios
     .post("http://127.0.0.1:8000/api/order", transactionData.value, {
       headers: {
@@ -244,7 +245,12 @@ function authorizePayment() {
           "transactionData",
           JSON.stringify(selectedCartItems.value)
         );
-        router.push("/tabs/SuccessfulTransactionPage");
+
+        loadingScreen({
+          show: false,
+          success: true,
+          message: "Authorizing...",
+        });
       }
     })
     .catch((error) => {

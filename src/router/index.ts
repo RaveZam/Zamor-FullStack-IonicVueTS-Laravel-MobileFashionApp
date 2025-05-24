@@ -91,6 +91,10 @@ const routes: Array<RouteRecordRaw> = [
         component: () =>
           import("@/views/OrderHistoryPages/OrderHistoryPage.vue"),
       },
+      {
+        path: "TermsAndPolicies",
+        component: () => import("@/views/AccountPages/TermsAndPolicies.vue"),
+      },
     ],
   },
 ];

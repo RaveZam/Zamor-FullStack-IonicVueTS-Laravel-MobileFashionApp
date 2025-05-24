@@ -83,7 +83,7 @@
 
         <div class="flex mt-auto justify-between items-center">
           <div
-            @click="$router.push('/tabs/AuthorizePaymentPage')"
+            @click="handleContinue()"
             class="m-4 text-center bg-black text-white p-2 w-3/6 hover:cursor-pointer"
           >
             <span class="text-sm"> Continue </span>
@@ -109,9 +109,22 @@ import {
 import { useCart } from "@/Hooks/useCart";
 import { computed, onMounted, ref, watch } from "vue";
 import { useAddress } from "@/Hooks/useAddress";
+import { useRouter } from "vue-router";
+import { useCustomAlert } from "@/Hooks/useCustomAlert";
+const { handleErrorMessage } = useCustomAlert();
 
 const { cart, fetchCart } = useCart();
 const { fetchAddresses, selectedAddress } = useAddress();
+
+const router = useRouter();
+
+function handleContinue() {
+  if (!selectedAddress.value) {
+    handleErrorMessage("Please select an address");
+  } else {
+    router.push("/tabs/AuthorizePaymentPage");
+  }
+}
 
 onIonViewWillEnter(() => {
   fetchCart();

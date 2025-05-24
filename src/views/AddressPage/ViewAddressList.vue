@@ -1,11 +1,8 @@
 <template>
   <ion-page>
     <ion-content>
-      <div class="font-latoGoogle flex flex-col mx-6 h-full">
-        <div @click="$router.go(-1)" class="mt-8 w-full hover:cursor-pointer">
-          <IonIcon class="text-xl" name="arrow-back-sharp"></IonIcon>
-        </div>
-
+      <Header />
+      <div class="font-latoGoogle flex flex-col mx-6 h-[90%]">
         <h1>Addresses</h1>
 
         <div class="" v-for="address in addressList" :key="address.id">
@@ -62,6 +59,7 @@
 <script setup lang="ts">
 import { IonContent, IonPage, IonIcon, onIonViewWillEnter } from "@ionic/vue";
 import { useAddress } from "@/Hooks/useAddress";
+import Header from "@/components/Header.vue";
 
 const {
   fetchAddresses,

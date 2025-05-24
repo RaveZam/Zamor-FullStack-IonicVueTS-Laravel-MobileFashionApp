@@ -10,20 +10,19 @@
             <span class=""> Email</span>
             <span class="text-lg"> {{ userData.email }}</span>
           </div>
-          <div class="flex flex-col gap-y-1 pr-4">
-            <div class="flex flex-row justify-between">
-              <span>Address</span>
-              <IonIcon
-                @click="router.push('/tabs/ViewAddressList')"
-                class="hover:cursor-pointer"
-                name="chevron-forward-outline"
-              ></IonIcon>
-            </div>
-            <span class="text-lg"> Victoria Alicia, Isabela</span>
-          </div>
+
           <div class="flex flex-col gap-y-1">
             <span>Password</span>
             <span class="text-lg"> *********</span>
+          </div>
+          <div class="flex flex-col gap-y-1 pr-4">
+            <div
+              @click="router.push('/tabs/ViewAddressList')"
+              class="flex flex-row justify-between my-4 hover:cursor-pointer"
+            >
+              <span class="text-lg">Address</span>
+              <IonIcon name="chevron-forward-outline"></IonIcon>
+            </div>
           </div>
         </div>
 

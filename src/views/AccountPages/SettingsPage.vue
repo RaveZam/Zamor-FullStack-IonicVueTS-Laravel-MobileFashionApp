@@ -41,6 +41,13 @@
 
             <ion-icon name="chevron-forward-outline" />
           </div>
+          <div
+            @click="$router.push('/tabs/TermsAndPolicies')"
+            class="flex item-center justify-between hover:cursor-pointer"
+          >
+            <span>TERMS AND POLICIES</span>
+            <ion-icon name="chevron-forward-outline" />
+          </div>
         </div>
       </div>
     </ion-content>

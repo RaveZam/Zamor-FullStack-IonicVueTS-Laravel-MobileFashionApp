@@ -98,8 +98,9 @@
           :key="index"
         >
           <div class="p-2 relative">
-            <div
-              class="absolute right-1 mr-4 mt-4 bg-white px-4 pt-4 pb-2 rounded-md opacity-70"
+            <div 
+           @click=" handleAddToFavorites(productCard.id)" 
+              class="absolute right-1 mr-4 mt-4 bg-white px-4 pt-4 pb-2 rounded-md opacity-70 hover:cursor-pointer"
             >
               <ion-icon name="heart-outline" class="text-2xl"></ion-icon>
             </div>
@@ -173,6 +174,8 @@
 <script setup lang="ts">
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Autoplay, Pagination } from "swiper/modules";
+import { useFavorite } from "@/Hooks/useFavorite";
+const {  handleAddToFavorites } = useFavorite();
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -183,7 +186,7 @@ const { mockUpDBProducts, shuffledProducts } = useProducts();
 
 import { IonPage, IonContent, IonIcon, IonImg } from "@ionic/vue";
 import { computed } from "vue";
-import Header from "@/components/Header.vue";
+
 import HomeHeader from "@/components/HomeHeader.vue";
 
 

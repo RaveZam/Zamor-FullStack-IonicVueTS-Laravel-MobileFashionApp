@@ -17,12 +17,19 @@
       </div>
       <div class="border-1 border-black rounded-sm px-4 pb-1">
         <ion-input
+          class="flex justify-center"
           type="password"
           label="Password"
           label-placement="floating"
           fill="outline"
           placeholder="Enter Password"
           v-model="userCredentials.password"
+        >
+          <ion-input-password-toggle
+            class="translate-y-[-6px]"
+            color="dark"
+            slot="end"
+          ></ion-input-password-toggle
         ></ion-input>
       </div>
 
@@ -73,8 +80,13 @@
 </template>
 
 <script setup lang="ts">
-import { IonInput, IonCheckbox, IonImg } from "@ionic/vue";
-import { reactive } from "vue";
+import {
+  IonInput,
+  IonCheckbox,
+  IonImg,
+  IonInputPasswordToggle,
+} from "@ionic/vue";
+import { computed, reactive } from "vue";
 import axios from "axios";
 import { useLoadingScreen } from "@/Hooks/useLoadingScreen";
 import { useCustomAlert } from "@/Hooks/useCustomAlert";
@@ -118,6 +130,13 @@ function signIn() {
 
           if (response.data.remember_token) {
             document.cookie = `rememberMeToken=${response.data.remember_token}; path=/; max-age=604800`;
+
+            // let userData = {
+            //   username: response.data.user.name,
+            //   email: response.data.user.email,
+            // };
+
+            // localStorage.setItem("userData", JSON.stringify(userData));
           }
           loadingScreen({
             show: false,

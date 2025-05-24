@@ -24,6 +24,9 @@
           v-model="userRegistration.name"
         ></ion-input>
       </div>
+      <span v-if="passwordError" class="text-red-700">
+        {{ passwordError }}</span
+      >
       <div class="border-1 border-black rounded-sm px-4 pb-1">
         <ion-input
           label="Password"
@@ -34,6 +37,7 @@
           type="password"
         ></ion-input>
       </div>
+
       <div class="border-1 border-black rounded-sm px-4 pb-1">
         <ion-input
           label="Confirm Password"
@@ -92,7 +96,7 @@
 <script setup lang="ts">
 import { IonInput, IonCheckbox, IonImg } from "@ionic/vue";
 import axios from "axios";
-import { reactive } from "vue";
+import { computed, reactive, ref } from "vue";
 import { useLoadingScreen } from "@/Hooks/useLoadingScreen";
 import { useCustomAlert } from "@/Hooks/useCustomAlert";
 
@@ -120,39 +124,100 @@ function goToRegister() {
 const { loadingScreen } = useLoadingScreen();
 const { handleErrorMessage } = useCustomAlert();
 
+const passwordError = ref<string>("");
+
+function validatePassword(password: string, confirm: string): boolean {
+  if (password !== confirm) {
+    passwordError.value = "Passwords do not match.";
+    return false;
+  }
+  if (password.length < 8) {
+    passwordError.value = "Password must be at least 8 characters.";
+    return false;
+  }
+  if (!/[A-Z]/.test(password)) {
+    passwordError.value = "Include at least one uppercase letter.";
+    return false;
+  }
+  if (!/[a-z]/.test(password)) {
+    passwordError.value = "Include at least one lowercase letter.";
+    return false;
+  }
+  if (!/[0-9]/.test(password)) {
+    passwordError.value = "Include at least one number.";
+    return false;
+  }
+  if (!/[^A-Za-z0-9]/.test(password)) {
+    passwordError.value = "Include at least one symbol.";
+    return false;
+  }
+
+  passwordError.value = ""; // clear error
+  return true;
+}
+
 function handleRegister() {
-  loadingScreen({ show: true, success: false });
+  const isValid = validatePassword(
+    userRegistration.password,
+    userRegistration.password_confirmation
+  );
+
+  if (!isValid) return;
+
+  loadingScreen({
+    show: true,
+    success: false,
+    message: "Signing In...",
+  });
+
   axios
     .post("http://127.0.0.1:8000/api/register", userRegistration)
     .then((response) => {
       if (response.status === 201 || 200)
         document.cookie = `authToken=${response.data.token}; path=/; max-age=3600`;
+      let userData = {
+        username: response.data.user.name,
+        email: response.data.user.email,
+      };
+
+      localStorage.setItem("userData", JSON.stringify(userData));
 
       if (response.data.remember_token) {
         document.cookie = `rememberMeToken=${response.data.remember_token}; path=/; max-age=604800`;
+        let userData = {
+          username: response.data.user.name,
+          email: response.data.user.email,
+        };
+
+        localStorage.setItem("userData", JSON.stringify(userData));
       }
 
-      loadingScreen({ show: false, success: true });
+      loadingScreen({
+        show: false,
+        success: true,
+        message: "Signing In...",
+      });
     })
     .catch((error) => {
       console.log(error);
-      if (
-        error.response.data.message ===
-        "The password confirmation does not match."
-      ) {
-        loadingScreen({ show: false, success: false });
-        handleErrorMessage(error.response.data.message);
-      } else if (error.status === 500) {
-        let message = "Email Already Exists";
-        loadingScreen({ show: false, success: false });
-        handleErrorMessage(message);
-      } else if (
-        error.response.data.errors.email[0] ===
-        "The email must be a valid email address."
-      ) {
-        let message = "Invalid Email";
-        loadingScreen({ show: false, success: false });
-        handleErrorMessage(message);
+
+      const msg = error?.response?.data?.message;
+      const errs = error?.response?.data?.errors;
+
+      if (msg === "The password confirmation does not match.") {
+        loadingScreen({
+          show: false,
+          success: false,
+          message: "Signing In...",
+        });
+        handleErrorMessage(msg);
+      } else if (error?.response?.status === 500) {
+        loadingScreen({
+          show: false,
+          success: false,
+          message: "Please Try again",
+        });
+        handleErrorMessage("Email Already Exists");
       }
     });
 }

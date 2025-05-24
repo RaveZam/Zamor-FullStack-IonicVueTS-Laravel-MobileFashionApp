@@ -32,7 +32,7 @@
             '--color-selected': 'black',
           }"
           tab="Menu"
-          href=""
+          href="/tabs/Home"
         >
           <h1 class="font-latoSubTitle pb-2">Menu</h1>
         </ion-tab-button>

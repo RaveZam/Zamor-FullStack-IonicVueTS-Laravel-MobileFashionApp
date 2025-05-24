@@ -1,14 +1,8 @@
 <template>
   <ion-page>
     <ion-content class="font-latoGoogle">
+      <Header />
       <div class="mx-4">
-        <div
-          @click="$router.go(-1)"
-          class="mt-8 mb-4 w-full mx-4 hover:cursor-pointer"
-        >
-          <IonIcon class="text-xl" name="arrow-back-sharp"></IonIcon>
-        </div>
-
         <div class="flex flex-col gap-y-4">
           <span class="text-lg">NEW ADDRESS</span>
 
@@ -101,6 +95,7 @@ import { reactive } from "vue";
 import { useGetCookie } from "@/Hooks/useGetCookies";
 import { alertController } from "@ionic/vue";
 import { useRouter } from "vue-router";
+import Header from "@/components/Header.vue";
 
 const router = useRouter();
 
@@ -142,7 +137,7 @@ async function successAlert() {
       {
         text: "Continue",
         handler: async () => {
-          router.push("/tabs/Account");
+          router.go(-1);
         },
       },
     ],

@@ -26,11 +26,14 @@ async function loadingScreen(options: LoadingOptions) {
       loading = null;
     }
     if (success) {
-      if(message === "Signing In...") {
+      if (message === "Signing In...") {
         router.push("/tabs/Home");
+      } else if (message === "Authorizing...") {
+        router.push("/tabs/SuccessfulTransactionPage");
+      }
     }
   }
-  } }
+}
 
 export function useLoadingScreen() {
   return { loadingScreen };
