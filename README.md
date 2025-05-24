@@ -43,10 +43,10 @@ Login And Register Screen:
 **HomePage** 
 <table>
   <tr>
-    <td><img src="https://res.cloudinary.com/dcdgu2fxc/image/upload/v1748078665/Screenshot_2025-05-24_at_17-11-25_Ionic_App_pn6tar.png" width="200"/></td>
-    <td><img src="https://res.cloudinary.com/dcdgu2fxc/image/upload/v1748078665/Screenshot_2025-05-24_at_17-11-44_Ionic_App_ngatjd.png" width="200"/></td>
-    <td><img src="https://res.cloudinary.com/dcdgu2fxc/image/upload/v1748078665/Screenshot_2025-05-24_at_17-11-44_Ionic_App_ngatjd.png" width="200"/></td>
     <td><img src="https://res.cloudinary.com/dcdgu2fxc/image/upload/v1748078665/Screenshot_2025-05-24_at_17-11-01_Ionic_App_xfitcu.png" width="200"/></td>
+    <td><img src="https://res.cloudinary.com/dcdgu2fxc/image/upload/v1748078665/Screenshot_2025-05-24_at_17-11-25_Ionic_App_pn6tar.png" width="200"/></td>
+    <td><img src="https://res.cloudinary.com/dcdgu2fxc/image/upload/v1748078665/Screenshot_2025-05-24_at_17-11-54_Ionic_App_pvzyud.png" width="200"/></td>
+    <td><img src="https://res.cloudinary.com/dcdgu2fxc/image/upload/v1748078665/Screenshot_2025-05-24_at_17-11-44_Ionic_App_ngatjd.png" width="200"/></td>
   </tr>
 </table>
 
@@ -111,7 +111,10 @@ Login And Register Screen:
       <img  src="https://res.cloudinary.com/dcdgu2fxc/image/upload/v1748078663/Screenshot_2025-05-24_at_17-22-00_Ionic_App_cm3zjc.png" alt="Favorites Section" width="200" style="border-radius: 8px;" />
     </td>
     <td>
-      <img  src="https://res.cloudinary.com/dcdgu2fxc/image/upload/v1748078664/Screenshot_2025-05-24_at_17-14-26_Ionic_App_hbtchb.png" alt="Favorites Section" width="200" style="border-radius: 8px;" />
+      <img  src="https://res.cloudinary.com/dcdgu2fxc/image/upload/v1748095667/Screenshot_2025-05-24_at_22-07-11_Ionic_App_gonhvi.png" alt="Favorites Section" width="200" style="border-radius: 8px;" />
+    </td>
+    <td>
+      <img  src="https://res.cloudinary.com/dcdgu2fxc/image/upload/v1748078663/Screenshot_2025-05-24_at_17-22-21_Ionic_App_pctvln.png" alt="Favorites Section" width="200" style="border-radius: 8px;" />
     </td>
   </tr>
 </table>
@@ -135,13 +138,13 @@ This section manages user authentication through Laravel Sanctum tokens, ensurin
 
 ---
 
-### Screenshots
+
 
 <p align="center">
   <img src="https://res.cloudinary.com/dcdgu2fxc/image/upload/v1748078663/Screenshot_2025-05-24_at_17-13-57_Ionic_App_jzqzf4.png" alt="Account Settings 1" width="200" style="margin-right:10px;" />
   <img src="https://res.cloudinary.com/dcdgu2fxc/image/upload/v1748078663/Screenshot_2025-05-24_at_17-14-07_Ionic_App_tm6byi.png" alt="Account Settings 2" width="200" style="margin-right:10px;" />
   <img src="https://res.cloudinary.com/dcdgu2fxc/image/upload/v1748078663/Screenshot_2025-05-24_at_17-15-16_Ionic_App_cmciqm.png" alt="Account Settings 3" width="200" style="margin-right:10px;" />
-  <img src="https://res.cloudinary.com/dcdgu2fxc/image/upload/v1748078663/Screenshot_2025-05-24_at_17-13-57_Ionic_App_jzqzf4.png" alt="Account Settings 4" width="200" />
+  <img src="https://res.cloudinary.com/dcdgu2fxc/image/upload/v1748078664/Screenshot_2025-05-24_at_17-14-37_Ionic_App_w9dvly.png" alt="Account Settings 4" width="200" />
 </p>
 
 
