@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ion-toolbar class="border-0 my-4">
+    <ion-toolbar class="border-0 py-4">
       <div class="flex justify-between items-center">
         <ion-icon
           @click="$router.go(-1)"

@@ -109,11 +109,14 @@
           </div>
         </div>
 
-        <div v-if="selectedTab === 'favorites'" class="overflow-auto h-[80%]">
+        <div v-if="selectedTab === 'favorites'" class="overflow-auto h-[100%]">
           <FavoriteProducts />
         </div>
 
-        <div class="w-full p-4 flex items-center justify-between relative">
+        <div
+          v-if="selectedTab === 'cart'"
+          class="w-full p-4 flex items-center justify-between relative"
+        >
           <div
             @click="
               selectedCartItems.length > 0 && $router.push('/tabs/SummaryPage')

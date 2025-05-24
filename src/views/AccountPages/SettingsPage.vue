@@ -11,7 +11,10 @@
           >
             <span>PROFILE</span> <ion-icon name="chevron-forward-outline" />
           </div>
-          <div class="flex item-center justify-between hover:cursor-pointer">
+          <div
+            @click="$router.push('/tabs/OrderHistoryPage')"
+            class="flex item-center justify-between hover:cursor-pointer"
+          >
             <span>PURCHASES</span>
             <ion-icon name="chevron-forward-outline" />
           </div>

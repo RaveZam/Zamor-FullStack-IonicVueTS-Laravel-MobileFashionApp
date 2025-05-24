@@ -86,6 +86,11 @@ const routes: Array<RouteRecordRaw> = [
         component: () =>
           import("@/views/FavoriteScreenPages/FavoriteProducts.vue"),
       },
+      {
+        path: "OrderHistoryPage",
+        component: () =>
+          import("@/views/OrderHistoryPages/OrderHistoryPage.vue"),
+      },
     ],
   },
 ];
