@@ -150,15 +150,4 @@ This section manages user authentication through Laravel Sanctum tokens, ensurin
 
 
 
-## 📦 Installation
 
-```bash
-# Clone the repository
-git clone https://github.com/your-username/zamor-frontend.git
-cd zamor-frontend
-
-# Install dependencies
-npm install
-
-# Run the app
-npm run dev
