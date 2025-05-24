@@ -41,12 +41,15 @@ Login And Register Screen:
 **VueTS** handles password salt features manually.
 
 **HomePage** 
-<div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;">
-  <img src="https://res.cloudinary.com/dcdgu2fxc/image/upload/v1748078665/Screenshot_2025-05-24_at_17-11-01_Ionic_App_xfitcu.png" alt="ZamorLogin" style="width: 100%; border-radius: 8px;" />
-  <img src="https://res.cloudinary.com/dcdgu2fxc/image/upload/v1748078665/Screenshot_2025-05-24_at_17-11-25_Ionic_App_pn6tar.png" alt="ZamorRegister" style="width: 100%; border-radius: 8px;" />
-  <img src="https://res.cloudinary.com/dcdgu2fxc/image/upload/v1748078665/Screenshot_2025-05-24_at_17-11-44_Ionic_App_ngatjd.png" alt="ZamorScreen3" style="width: 100%; border-radius: 8px;" />
-  <img src="https://res.cloudinary.com/dcdgu2fxc/image/upload/v1748078665/Screenshot_2025-05-24_at_17-11-44_Ionic_App_ngatjd.png" alt="ZamorScreen4" style="width: 100%; border-radius: 8px;" />
-</div>
+<table>
+  <tr>
+    <td><img src="https://res.cloudinary.com/dcdgu2fxc/image/upload/v1748078665/Screenshot_2025-05-24_at_17-11-01_Ionic_App_xfitcu.png" width="200"/></td>
+    <td><img src="https://res.cloudinary.com/dcdgu2fxc/image/upload/v1748078665/Screenshot_2025-05-24_at_17-11-25_Ionic_App_pn6tar.png" width="200"/></td>
+    <td><img src="https://res.cloudinary.com/dcdgu2fxc/image/upload/v1748078665/Screenshot_2025-05-24_at_17-11-44_Ionic_App_ngatjd.png" width="200"/></td>
+    <td><img src="https://res.cloudinary.com/dcdgu2fxc/image/upload/v1748078665/Screenshot_2025-05-24_at_17-11-44_Ionic_App_ngatjd.png" width="200"/></td>
+  </tr>
+</table>
+
 
 
 🛍️ Product Management & Display
