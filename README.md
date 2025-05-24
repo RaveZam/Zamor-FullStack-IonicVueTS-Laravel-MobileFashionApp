@@ -43,10 +43,10 @@ Login And Register Screen:
 **HomePage** 
 <table>
   <tr>
-    <td><img src="https://res.cloudinary.com/dcdgu2fxc/image/upload/v1748078665/Screenshot_2025-05-24_at_17-11-01_Ionic_App_xfitcu.png" width="200"/></td>
     <td><img src="https://res.cloudinary.com/dcdgu2fxc/image/upload/v1748078665/Screenshot_2025-05-24_at_17-11-25_Ionic_App_pn6tar.png" width="200"/></td>
     <td><img src="https://res.cloudinary.com/dcdgu2fxc/image/upload/v1748078665/Screenshot_2025-05-24_at_17-11-44_Ionic_App_ngatjd.png" width="200"/></td>
     <td><img src="https://res.cloudinary.com/dcdgu2fxc/image/upload/v1748078665/Screenshot_2025-05-24_at_17-11-44_Ionic_App_ngatjd.png" width="200"/></td>
+    <td><img src="https://res.cloudinary.com/dcdgu2fxc/image/upload/v1748078665/Screenshot_2025-05-24_at_17-11-01_Ionic_App_xfitcu.png" width="200"/></td>
   </tr>
 </table>
 
@@ -70,10 +70,15 @@ Login And Register Screen:
 
     Due to inconsistent internet connectivity on campus, images are temporarily stored locally for development and testing.
 
-<div style="display: flex; gap: 10px; flex-wrap: wrap;">
-  <img src="https://res.cloudinary.com/dcdgu2fxc/image/upload/v1748078664/Screenshot_2025-05-24_at_17-12-59_Ionic_App_t70zxf.png" alt="Cart Section" style="width: 48%; max-width: 300px; border-radius: 8px;" /> 
-  <img src="https://res.cloudinary.com/dcdgu2fxc/image/upload/v1748078664/Screenshot_2025-05-24_at_17-13-30_Ionic_App_je6mri.png" alt="Favorites Section" style="width: 48%; max-width: 300px; border-radius: 8px;" />
-</div>
+    
+**Cart And Favorites Section** 
+
+<table>
+  <tr>
+ <td> <img src="https://res.cloudinary.com/dcdgu2fxc/image/upload/v1748078664/Screenshot_2025-05-24_at_17-12-59_Ionic_App_t70zxf.png" alt="Cart Section" style="width: 48%; max-width: 100px; border-radius: 8px;" /> </td>
+<td>  <img src="https://res.cloudinary.com/dcdgu2fxc/image/upload/v1748078664/Screenshot_2025-05-24_at_17-13-30_Ionic_App_je6mri.png" alt="Favorites Section" style="width: 48%; max-width: 100px; border-radius: 8px;" /></td>
+  </tr>
+</table>
 
     The Cart section features:
 
@@ -86,6 +91,16 @@ Login And Register Screen:
         🔖 A bookmark-style toggle to save items for future consideration
 
         🧠 Seamless UX to keep track of desired purchases
+
+
+  **Transaction Screens from Selecting Address To Payment Methods** 
+
+  <table>
+  <tr>
+    <td> <img src="https://res.cloudinary.com/dcdgu2fxc/image/upload/v1748078664/Screenshot_2025-05-24_at_17-12-59_Ionic_App_t70zxf.png" alt="Cart Section" style="width: 48%; max-width: 100px; border-radius: 8px;" /> </td>
+    <td> <img src="https://res.cloudinary.com/dcdgu2fxc/image/upload/v1748078664/Screenshot_2025-05-24_at_17-13-30_Ionic_App_je6mri.png" alt="Favorites Section" style="width: 48%; max-width: 100px; border-radius: 8px;" /></td>
+  </tr>
+</table>
 
 
 ## 📦 Installation
