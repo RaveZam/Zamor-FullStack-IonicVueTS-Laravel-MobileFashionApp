@@ -21,9 +21,7 @@
 - **Ionic Vue**
 - **Tailwind CSS**
 - **Vue Router**
-- **Pinia (State Management)**
 - **Axios**
-- **Cloudinary (via API)**
 - **Laravel Sanctum (via Backend)**
 
 ---
