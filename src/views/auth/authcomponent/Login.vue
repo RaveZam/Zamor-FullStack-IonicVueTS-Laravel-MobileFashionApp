@@ -26,7 +26,7 @@
           v-model="userCredentials.password"
         >
           <ion-input-password-toggle
-            class="translate-y-[-6px]"
+            v-if="userCredentials.password"
             color="dark"
             slot="end"
           ></ion-input-password-toggle

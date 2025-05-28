@@ -54,6 +54,7 @@ import {
   chevronBackOutline,
   bookmarksOutline,
   bookmarkSharp,
+  pencilOutline,
 } from "ionicons/icons";
 import { addIcons } from "ionicons";
 
@@ -76,6 +77,7 @@ addIcons({
   checkmarkCircleOutline,
   chevronBackOutline,
   bookmarksOutline,
+  pencilOutline,
   bookmarkSharp,
 });
 

@@ -2,7 +2,7 @@
   <ion-page>
     <ion-content>
       <Header />
-      <div class="p-4 font-latoGoogle bg-gray-100">
+      <div v-if="Orders.length > 0" class="p-4 font-latoGoogle bg-gray-100">
         <h1>Order History</h1>
 
         <div v-for="order in Orders" :key="order.id">
@@ -48,6 +48,11 @@
               <span> Total ₱{{ order.total_amount }}</span>
             </div>
           </div>
+        </div>
+      </div>
+      <div v-else>
+        <div class="bg-gray-50 my-12 mx-4">
+          <span class="text-gray-600">No Orders Here</span>
         </div>
       </div>
     </ion-content>

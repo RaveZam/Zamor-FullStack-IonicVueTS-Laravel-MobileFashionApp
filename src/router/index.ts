@@ -95,6 +95,10 @@ const routes: Array<RouteRecordRaw> = [
         path: "TermsAndPolicies",
         component: () => import("@/views/AccountPages/TermsAndPolicies.vue"),
       },
+      {
+        path: "/update-address/:id",
+        component: () => import("@/views/AddressPage/AddressEdit.vue"),
+      },
     ],
   },
 ];

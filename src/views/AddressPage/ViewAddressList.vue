@@ -31,9 +31,17 @@
                 </div>
               </div>
               <div class="flex flex-auto items-center justify-end mr-8">
-                <div class="text-lg hover:cusor-pointer z-10">
+                <div
+                  class="text-lg flex gap-y-18 flex-col hover:cusor-pointer z-10"
+                >
                   <IonIcon
+                    name="pencil-outline"
                     class="text-lg hover:cusor-pointer"
+                    @click="goToUpdatePage(address.id)"
+                  >
+                  </IonIcon>
+                  <IonIcon
+                    class="text-lg hover:cusor-pointer pb-2"
                     @click="deleteAddress(address.id)"
                     name="trash-outline"
                   ></IonIcon>
@@ -60,6 +68,9 @@
 import { IonContent, IonPage, IonIcon, onIonViewWillEnter } from "@ionic/vue";
 import { useAddress } from "@/Hooks/useAddress";
 import Header from "@/components/Header.vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
 
 const {
   fetchAddresses,
@@ -68,6 +79,9 @@ const {
   setSelectedAddress,
   selectedAddress,
 } = useAddress();
+function goToUpdatePage(id: number | string) {
+  router.push(`/update-address/${id}`);
+}
 
 onIonViewWillEnter(() => {
   fetchAddresses();

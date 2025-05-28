@@ -66,6 +66,11 @@ http://ionicframework.com/docs/theming/ */
   font-size: 1.1rem;
 }
 
+.font-latoLandingGoogle {
+  font-family: "Lato", LatoReg;
+  font-size: 3rem;
+}
+
 ion-checkbox {
   --size: 20px;
   --checkbox-background-checked: #000000;

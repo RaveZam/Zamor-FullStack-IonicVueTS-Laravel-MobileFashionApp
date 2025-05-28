@@ -1,7 +1,7 @@
 <template>
   <ion-page>
     <ion-content>
-      <div class="flex flex-col items-center justify-center mt-10 h-[95%]">
+      <div class="flex flex-col items-center justify-center mt-10 h-[95%] mx-4">
         <span class="font-latoGoogle text-[2.2rem]">ZAMOR</span>
         <ion-icon
           @click="logValues"
@@ -20,7 +20,7 @@
           {{ estimatedDelivery.toLocaleUpperCase() }} -
           {{ estimatedDelivery2.toLocaleUpperCase() }}
         </p>
-        <div class="w-full border-gray-700 pt-8 h-[50%] overflow-auto">
+        <div class="w-full border-gray-700 pt-4 m-4 h-[50%] overflow-auto">
           <div
             v-for="(item, index) in transactionData"
             :key="index"

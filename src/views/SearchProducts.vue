@@ -24,7 +24,7 @@
               v-for="(productCard, index) in filteredItems"
               :key="index"
             >
-              <div class="relative">
+              <div class="relative font-latoGoogle">
                 <div
                   @click="handleAddToFavorites(productCard.id)"
                   class="absolute right-1 mr-4 mt-4 bg-white px-4 pt-4 pb-2 rounded-md opacity-70 hover:cursor-pointer"

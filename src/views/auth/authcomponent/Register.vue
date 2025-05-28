@@ -218,6 +218,13 @@ function handleRegister() {
           message: "Please Try again",
         });
         handleErrorMessage("Email Already Exists");
+      } else if (error?.response?.status === 422) {
+        loadingScreen({
+          show: false,
+          success: false,
+          message: "Please Try again",
+        });
+        handleErrorMessage("Invalid Email");
       }
     });
 }

@@ -1,12 +1,19 @@
 <template>
   <ion-page>
-    <div class="h-full w-full z-20 bg-white flex flex-col">
+    <div class="h-screen w-screen z-20 bg-white flex flex-col font-latoGoogle">
       <div
-        class="text-left items-center mt-auto mb-[20rem] flex flex-col gap-4 z-20"
+        class="text-left items-center mt-auto mb-[40%] flex flex-col gap-4 z-20"
       >
-        <div class="w-4/5 flex flex-col items-center">
-          <h1 class="font-latoTitle text-white">FASHION AT YOUR FINGERTIPS</h1>
-          <div>
+        <h1
+          class="font-latoLandingGoogle font-bold mix-blend-difference text-white"
+        >
+          ZAMOR
+        </h1>
+        <div class="w-4/5 flex flex-col mt-[10%]">
+          <h1 class="font-latoGoogle text-2xl text-white">
+            FASHION AT YOUR FINGERTIPS
+          </h1>
+          <div class="mr-12">
             <p class="font-latoSubTitle opacity-90">
               Shop from a wide selection of brands and style
             </p>
@@ -14,7 +21,7 @@
         </div>
         <div
           @click="toMenu"
-          class="text-center border-1 text-white border-white py-4 w-4/6"
+          class="text-center border-1 mt-4 text-white border-white py-4 w-4/6"
         >
           <p class="font-lato">LET'S SHOP</p>
         </div>

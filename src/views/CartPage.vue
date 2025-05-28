@@ -49,7 +49,7 @@
               }}</span>
             </div>
             <div
-              class="m-4 flex flex items-stretch"
+              class="m-4 flex items-stretch"
               v-for="(item, index) in cart"
               :key="index"
             >
